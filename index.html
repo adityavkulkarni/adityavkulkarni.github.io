@@ -7,6 +7,44 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://kit.fontawesome.com/032b4329d1.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<style>
+			/* Style for popup modal */
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+	
+			.modal-content {
+				background-color: white;
+				margin: 15% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 50%;
+				text-align: center;
+				border-radius: 15px; /* Rounded corners */
+			}
+	
+			.close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+	
+			.close:hover,
+			.close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -28,37 +66,290 @@
 								<li><a href="mailto:adityavkulkarni0999@gmail.com" class="icon alt"><i class="icon fa  fa-envelope alt" aria-hidden="true" style="text-decoration: none;"></i></a><span class="label"><a
 											href="mailto:adityavkulkarni0999@gmail.com">adityavkulkarni0999@gmail.com</a></span></li>
 							</ul>
+							<ul class="actions special">
+								<li><a href="images/Resume.pdf" download="adityavkulkarni_resume.pdf" class="button">Download Resume</a></li>
+							</ul>
 						</section>
 					</header> 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="#intro" class="active">Introduction</a></li>
+							
+							<li><a href="#cta">Projects</a></li>
 							<li><a href="#first">Work Experience</a></li>
 							<li><a href="#second">Education</a></li>
-							<li><a href="#cta">Projects</a></li>
 							<li><a href="#cta1">Skills and Interests</a></li>
+							<li><a href="#intro" class="active">About Me</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Introduction -->
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2>About me</h2>
-										</header>
-										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
-										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
-										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
-									</div>
-									<span class="image" style="size: max-width= 10%;"><img src="images/headshot-modified.png" alt="" /></span>
-								</div>
-							</section>
+						
+						<section id="cta" class="main special">
+							<header class="major">
+								<h2>Projects</h2>
+								<p style="font-weight: bold;">Current Research: Application of computer vision and ML based object detection and tracking in underwater robotics</p>
 
+							</header>
+							<ul class="features">
+								<li>
+
+									<span class="icon solid major style6 "><i class=" fa-solid fa-robot"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>									
+										<h3>Grasping of Linearly Moving Objects Using a Robotic Manipulator<br> 										
+											<a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a>
+										</h3>
+										
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">Python, ROS, Gazebo, OpenCV</p>
+									<a class="button" style="font-size: small;" id="learnMoreBtn">Learn More</a>
+									
+										
+									</li>
+								<li>
+
+									<span class="icon solid major style1"><i class=" fa-solid fa-magnifying-glass-chart"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>									
+										<h3>News Bias Analysis on Realtime Reddit Posts<br>
+											<a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a>
+										</h3>
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">Spark Streaming, Pyspark, Kafka, Kibana</p>
+
+									<a class="button" style="font-size: small;" id="learnMoreBtn2">Learn More</a>
+									
+								</li>
+								<li>
+
+									<span class="icon solid major style2 "><i class=" fa-solid fa-money-bill-trend-up"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>									
+										<h3>InvestAid: An AI-powered Investment Dashboard<br><a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a></h3>
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">NLP, Topic Modelling, Sentiment Analysis</p>
+
+									<a class="button" style="font-size: small;" id="learnMoreBtn3">Learn More</a>
+
+								</li>
+								<li>
+
+									<span class="icon solid major style3 "><i class=" fa-solid fa-car"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>									
+										<h3>Vehicle Survelliance System using Licence Plate Recognition<br>
+											<a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a>
+										</h3>
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">Object Detection and Tracking, OCR, YOLO</p>
+
+
+
+									<a class="button" style="font-size: small;" id="learnMoreBtn4">Learn More</a>
+									
+								</li>
+								<li>
+
+									<span class="icon solid major style4 "><i class=" fa-solid fa-earth-americas"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>									
+										<h3>Language Translation Using Recurrent Neural Networks<br>
+											<a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a>
+										</h3>
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">Python, Encoder-Decoders, Numpy</p>
+
+									<a class="button" style="font-size: small;" id="learnMoreBtn5">Learn More</a>
+									
+								</li>
+								<li>
+									
+									<span class="icon solid major style5 "><i class=" fa-solid fa-rocket"  style="font-size: 2.75rem;
+										line-height: 1.3;" ></i></span><br>
+									<h3>Case Study: Impact of reusability of SpaceX Falcon9 on launch costs
+										<a href="https://github.com/adityavkulkarni" class="icon alt"><i class="icon brands fa-github  alt" aria-hidden="true" style="text-decoration: none;"></i></a>
+									</h3>
+									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+									<p style="font-style: italic;">Data Analytics, Predictive Modelling, Plotly</p>
+
+									<a class="button" style="font-size: small;" id="learnMoreBtn6">Learn More</a>
+									
+								</li>
+
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2>More about Vehicle Surveillance System</h2>
+			<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+			<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">Python, ROS, MoveIt, OpenCV, Gazebo</p>
+		</div>
+	</div>
+								<!-- Modal for News Bias Analysis -->
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>More about News Bias Analysis</h2>
+			<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+			<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">PySpark, Structured Streaming, Kafka, SparkSQL, ElasticSearch, Kibana</p>        </div>
+    </div>
+
+    <!-- Modal for InvestAid -->
+    <div id="myModal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>More about InvestAid</h2>
+			<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+			<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">Python, Spacy, LLM, Topic Modelling, Sentiment Analysis, Flask, MongoDB</p>        </div>
+    </div>
+	    <!-- Modal for LPR -->
+		<div id="myModal4" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2>More about InvestAid</h2>
+				<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+				<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">Python, YOLO, OCR, OpenCV, Flask, MongoDB</p>			</div>
+		</div>
+		    <!-- Modal for RNN -->
+			<div id="myModal5" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>More about InvestAid</h2>
+					<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+					<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">Python, Numpy, NLTK, Spacy, Sklearn, Plotly</p>				</div>
+			</div>
+			 <!-- Modal for SpaceX -->
+			 <div id="myModal6" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>More about InvestAid</h2>
+					<p style="font-weight: bold;">Description: </p><p>This system uses License Plate Recognition (LPR) technology for identifying and monitoring vehicles in real time. It's ideal for parking management, toll plazas, and security systems.</p>
+					<p style="font-weight: bold;">Tech Stack: </p><p style="font-style: italic;">Python, Plotly, Sklearn, Web scraping, Data preprocessing</p>				</div>
+			</div>
+
+    <script>
+
+		// Get the modal
+		var modal = document.getElementById("myModal");
+								
+								// Get the button that opens the modal
+								var btn = document.getElementById("learnMoreBtn");
+						
+								// Get the <span> element that closes the modal
+								var span = document.getElementsByClassName("close")[0];
+						
+								// When the user clicks the button, open the modal 
+								btn.onclick = function() {
+									modal.style.display = "block";
+								}
+						
+								// When the user clicks on <span> (x), close the modal
+								span.onclick = function() {
+									modal.style.display = "none";
+								}
+						
+								// When the user clicks anywhere outside of the modal, close it
+								window.onclick = function(event) {
+									if (event.target == modal) {
+										modal.style.display = "none";
+									}
+								}
+        // Modal 1 (News Bias Analysis)
+        var modal2 = document.getElementById("myModal2");
+        var btn2 = document.getElementById("learnMoreBtn2");
+        var span2 = modal2.getElementsByClassName("close")[0];
+
+        btn2.onclick = function() {
+            modal2.style.display = "block";
+        }
+
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+
+        // Modal 2 (InvestAid)
+        var modal3 = document.getElementById("myModal3");
+        var btn3 = document.getElementById("learnMoreBtn3");
+        var span3 = modal3.getElementsByClassName("close")[0];
+
+        btn3.onclick = function() {
+            modal3.style.display = "block";
+        }
+
+        span3.onclick = function() {
+            modal3.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal3) {
+                modal3.style.display = "none";
+            }
+        }
+
+		// Modal 3 (InvestAid)
+        var modal4 = document.getElementById("myModal4");
+        var btn4= document.getElementById("learnMoreBtn4");
+        var span4 = modal4.getElementsByClassName("close")[0];
+
+        btn4.onclick = function() {
+            modal4.style.display = "block";
+        }
+
+        span4.onclick = function() {
+            modal4.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal4) {
+                modal4.style.display = "none";
+            }
+        }
+
+
+// Modal 7 (InvestAid)
+var modal5 = document.getElementById("myModal5");
+        var btn5 = document.getElementById("learnMoreBtn5");
+        var span5 = modal5.getElementsByClassName("close")[0];
+
+        btn5.onclick = function() {
+            modal5.style.display = "block";
+        }
+
+        span5.onclick = function() {
+            modal5.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal5) {
+                modal5.style.display = "none";
+            }
+        }
+
+		// Modal 7 (InvestAid)
+        var modal6 = document.getElementById("myModal6");
+        var btn6 = document.getElementById("learnMoreBtn6");
+        var span6 = modal6.getElementsByClassName("close")[0];
+
+        btn6.onclick = function() {
+            modal6.style.display = "block";
+        }
+
+        span6.onclick = function() {
+            modal6.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal6) {
+                modal6.style.display = "none";
+            }
+        }
+    </script>
+							</ul>
+							
+						</section>
 						<!-- First Section -->
 							<section id="first" class="main special">
 								<header class="major">
@@ -66,19 +357,42 @@
 								</header>
 								<ul>
 									<li>
+										<div class="spotlight">
+											<h3>Research Assistant
+												<p style="font-style: italic; font-size: small;">University of Texas at Dallas <br> HBS Lab</p>
+											</h3>
+											
+
+											<div class="content">
+												<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+												posuere. Nulla massa urna, fermentum eget quam aliquet.</p>								
+											</div>
+										</div>
 										<!--<span class="icon major style5 fa-gem"></span>-->
-										<h3>Graduate Research Assistant</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
 									</li>
 									<li>
 										<!--<span class="icon major style5 fa-gem"></span>-->
-										<h3>SDET-1</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+										<div class="spotlight">
+											<h3>SDET 1<br>
+												<p style="font-style: italic; font-size: small;">Pubmatic Inc.</p></h3>
+
+											<div class="content">
+												<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+												posuere. Nulla massa urna, fermentum eget quam aliquet.</p>								
+											</div>
+										</div>
 									</li>
 									<li>
 										<!--<span class="icon major style5 fa-gem"></span>-->
-										<h3>R&D Intern</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
+										<div class="spotlight">
+											<h3>R&D Intern<br><p style="font-style: italic; font-size: small;">PTC India Pvt. Ltd.</p></h3>
+											
+
+											<div class="content">
+												<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+												posuere. Nulla massa urna, fermentum eget quam aliquet.</p>								
+											</div>
+										</div>	
 									</li>
 								</ul>
 								<!--<footer class="major">
@@ -92,23 +406,38 @@
 							<section id="second" class="main special">
 								<header class="major">
 									<h2>Education</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
 								</header>
+
+								<div class="spotlight">
+									<span class="image" style="size: max-width= 1%;"><img src="images/utd.png" alt="" /></span>
+
+									<div class="content">
+										<h3>MS Computer Science</h3>
+										<h4 style="font-style: italic;">University of Texas at Dallas</h4>
+										<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+										posuere. Nulla massa urna, fermentum eget quam aliquet.</p>								
+									</div>
+								</div>
+									<br>
+									<div class="spotlight">
+									<span class="image" style="size: max-width= 1%;"><img src="images/sppu.png" alt="" /></span>
+
+									<div class="content">
+										<h3>BE Computer Science</h3>
+										<h4 style="font-style: italic;">Savitribai Phule Pune University</h4>
+
+										<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+										posuere. Nulla massa urna, fermentum eget quam aliquet.</p>								
+									</div>
+
+								</div>
 								
-								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
+								
 								
 							</section>
 
 						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Projects</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								
-							</section>
+							
 
 							<section id="cta1" class="main special">
 								<header class="major">
@@ -144,6 +473,20 @@
 								
 							</section>
 
+							<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>About me</h2>
+										</header>
+										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
+										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
+										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
+									</div>
+									<span class="image" style="size: max-width= 10%;"><img src="images/headshot-modified.png" alt="" /></span>
+								</div>
+							</section>
 					</div>
 
 				<!-- Footer -->
