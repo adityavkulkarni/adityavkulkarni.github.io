@@ -49,6 +49,225 @@
 			text-decoration: none;
 			cursor: pointer;
 		}
+
+		.timeline {
+			position: relative;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			padding: 5rem;
+			margin: 0 auto 1rem auto;
+			overflow: hidden;
+		}
+
+		.timeline:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -2px;
+			border-right: 2px dashed #dfaeae;
+			height: 100%;
+			display: block;
+		}
+
+		.timeline-row {
+			padding-left: 50%;
+			position: relative;
+			margin-bottom: 30px;
+		}
+
+		.timeline-row .timeline-time {
+			position: absolute;
+			right: 50%;
+			top: 15px;
+			text-align: right;
+			margin-right: 20px;
+			/*color: #bcd0f7;*/
+			font-size: 1.5rem;
+		}
+
+		.timeline-row .timeline-time small {
+			display: block;
+			font-size: 0.8rem;
+		}
+
+		.timeline-row .timeline-content {
+			position: relative;
+			padding: 20px 30px;
+			background: #f0f0f0;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.timeline-row .timeline-content:after {
+			content: "";
+			position: absolute;
+			top: 20px;
+			height: 16px;
+			width: 16px;
+			background: #f0f0f0;
+		}
+
+		.timeline-row .timeline-content:before {
+			content: "";
+			position: absolute;
+			top: 20px;
+			right: -49px;
+			width: 20px;
+			height: 20px;
+			-webkit-border-radius: 100px;
+			-moz-border-radius: 100px;
+			border-radius: 100px;
+			z-index: 10;
+			background: #585858;
+			border: 2px dashed #4b546f;
+		}
+
+		.timeline-row .timeline-content h4 {
+			margin: 0 0 20px 0;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			line-height: 150%;
+		}
+
+		.timeline-row .timeline-content p {
+			margin-bottom: 30px;
+			line-height: 150%;
+		}
+
+		.timeline-row .timeline-content i {
+			font-size: 1.2rem;
+			line-height: 100%;
+			padding: 15px;
+			-webkit-border-radius: 100px;
+			-moz-border-radius: 100px;
+			border-radius: 100px;
+			background: #aaadb6;
+			margin-bottom: 10px;
+			display: inline-block;
+		}
+
+		.timeline-row .timeline-content .thumbs {
+			margin-bottom: 20px;
+			display: flex;
+		}
+
+		.timeline-row .timeline-content .thumbs img {
+			margin: 5px;
+			max-width: 60px;
+		}
+
+		.timeline-row .timeline-content .badge {
+			color: #ffffff;
+			background: linear-gradient(120deg, #00b5fd 0%, #0047b1 100%);
+		}
+
+		.timeline-row:nth-child(even) .timeline-content {
+			margin-left: 40px;
+			text-align: left;
+		}
+
+		.timeline-row:nth-child(even) .timeline-content:after {
+			left: -8px;
+			right: initial;
+			border-bottom: 0;
+			border-left: 0;
+			transform: rotate(-135deg);
+		}
+
+		.timeline-row:nth-child(even) .timeline-content:before {
+			left: -52px;
+			right: initial;
+		}
+
+		.timeline-row:nth-child(odd) {
+			padding-left: 0;
+			padding-right: 50%;
+		}
+
+		.timeline-row:nth-child(odd) .timeline-time {
+			right: auto;
+			left: 50%;
+			text-align: left;
+			margin-right: 0;
+			margin-left: 20px;
+		}
+
+		.timeline-row:nth-child(odd) .timeline-content {
+			margin-right: 40px;
+		}
+
+		.timeline-row:nth-child(odd) .timeline-content:after {
+			right: -8px;
+			border-left: 0;
+			border-bottom: 0;
+			transform: rotate(45deg);
+		}
+
+		@media (max-width: 992px) {
+			.timeline {
+				padding: 15px;
+			}
+
+			.timeline:after {
+				border: 0;
+			}
+
+			.timeline .timeline-row:nth-child(odd) {
+				padding: 0;
+			}
+
+			.timeline .timeline-row:nth-child(odd) .timeline-time {
+				position: relative;
+				top: 0;
+				left: 0;
+				margin: 0 0 10px 0;
+			}
+
+			.timeline .timeline-row:nth-child(odd) .timeline-content {
+				margin: 0;
+			}
+
+			.timeline .timeline-row:nth-child(odd) .timeline-content:before {
+				display: none;
+			}
+
+			.timeline .timeline-row:nth-child(odd) .timeline-content:after {
+				display: none;
+			}
+
+			.timeline .timeline-row:nth-child(even) {
+				padding: 0;
+			}
+
+			.timeline .timeline-row:nth-child(even) .timeline-time {
+				position: relative;
+				top: 0;
+				left: 0;
+				margin: 0 0 10px 0;
+				text-align: left;
+			}
+
+			.timeline .timeline-row:nth-child(even) .timeline-content {
+				margin: 0;
+			}
+
+			.timeline .timeline-row:nth-child(even) .timeline-content:before {
+				display: none;
+			}
+
+			.timeline .timeline-row:nth-child(even) .timeline-content:after {
+				display: none;
+			}
+		}
 	</style>
 </head>
 
@@ -77,7 +296,7 @@
 					<li><a href="https://github.com/adityavkulkarni" class="icon alt"><i
 								class="icon brands fa-github  alt" aria-hidden="true"
 								style="text-decoration: none;"></i></a><span class="label"><a
-								href="https://www.linkedin.com/in/adityavkulkarni">GitHub/adityavkulkarni</a></span>
+								href="https://github.com/adityavkulkarni">GitHub/adityavkulkarni</a></span>
 					</li>
 					<li><a href="mailto:adityavkulkarni0999@gmail.com" class="icon alt"><i
 								class="icon fa  fa-envelope alt" aria-hidden="true"
@@ -113,9 +332,9 @@
 							<h2>About me</h2>
 						</header>
 						<p>I’m Aditya Kulkarni, a passionate Computer Science graduate student at the
-							 University of Texas at Dallas, where I blend my deep love for machine learning 
-							 and artificial intelligence with real-world applications in robotics and 
-							 big data.</p>
+							University of Texas at Dallas, where I blend my deep love for machine learning
+							and artificial intelligence with real-world applications in robotics and
+							big data.</p>
 						<p style="font-weight: bold; margin-bottom: 0%;">Current Focus: </p>
 						<ul>
 							<li>Application of ML in computer vision systems for robotics</li>
@@ -132,7 +351,7 @@
 				<header class="major">
 					<h2>Projects</h2>
 					<p style="font-weight: bold;">Current Research: Application of computer vision and ML based object
-						detection and tracking in underwater robotics</p>
+						detection and tracking in robotics</p>
 
 				</header>
 				<ul class="features">
@@ -147,7 +366,7 @@
 						</h3>
 
 						<p>Grasping of Linearly Moving Objects Using a Robotic Manipulator
-							Computer vision-based robotic system utilizing OpenCV and ROS 
+							Computer vision-based robotic system utilizing OpenCV and ROS
 							for real-time detection, tracking, and grasping of moving objects.</p>
 						<p style="font-style: italic;">Python, PyBullet, ROS, Gazebo, OpenCV</p>
 						<a class="button" style="font-size: small;" id="learnMoreBtn">Learn More</a>
@@ -164,8 +383,8 @@
 									style="text-decoration: none;"></i></a>
 						</h3>
 						<p>
-							Real-time news classification and sentiment analysis pipeline 
-							using Apache Kafka, Spark Structured Streaming, and DistilBERT, 
+							Real-time news classification and sentiment analysis pipeline
+							using Apache Kafka, Spark Structured Streaming, and DistilBERT,
 							processing 50 articles/minute with 83% bias classification accuracy.</p>
 						<p style="font-style: italic;">Spark Streaming, Pyspark, Kafka, Kibana</p>
 
@@ -180,7 +399,8 @@
 								href="https://github.com/adityavkulkarni" class="icon alt"><i
 									class="icon brands fa-github  alt" aria-hidden="true"
 									style="text-decoration: none;"></i></a></h3>
-						<p>NLP-driven investment advisory system leveraging Spacy, PyTorch, and TensorFlow for sentiment analysis and topic modeling of financial data with 85% classification accuracy.</p>
+						<p>NLP-driven investment advisory system leveraging Spacy, PyTorch, and TensorFlow for sentiment
+							analysis and topic modeling of financial data with 85% classification accuracy.</p>
 						<p style="font-style: italic;">NLP, Topic Modelling, Sentiment Analysis</p>
 
 						<a class="button" style="font-size: small;" id="learnMoreBtn3">Learn More</a>
@@ -195,7 +415,7 @@
 									class="icon brands fa-github  alt" aria-hidden="true"
 									style="text-decoration: none;"></i></a>
 						</h3>
-						<p>NumPy-only implementation of a sequence-to-sequence RNN model for language 
+						<p>NumPy-only implementation of a sequence-to-sequence RNN model for language
 							translation, featuring custom BPTT algorithm and optimizers for competitive accuracy.</p>
 						<p style="font-style: italic;">Python, Encoder-Decoders, Numpy</p>
 
@@ -211,7 +431,8 @@
 									class="icon brands fa-github  alt" aria-hidden="true"
 									style="text-decoration: none;"></i></a>
 						</h3>
-						<p>YOLOv3-based license plate recognition system with OCR, achieving 95% capture rate and 3-second feedback time for unauthorized vehicle detection.</p>
+						<p>YOLOv3-based license plate recognition system with OCR, achieving 95% capture rate and
+							3-second feedback time for unauthorized vehicle detection.</p>
 						<br>
 						<p style="font-style: italic;">Object Detection and Tracking, OCR, YOLO</p>
 
@@ -220,7 +441,7 @@
 						<a class="button" style="font-size: small;" id="learnMoreBtn4">Learn More</a>
 
 					</li>
-					
+
 					<li>
 
 						<span class="icon solid major style5 "><i class=" fa-solid fa-rocket" style="font-size: 2.75rem;
@@ -245,13 +466,13 @@
 							<p style="font-style: italic; margin-bottom: 0%;">August 2024 - Current</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Description: </p>
 							<p style="text-align: left;margin-bottom: 0%;">
-								This robotics project features a sophisticated system for real-time object 
-								detection and tracking of linearly moving objects. A predictive algorithm enables a 
-								robotic manipulator to calculate optimal grasping points and trajectories with 
-								remarkable precision. The primary simulation enviornment used is PyBullet. 
-								Leveraging OpenCV for computer vision and integrating 
-								it with ROS (Robot Operating System) creates a seamless 
-								interface between vision processing and robotic control systems. 
+								This robotics project features a sophisticated system for real-time object
+								detection and tracking of linearly moving objects. A predictive algorithm enables a
+								robotic manipulator to calculate optimal grasping points and trajectories with
+								remarkable precision. The primary simulation enviornment used is PyBullet.
+								Leveraging OpenCV for computer vision and integrating
+								it with ROS (Robot Operating System) creates a seamless
+								interface between vision processing and robotic control systems.
 							</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Tech Stack: </p>
 							<p style="font-style: italic;">Python, ROS, MoveIt, OpenCV, Gazebo</p>
@@ -265,18 +486,19 @@
 							<p style="font-style: italic; margin-bottom: 0%;">May 2024 - August 2024</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Description: </p>
 							<p style="text-align: left;margin-bottom: 0%;">
-								In this project, I engineered a cutting-edge real-time news classification and 
-								interpretation dashboard, harnessing the power of Apache Kafka and Spark 
-								Structured Streaming. At its core are sophisticated news classification and 
-								sentiment analysis models, built using fine-tuned DistilBERT, which achieve 
-								an outstanding 83% accuracy for bias classification and 91% for sentiment analysis. 
+								In this project, I engineered a cutting-edge real-time news classification and
+								interpretation dashboard, harnessing the power of Apache Kafka and Spark
+								Structured Streaming. At its core are sophisticated news classification and
+								sentiment analysis models, built using fine-tuned DistilBERT, which achieve
+								an outstanding 83% accuracy for bias classification and 91% for sentiment analysis.
 								The system's scalability shines through its ability to process 50 articles per m
-								inute, with real-time results beautifully visualized using an ELK stack. This 
-								project showcases proficiency in big data technologies and the ability to derive 
+								inute, with real-time results beautifully visualized using an ELK stack. This
+								project showcases proficiency in big data technologies and the ability to derive
 								meaningful insights from high-velocity data streams.
 							</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Tech Stack: </p>
-							<p style="font-style: italic;">Apache Spark, Structured Streaming, SparkSQL, SparkMLlib, ClassifierDL, DistilBERT, Kafka, Elasticsearch, Logstash, Kibana</p>
+							<p style="font-style: italic;">Apache Spark, Structured Streaming, SparkSQL, SparkMLlib,
+								ClassifierDL, DistilBERT, Kafka, Elasticsearch, Logstash, Kibana</p>
 						</div>
 					</div>
 
@@ -288,34 +510,36 @@
 							<p style="font-style: italic; margin-bottom: 0%;">October 2023 - Janaury 2024</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Description: </p>
 							<p style="text-align: left;margin-bottom: 0%;">
-								An AI-powered investment advisory system leverages advanced NLP and aspect-based 
-								sentiment detection techniques. By analyzing over 50,000 social media posts and 
-								financial news articles using Spacy models, the system achieves an impressive 85% 
-								classification accuracy. It successfully identifies 10 key topics relevant to 
-								financial markets and integrates historical data analysis to generate data-driven 
-								stock recommendations. The implementation of deep learning models using PyTorch and 
+								An AI-powered investment advisory system leverages advanced NLP and aspect-based
+								sentiment detection techniques. By analyzing over 50,000 social media posts and
+								financial news articles using Spacy models, the system achieves an impressive 85%
+								classification accuracy. It successfully identifies 10 key topics relevant to
+								financial markets and integrates historical data analysis to generate data-driven
+								stock recommendations. The implementation of deep learning models using PyTorch and
 								TensorFlow further enhances the system's ability to recognize complex patterns in
 								financial data, making it a powerful tool for informed investment decisions.
 							</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Tech Stack: </p>
-							<p style="font-style: italic;">Python, Spacy, NLTK, Generative AI, GPT-3, PyTorch, Tensorflow</p>
+							<p style="font-style: italic;">Python, Spacy, NLTK, Generative AI, GPT-3, PyTorch,
+								Tensorflow</p>
 						</div>
 					</div>
 					<!-- Modal for LPR -->
 					<div id="myModal4" class="modal">
 						<div class="modal-content">
 							<span class="close">&times;</span>
-							<h2 style="margin-bottom: 0%;">Vehicle Survelliance System using Licence Plate Recognition</h2>
+							<h2 style="margin-bottom: 0%;">Vehicle Survelliance System using Licence Plate Recognition
+							</h2>
 							<p style="font-style: italic; margin-bottom: 0%;">August 2020 - May 2021</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Description: </p>
 							<p style="text-align: left;margin-bottom: 0%;">
-								This project is a high-performance license plate recognition system based 
-								on YOLOv3 achieves a remarkable 95% capture rate using existing CCTV infrastructure. 
-								The system excels in real-time unauthorized vehicle detection, leveraging OCR for 
-								license plate data with an impressive 3-second feedback time. Through careful 
-								optimization of computer vision algorithms, efficient processing of live video 
-								feeds is achieved with a processing time of just 5 seconds. This project showcases 
-								the ability to create practical, real-world applications that combine advanced 
+								This project is a high-performance license plate recognition system based
+								on YOLOv3 achieves a remarkable 95% capture rate using existing CCTV infrastructure.
+								The system excels in real-time unauthorized vehicle detection, leveraging OCR for
+								license plate data with an impressive 3-second feedback time. Through careful
+								optimization of computer vision algorithms, efficient processing of live video
+								feeds is achieved with a processing time of just 5 seconds. This project showcases
+								the ability to create practical, real-world applications that combine advanced
 								machine learning techniques with efficient software engineering practices.
 							</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Tech Stack: </p>
@@ -326,18 +550,23 @@
 					<div id="myModal5" class="modal">
 						<div class="modal-content">
 							<span class="close">&times;</span>
-							<h2 style="margin-bottom: 0%;">Language Translation Using Recurrent Neural Networks with BPTT</h2>
+							<h2 style="margin-bottom: 0%;">Language Translation Using Recurrent Neural Networks with
+								BPTT</h2>
 							<p style="font-style: italic; margin-bottom: 0%;">Janaury 2024 - May 2024</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Description: </p>
 							<p style="text-align: left;margin-bottom: 0%;">
 								This project, done as a part of Machine Learning Course(CS6375), implements a
-								neural network by creating a 
-								sequence-to-sequence model for language translation using only NumPy. By implementing 
-								Recurrent Neural Networks (RNNs) and the Backpropagation Through Time (BPTT) algorithm from 
-								scratch, it demonstrates a deep understanding of the underlying principles of deep learning. 
-								 Achieving competitive translation 
-								accuracy on a benchmark dataset, this project highlights proficiency in low-level neural network 
-								implementation and the capacity to tackle challenging machine learning tasks with minimal dependencies.
+								neural network by creating a
+								sequence-to-sequence model for language translation using only NumPy. By implementing
+								Recurrent Neural Networks (RNNs) and the Backpropagation Through Time (BPTT) algorithm
+								from
+								scratch, it demonstrates a deep understanding of the underlying principles of deep
+								learning.
+								Achieving competitive translation
+								accuracy on a benchmark dataset, this project highlights proficiency in low-level neural
+								network
+								implementation and the capacity to tackle challenging machine learning tasks with
+								minimal dependencies.
 							</p>
 							<p style="font-weight: bold; margin-bottom: 0%;">Tech Stack: </p>
 							<p style="font-style: italic;">Python, Numpy, Keras Evaluation Metrics, NLTK</p>
@@ -358,129 +587,6 @@
 						</div>
 					</div>
 
-					<script>
-
-						// Get the modal
-						var modal = document.getElementById("myModal");
-
-						// Get the button that opens the modal
-						var btn = document.getElementById("learnMoreBtn");
-
-						// Get the <span> element that closes the modal
-						var span = document.getElementsByClassName("close")[0];
-
-						// When the user clicks the button, open the modal 
-						btn.onclick = function () {
-							modal.style.display = "block";
-						}
-
-						// When the user clicks on <span> (x), close the modal
-						span.onclick = function () {
-							modal.style.display = "none";
-						}
-
-						// When the user clicks anywhere outside of the modal, close it
-						window.onclick = function (event) {
-							if (event.target == modal) {
-								modal.style.display = "none";
-							}
-						}
-						// Modal 1 (News Bias Analysis)
-						var modal2 = document.getElementById("myModal2");
-						var btn2 = document.getElementById("learnMoreBtn2");
-						var span2 = modal2.getElementsByClassName("close")[0];
-
-						btn2.onclick = function () {
-							modal2.style.display = "block";
-						}
-
-						span2.onclick = function () {
-							modal2.style.display = "none";
-						}
-
-						window.onclick = function (event) {
-							if (event.target == modal2) {
-								modal2.style.display = "none";
-							}
-						}
-
-						// Modal 2 (InvestAid)
-						var modal3 = document.getElementById("myModal3");
-						var btn3 = document.getElementById("learnMoreBtn3");
-						var span3 = modal3.getElementsByClassName("close")[0];
-
-						btn3.onclick = function () {
-							modal3.style.display = "block";
-						}
-
-						span3.onclick = function () {
-							modal3.style.display = "none";
-						}
-
-						window.onclick = function (event) {
-							if (event.target == modal3) {
-								modal3.style.display = "none";
-							}
-						}
-
-						// Modal 3 (InvestAid)
-						var modal4 = document.getElementById("myModal4");
-						var btn4 = document.getElementById("learnMoreBtn4");
-						var span4 = modal4.getElementsByClassName("close")[0];
-
-						btn4.onclick = function () {
-							modal4.style.display = "block";
-						}
-
-						span4.onclick = function () {
-							modal4.style.display = "none";
-						}
-
-						window.onclick = function (event) {
-							if (event.target == modal4) {
-								modal4.style.display = "none";
-							}
-						}
-
-
-						// Modal 7 (InvestAid)
-						var modal5 = document.getElementById("myModal5");
-						var btn5 = document.getElementById("learnMoreBtn5");
-						var span5 = modal5.getElementsByClassName("close")[0];
-
-						btn5.onclick = function () {
-							modal5.style.display = "block";
-						}
-
-						span5.onclick = function () {
-							modal5.style.display = "none";
-						}
-
-						window.onclick = function (event) {
-							if (event.target == modal5) {
-								modal5.style.display = "none";
-							}
-						}
-
-						// Modal 7 (InvestAid)
-						var modal6 = document.getElementById("myModal6");
-						var btn6 = document.getElementById("learnMoreBtn6");
-						var span6 = modal6.getElementsByClassName("close")[0];
-
-						btn6.onclick = function () {
-							modal6.style.display = "block";
-						}
-
-						span6.onclick = function () {
-							modal6.style.display = "none";
-						}
-
-						window.onclick = function (event) {
-							if (event.target == modal6) {
-								modal6.style.display = "none";
-							}
-						}
-					</script>
 				</ul>
 
 			</section>
@@ -489,7 +595,50 @@
 				<header class="major">
 					<h2>Work Experience</h2>
 				</header>
-				<ul>
+				<div class="container">
+					<div class="timeline">
+						<div class="timeline-row">
+							<div class="timeline-time">
+								Graduate Research Assistant<p style="font-size: medium; margin-bottom: 0;">HBS Lab, UTD</p><small>August 2024 -
+									Current</small>
+							</div>
+							<div class="timeline-content">
+								<ul style="align-items: left; list-style-type:disc;text-align: left;margin-bottom: 0">
+									<li>Application of ML in computer vision systems for robotics</li>
+									<li>Delving into the realm of cloud computing, with a particular focus on AWS</li>
+									<li>Working through the IBM Data Science Specialization</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="timeline-row">
+							<div class="timeline-time">
+								SDET-1<p style="font-size: medium; margin-bottom: 0;">Pubmatic Inc</p><small>April 2021 - June 2023</small>
+							</div>
+							<div class="timeline-content">
+								<ul style="align-items: left; list-style-type:disc;text-align: left; margin-bottom: 0;">
+									<li>Application of ML in computer vision systems for robotics</li>
+									<li>Delving into the realm of cloud computing, with a particular focus on AWS</li>
+									<li>Working through the IBM Data Science Specialization</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="timeline-row">
+							<div class="timeline-time">
+								R&D Intern<p style="font-size: medium; margin-bottom: 0;">PTC India</p><small>September 2020 - March 2021</small>
+							</div>
+							<div class="timeline-content">
+								<ul style="align-items: left; list-style-type:disc;text-align: left;margin-bottom: 0">
+									<li>Application of ML in computer vision systems for robotics</li>
+									<li>Delving into the realm of cloud computing, with a particular focus on AWS</li>
+									<li>Working through the IBM Data Science Specialization</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<ul>
 					<li>
 						<div class="spotlight">
 							<h3>Research Assistant
@@ -503,10 +652,8 @@
 									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
 							</div>
 						</div>
-						<!--<span class="icon major style5 fa-gem"></span>-->
 					</li>
 					<li>
-						<!--<span class="icon major style5 fa-gem"></span>-->
 						<div class="spotlight">
 							<h3>SDET 1<br>
 								<p style="font-style: italic; font-size: small;">Pubmatic Inc.</p>
@@ -519,7 +666,6 @@
 						</div>
 					</li>
 					<li>
-						<!--<span class="icon major style5 fa-gem"></span>-->
 						<div class="spotlight">
 							<h3>R&D Intern<br>
 								<p style="font-style: italic; font-size: small;">PTC India Pvt. Ltd.</p>
@@ -532,7 +678,7 @@
 							</div>
 						</div>
 					</li>
-				</ul>
+				</ul> -->
 				<!--<footer class="major">
 									<ul class="actions special">
 										<li><a href="generic.html" class="button">Learn More</a></li>
@@ -573,8 +719,6 @@
 			</section>
 
 			<!-- Get Started -->
-
-
 			<section id="cta1" class="main special">
 				<header class="major">
 					<h2>Skills and Interests</h2>
@@ -606,7 +750,119 @@
 						</li>
 					</ul>
 				</header>
+				<ul class="features">
 
+					<li>
+						<h4 style="font-weight: bold;">Machine Learning & AI</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Machine Learning Algorithms</div>
+								<div class="skill">PyTorch</div>
+								<div class="skill">Hugging Face</div>
+								<div class="skill">Scikit-learn</div>
+								<div class="skill">NLTK</div>
+								<div class="skill">Deep Learning</div>
+								<div class="skill">Computer Vision</div>
+								<div class="skill">Natural Language Processing (NLP)</div>
+								<div class="skill">Large Language Models (LLMs)</div>
+								<div class="skill">Keras</div>
+								<div class="skill">TensorFlow</div>
+								<div class="skill">Object Detection and Tracking</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h4 style="font-weight: bold;">Big Data & Data Engineering</h4>
+
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+
+							<div style="padding: 5px 10px; border-radius: 5px;font-size: 14px;">
+
+								<div class="skill">Apache Spark</div>
+								<div class="skill">Apache Kafka</div>
+								<div class="skill">Spark SQL</div>
+								<div class="skill">HDFS</div>
+								<div class="skill">Apache Hive</div>
+								<div class="skill">Structured Streaming</div>
+								<div class="skill">Apache Airflow</div>
+							</div>
+						</div>
+
+						<h4 style="font-weight: bold;">Data Analysis & Visualization</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px align-items: center;">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Pandas</div>
+								<div class="skill">Plotly</div>
+								<div class="skill">Matplotlib</div>
+								<div class="skill">Seaborn</div>
+								<div class="skill">Kibana</div>
+								<div class="skill">Logstash</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h4 style="font-weight: bold;">Programming Languages</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Python (proficient)</div>
+								<div class="skill">PySpark (proficient)</div>
+								<div class="skill">C++</div>
+							</div>
+						</div>
+						<h4 style="font-weight: bold;">Databases</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">MongoDB</div>
+								<div class="skill">MySQL</div>
+								<div class="skill">Elasticsearch</div>
+							</div>
+						</div>
+						<h4 style="font-weight: bold;">DevOps & Cloud</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Docker</div>
+								<div class="skill">Jenkins</div>
+								<div class="skill">Git</div>
+								<div class="skill">Kubernetes</div>
+								<div class="skill">Linux</div>
+								<div class="skill">LXC (Linux Containers)</div>
+							</div>
+						</div>
+
+					</li>
+					<li>
+						<h4 style="font-weight: bold;">Domain-Specific Knowledge</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Data Science Methodology</div>
+								<div class="skill">Data-Driven Insights</div>
+								<div class="skill">ETL and ELT Design</div>
+								<div class="skill">Software Engineering</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h4 style="font-weight: bold;">Testing & Quality Assurance</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">Selenium</div>
+								<div class="skill">Test Automation</div>
+								<div class="skill">PyTest</div>
+								<div class="skill">API Testing</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h4 style="font-weight: bold;">Other Technical Skills</h4>
+						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
+								<div class="skill">OCR (Optical Character Recognition)</div>
+								<div class="skill">Time Series Analysis</div>
+							</div>
+						</div>
+					</li>
+
+				</ul>
 			</section>
 
 		</div>
@@ -643,6 +899,129 @@
 	</div>
 
 	<!-- Scripts -->
+	<script>
+
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("learnMoreBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function () {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		// Modal 1 (News Bias Analysis)
+		var modal2 = document.getElementById("myModal2");
+		var btn2 = document.getElementById("learnMoreBtn2");
+		var span2 = modal2.getElementsByClassName("close")[0];
+
+		btn2.onclick = function () {
+			modal2.style.display = "block";
+		}
+
+		span2.onclick = function () {
+			modal2.style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+			}
+		}
+
+		// Modal 2 (InvestAid)
+		var modal3 = document.getElementById("myModal3");
+		var btn3 = document.getElementById("learnMoreBtn3");
+		var span3 = modal3.getElementsByClassName("close")[0];
+
+		btn3.onclick = function () {
+			modal3.style.display = "block";
+		}
+
+		span3.onclick = function () {
+			modal3.style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal3) {
+				modal3.style.display = "none";
+			}
+		}
+
+		// Modal 3 (InvestAid)
+		var modal4 = document.getElementById("myModal4");
+		var btn4 = document.getElementById("learnMoreBtn4");
+		var span4 = modal4.getElementsByClassName("close")[0];
+
+		btn4.onclick = function () {
+			modal4.style.display = "block";
+		}
+
+		span4.onclick = function () {
+			modal4.style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal4) {
+				modal4.style.display = "none";
+			}
+		}
+
+
+		// Modal 7 (InvestAid)
+		var modal5 = document.getElementById("myModal5");
+		var btn5 = document.getElementById("learnMoreBtn5");
+		var span5 = modal5.getElementsByClassName("close")[0];
+
+		btn5.onclick = function () {
+			modal5.style.display = "block";
+		}
+
+		span5.onclick = function () {
+			modal5.style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal5) {
+				modal5.style.display = "none";
+			}
+		}
+
+		// Modal 7 (InvestAid)
+		var modal6 = document.getElementById("myModal6");
+		var btn6 = document.getElementById("learnMoreBtn6");
+		var span6 = modal6.getElementsByClassName("close")[0];
+
+		btn6.onclick = function () {
+			modal6.style.display = "block";
+		}
+
+		span6.onclick = function () {
+			modal6.style.display = "none";
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal6) {
+				modal6.style.display = "none";
+			}
+		}
+	</script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
