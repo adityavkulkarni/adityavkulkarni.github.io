@@ -11,18 +11,18 @@
 	</noscript>
 	<script src="https://kit.fontawesome.com/032b4329d1.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body class="is-preload">
-
 	<!-- Wrapper -->
 	<div id="wrapper">
 
 		<!-- Header -->
 		<header id="header" class="alt">
-			<!--<span class="logo"><img src="images/headshot-modified.png" alt="" /></span>-->
 			<h1>Aditya Kulkarni</h1>
-			<p style="">Aspiring AI/ML Engineer</p>
+			<p>Aspiring AI/ML Engineer</p>
 			<section>
 				<ul class="icons" style="">
 					<li><a href="https://www.google.com/maps/@33.0307679,-97.0659888,85903m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
@@ -52,10 +52,10 @@
 				</ul>
 			</section>
 		</header>
+
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-
 				<li><a href="#intro" class="active">About Me</a></li>
 				<li><a href="#cta">Projects</a></li>
 				<li><a href="#first">Work Experience</a></li>
@@ -66,6 +66,7 @@
 
 		<!-- Main -->
 		<div id="main">
+
 			<!-- Introduction -->
 			<section id="intro" class="main">
 				<div class="spotlight">
@@ -89,16 +90,15 @@
 				</div>
 			</section>
 
+			<!-- Projects -->
 			<section id="cta" class="main special">
 				<header class="major">
 					<h2>Projects</h2>
 					<p style="font-weight: bold;">Current Research: Application of computer vision and ML based object
 						detection and tracking in robotics</p>
-
 				</header>
 				<ul class="features">
 					<li>
-
 						<span class="icon solid major style6 "><i class=" fa-solid fa-robot" style="font-size: 2.75rem;
 										line-height: 1.3;"></i></span><br>
 						<h3>2D Deterministic Path-based Dynamic Object Grasping<br>
@@ -106,17 +106,13 @@
 									class="icon brands fa-github  alt" aria-hidden="true"
 									style="text-decoration: none;"></i></a>
 						</h3>
-
 						<p>Grasping of Linearly Moving Objects Using a Robotic Manipulator
 							Computer vision-based robotic system utilizing OpenCV and ROS
 							for real-time detection, tracking, and grasping of moving objects.</p>
 						<p style="font-style: italic;">Python, PyBullet, ROS, Gazebo, OpenCV</p>
 						<a class="button" style="font-size: small;" id="learnMoreBtn">Learn More</a>
-
-
 					</li>
 					<li>
-
 						<span class="icon solid major style1"><i class=" fa-solid fa-magnifying-glass-chart" style="font-size: 2.75rem;
 										line-height: 1.3;"></i></span><br>
 						<h3>News Bias Analysis on Realtime Reddit Posts<br>
@@ -129,12 +125,9 @@
 							using Apache Kafka, Spark Structured Streaming, and DistilBERT,
 							processing 50 articles/minute with 83% bias classification accuracy.</p>
 						<p style="font-style: italic;">Spark Streaming, Pyspark, Kafka, Kibana</p>
-
 						<a class="button" style="font-size: small;" id="learnMoreBtn2">Learn More</a>
-
 					</li>
 					<li>
-
 						<span class="icon solid major style2 "><i class=" fa-solid fa-money-bill-trend-up" style="font-size: 2.75rem;
 										line-height: 1.3;"></i></span><br>
 						<h3>InvestAid: An AI-powered Investment Dashboard<br><a
@@ -144,12 +137,9 @@
 						<p>NLP-driven investment advisory system leveraging Spacy, PyTorch, and TensorFlow for sentiment
 							analysis and topic modeling of financial data with 85% classification accuracy.</p>
 						<p style="font-style: italic;">NLP, Topic Modelling, Sentiment Analysis</p>
-
 						<a class="button" style="font-size: small;" id="learnMoreBtn3">Learn More</a>
-
 					</li>
 					<li>
-
 						<span class="icon solid major style4 "><i class=" fa-solid fa-earth-americas" style="font-size: 2.75rem;
 										line-height: 1.3;"></i></span><br>
 						<h3>Language Translation Using RNN using BPTT algorithm<br>
@@ -160,9 +150,7 @@
 						<p>NumPy-only implementation of a sequence-to-sequence RNN model for language
 							translation, featuring custom BPTT algorithm and optimizers for competitive accuracy.</p>
 						<p style="font-style: italic;">Python, Encoder-Decoders, Numpy</p>
-
 						<a class="button" style="font-size: small;" id="learnMoreBtn5">Learn More</a>
-
 					</li>
 					<li>
 
@@ -177,15 +165,9 @@
 							3-second feedback time for unauthorized vehicle detection.</p>
 						<br>
 						<p style="font-style: italic;">Object Detection and Tracking, OCR, YOLO</p>
-
-
-
 						<a class="button" style="font-size: small;" id="learnMoreBtn4">Learn More</a>
-
 					</li>
-
 					<li>
-
 						<span class="icon solid major style5 "><i class=" fa-solid fa-rocket" style="font-size: 2.75rem;
 										line-height: 1.3;"></i></span><br>
 						<h3>Upcoming Project<br><br>
@@ -196,11 +178,10 @@
 						<p>A project that I am currently working on as a part of IBM Data Science specialization.</p>
 						<br><br><br>
 						<p style="font-style: italic;">Data Analytics, Predictive Modelling, Plotly</p>
-
 						<a class="button" style="font-size: small;" id="learnMoreBtn6">Learn More</a>
-
 					</li>
 
+					<!-- Modal for Dynamic object grasping -->
 					<div id="myModal" class="modal">
 						<div class="modal-content">
 							<span class="close">&times;</span>
@@ -243,7 +224,6 @@
 								ClassifierDL, DistilBERT, Kafka, Elasticsearch, Logstash, Kibana</p>
 						</div>
 					</div>
-
 					<!-- Modal for InvestAid -->
 					<div id="myModal3" class="modal">
 						<div class="modal-content">
@@ -328,11 +308,11 @@
 							<p style="font-style: italic;">Python, Pandas, Plotly, Scikit-learn</p>
 						</div>
 					</div>
-
 				</ul>
 
 			</section>
-			<!-- First Section -->
+
+			<!-- Work Experience -->
 			<section id="first" class="main special">
 				<header class="major">
 					<h2>Work Experience</h2>
@@ -348,7 +328,8 @@
 							<div class="timeline-content">
 								<ul style="align-items: left; list-style-type:disc;text-align: left;margin-bottom: 0">
 									<li>Engineering a ResNet50-based object detection system for aquatic animals,
-										aiming to develop a autonomous tracking system in challenging underwater conditions.</li>
+										aiming to develop a autonomous tracking system in challenging underwater
+										conditions.</li>
 									<li>Conducted in-depth literature review of 25+ articles on state-of-the-art
 										underwater robotics and vision tracking systems.</li>
 									<li>Collaborated with HBS Lab researchers to advance ML vision capabilities for
@@ -404,87 +385,60 @@
 						</div>
 					</div>
 				</div>
-				<!--<ul>
-					<li>
-						<div class="spotlight">
-							<h3>Research Assistant
-								<p style="font-style: italic; font-size: small;">University of Texas at Dallas <br> HBS
-									Lab</p>
-							</h3>
-
-
-							<div class="content">
-								<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="spotlight">
-							<h3>SDET 1<br>
-								<p style="font-style: italic; font-size: small;">Pubmatic Inc.</p>
-							</h3>
-
-							<div class="content">
-								<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="spotlight">
-							<h3>R&D Intern<br>
-								<p style="font-style: italic; font-size: small;">PTC India Pvt. Ltd.</p>
-							</h3>
-
-
-							<div class="content">
-								<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-							</div>
-						</div>
-					</li>
-				</ul> -->
-				<!--<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>-->
 			</section>
 
-			<!-- Second Section -->
+			<!-- Education -->
 			<section id="second" class="main special">
 				<header class="major">
 					<h2>Education</h2>
 				</header>
-
 				<div class="spotlight">
 					<span class="image" style="size: max-width= 1%;"><img src="images/utd.png" alt="" /></span>
-
 					<div class="content">
-						<h3>MS Computer Science</h3>
+						<h2>MS Computer Science</h2>
 						<h4 style="font-style: italic;">University of Texas at Dallas</h4>
-						<p>August 2023 - May 2025(Expected)</p>
+						<p style="margin-bottom: 0;">GPA: 3.67</p>
+						<small>August 2023 - May 2025(Expected)</small>
+						<div class="expandable-container">
+							<p>
+								<button class="expandable-button"
+									style="border:none; box-shadow: none; text-decoration: underline dashed;">
+									Show Coursework
+								</button>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="expandable-container">
+					<div class="expandable-content" id="cw">
+						<ul style="text-align: left;">
+							<li>Independent researh at HBS Lab: ML based object tracking system for underwater
+								robots</li>
+							<li>Data Structures and Algorithms</li>
+							<li>Design and Analysis of Algorithms</li>
+							<li>Database Design</li>
+							<li>Artificial Intelligence </li>
+							<li>Machine Learning</li>
+							<li>Recent Advances in Computer Science- Software Engineering for ML Systems</li>
+							<li>Big Data Management and Analytics</li>
+							<li>Introduction to Robot Manipulation and Navigation</li>
+							<li>Natural Language Processing</li>
+						</ul>
 					</div>
 				</div>
 				<br>
 				<div class="spotlight">
 					<span class="image" style="size: max-width= 1%;"><img src="images/sppu.png" alt="" /></span>
-
 					<div class="content">
-						<h3>BE Computer Science</h3>
+						<h2>BE Computer Science</h2>
 						<h4 style="font-style: italic;">Savitribai Phule Pune University</h4>
-
-						<p>August 2017 - May 2021</p>
+						<p style="margin-bottom: 0;">GPA: 3.70</p>
+						<small>August 2017 - May 2021</small>
 					</div>
-
 				</div>
-
-
-
 			</section>
 
-			<!-- Get Started -->
+			<!-- Skills and Interests -->
 			<section id="cta1" class="main special">
 				<header class="major">
 					<h2>Skills and Interests</h2>
@@ -517,7 +471,6 @@
 					</ul>
 				</header>
 				<ul class="features">
-
 					<li>
 						<h4 style="font-weight: bold;">Machine Learning & AI</h4>
 						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
@@ -539,11 +492,8 @@
 					</li>
 					<li>
 						<h4 style="font-weight: bold;">Big Data & Data Engineering</h4>
-
 						<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
-
 							<div style="padding: 5px 10px; border-radius: 5px;font-size: 14px;">
-
 								<div class="skill">Apache Spark</div>
 								<div class="skill">Apache Kafka</div>
 								<div class="skill">Spark SQL</div>
@@ -553,7 +503,6 @@
 								<div class="skill">Apache Airflow</div>
 							</div>
 						</div>
-
 						<h4 style="font-weight: bold;">Data Analysis & Visualization</h4>
 						<div style="display: flex; flex-wrap: wrap; gap: 10px align-items: center;">
 							<div style="padding: 5px 10px; border-radius: 5px; font-size: 14px;">
@@ -594,7 +543,6 @@
 								<div class="skill">LXC (Linux Containers)</div>
 							</div>
 						</div>
-
 					</li>
 					<li>
 						<h4 style="font-weight: bold;">Domain-Specific Knowledge</h4>
@@ -630,163 +578,133 @@
 
 				</ul>
 			</section>
-
 		</div>
-
-		<!-- Footer -->
+		<!-- Footer
 		<footer id="footer">
-			<!--<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>Etiam feugiat</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-								<dt>Phone</dt>
-								<dd>(000) 000-0000 x 0000</dd>
-								<dt>Email</dt>
-								<dd><a href="#">information@untitled.tld</a></dd>
-							</dl>
-							<ul class="icons">
-								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-							</ul>
-						</section>-->
-		</footer>
-
+		</footer> -->
 	</div>
 
 	<!-- Scripts -->
 	<script>
-
-		// Get the modal
+		// Robot
 		var modal = document.getElementById("myModal");
-
 		// Get the button that opens the modal
 		var btn = document.getElementById("learnMoreBtn");
-
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
-
 		// When the user clicks the button, open the modal 
 		btn.onclick = function () {
 			modal.style.display = "block";
 		}
-
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function () {
 			modal.style.display = "none";
 		}
-
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function (event) {
 			if (event.target == modal) {
 				modal.style.display = "none";
 			}
 		}
-		// Modal 1 (News Bias Analysis)
+		// News bias analysis
 		var modal2 = document.getElementById("myModal2");
 		var btn2 = document.getElementById("learnMoreBtn2");
 		var span2 = modal2.getElementsByClassName("close")[0];
-
 		btn2.onclick = function () {
 			modal2.style.display = "block";
 		}
-
 		span2.onclick = function () {
 			modal2.style.display = "none";
 		}
-
 		window.onclick = function (event) {
 			if (event.target == modal2) {
 				modal2.style.display = "none";
 			}
 		}
-
-		// Modal 2 (InvestAid)
+		// InvestAid
 		var modal3 = document.getElementById("myModal3");
 		var btn3 = document.getElementById("learnMoreBtn3");
 		var span3 = modal3.getElementsByClassName("close")[0];
-
 		btn3.onclick = function () {
 			modal3.style.display = "block";
 		}
-
 		span3.onclick = function () {
 			modal3.style.display = "none";
 		}
-
 		window.onclick = function (event) {
 			if (event.target == modal3) {
 				modal3.style.display = "none";
 			}
 		}
-
-		// Modal 3 (InvestAid)
+		// LPR
 		var modal4 = document.getElementById("myModal4");
 		var btn4 = document.getElementById("learnMoreBtn4");
 		var span4 = modal4.getElementsByClassName("close")[0];
-
 		btn4.onclick = function () {
 			modal4.style.display = "block";
 		}
-
 		span4.onclick = function () {
 			modal4.style.display = "none";
 		}
-
 		window.onclick = function (event) {
 			if (event.target == modal4) {
 				modal4.style.display = "none";
 			}
 		}
-
-
-		// Modal 7 (InvestAid)
+		// RNN
 		var modal5 = document.getElementById("myModal5");
 		var btn5 = document.getElementById("learnMoreBtn5");
 		var span5 = modal5.getElementsByClassName("close")[0];
-
 		btn5.onclick = function () {
 			modal5.style.display = "block";
 		}
-
 		span5.onclick = function () {
 			modal5.style.display = "none";
 		}
-
 		window.onclick = function (event) {
 			if (event.target == modal5) {
 				modal5.style.display = "none";
 			}
 		}
-
-		// Modal 7 (InvestAid)
+		// SpaceX
 		var modal6 = document.getElementById("myModal6");
 		var btn6 = document.getElementById("learnMoreBtn6");
 		var span6 = modal6.getElementsByClassName("close")[0];
-
 		btn6.onclick = function () {
 			modal6.style.display = "block";
 		}
-
 		span6.onclick = function () {
 			modal6.style.display = "none";
 		}
-
 		window.onclick = function (event) {
 			if (event.target == modal6) {
 				modal6.style.display = "none";
 			}
 		}
+
+		/*
+		const expandableContainers = document.querySelectorAll('.expandable-container');
+
+		expandableContainers.forEach(container => {
+			const button = container.querySelector('.expandable-button');
+			const content = container.querySelector('.expandable-content');
+
+			button.addEventListener('click', () => {
+				button.classList.toggle('expanded');
+				content.style.display = button.classList.contains('expanded') ? 'block' : 'none';
+			});
+		});*/
+		const expandableButton = document.querySelector('.expandable-button');
+		const expandableContent = document.querySelector('.expandable-content');
+
+			expandableButton.addEventListener('click', () => {
+			expandableButton.classList.toggle('expanded');
+			prev = expandableButton.textContent;
+			prev = prev === "Hide Coursework" ? "Show Coursework" : "Hide Coursework";
+			expandableButton.textContent = prev; 
+			expandableContent.style.display = expandableButton.classList.contains('expanded') ? 'block' : 'none';
+		});
+
 	</script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>

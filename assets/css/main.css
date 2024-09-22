@@ -1,11 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
 
-/*
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 html,
 body,
@@ -3020,20 +3015,40 @@ table.alt tbody tr td {
 	background-color: #a8caef;
 }
 
+.statistics li.style1:hover {
+	background-color: #91bceb;
+}
+
 .statistics li.style2 {
 	background-color: #9cc8b3;
+}
+
+.statistics li.style2:hover {
+	background-color: #7dc6a3;
 }
 
 .statistics li.style3 {
 	background-color: #c89cbf;
 }
 
+.statistics li.style3:hover {
+	background-color: #c376b4;
+}
+
 .statistics li.style4 {
 	background-color: #9be0e1;
 }
 
+.statistics li.style4:hover {
+	background-color: #77dddf;
+}
+
 .statistics li.style5 {
 	background-color: #f08c8c;
+}
+
+.statistics li.style5:hover {
+	background-color: #e76c6c;
 }
 
 .statistics li strong,
@@ -4212,4 +4227,23 @@ body.is-preload #header.alt .logo {
 	.timeline .timeline-row:nth-child(even) .timeline-content:after {
 		display: none;
 	}
+}
+
+.expandable-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.expandable-content {
+	display: none;
+}
+.expandable-button .arrow {
+	transition: transform 0.3s ease-in-out;
+  }
+.expandable-button.expanded .arrow {
+	transform: rotate(180deg);
+}
+
+.expandable-button.expanded+.expandable-content {
+	display: block;
 }
