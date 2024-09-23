@@ -4042,7 +4042,7 @@ body.is-preload #header.alt .logo {
 	z-index: 1;
 }
 
-.timeline-row:hover{
+.timeline-row:hover {
 	transform: scale(1.05);
 }
 

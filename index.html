@@ -697,11 +697,11 @@
 		const expandableButton = document.querySelector('.expandable-button');
 		const expandableContent = document.querySelector('.expandable-content');
 
-			expandableButton.addEventListener('click', () => {
+		expandableButton.addEventListener('click', () => {
 			expandableButton.classList.toggle('expanded');
 			prev = expandableButton.textContent;
 			prev = prev === "Hide Coursework" ? "Show Coursework" : "Hide Coursework";
-			expandableButton.textContent = prev; 
+			expandableButton.textContent = prev;
 			expandableContent.style.display = expandableButton.classList.contains('expanded') ? 'block' : 'none';
 		});
 
