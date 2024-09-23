@@ -705,7 +705,14 @@
 			expandableButton.textContent = prev;
 			expandableContent.style.display = expandableButton.classList.contains('expanded') ? 'block' : 'none';
 		});
-
+		$(window).scroll(function () {
+			var navbar = $('#nav'); // Replace '.navbar' with your navbar's class
+			if ($(this).scrollTop() > navbar.offset().top) {
+				navbar.addClass('navsticky');
+			} else {
+				navbar.removeClass('navsticky');
+			}
+		});
 	</script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>

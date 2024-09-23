@@ -3389,6 +3389,12 @@ body.is-preload #header.alt .logo {
 	text-align: center;
 }
 
+#navsticky {
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
 #nav input,
 #nav select,
 #nav textarea {
