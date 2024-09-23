@@ -4048,7 +4048,7 @@ body.is-preload #header.alt .logo {
 	padding-left: 50%;
 	position: relative;
 	margin-bottom: 30px;
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.7s ease-in-out;
 	z-index: 1;
 }
 
