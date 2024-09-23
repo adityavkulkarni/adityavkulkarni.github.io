@@ -3012,43 +3012,52 @@ table.alt tbody tr td {
 }
 
 .statistics li.style1 {
-	background-color: #a8caef;
+	/*background-color: #a8caef;*/
+	background-color: #efa8b0;
 }
 
 .statistics li.style1:hover {
-	background-color: #91bceb;
+	background-color: #e06473;
 }
 
 .statistics li.style2 {
-	background-color: #9cc8b3;
+	/*background-color: #9cc8b3;*/
+	background-color: #c89cc8;
+
 }
 
 .statistics li.style2:hover {
-	background-color: #7dc6a3;
+	background-color: #c67dc6;
 }
 
 .statistics li.style3 {
-	background-color: #c89cbf;
+	/*background-color: #c89cbf;*/
+	background-color: #a89cc8;
+
 }
 
 .statistics li.style3:hover {
-	background-color: #c376b4;
+	background-color: #9c83e0;
 }
 
 .statistics li.style4 {
-	background-color: #9be0e1;
+	/*background-color: #9be0e1;*/
+	background-color: #94cbed;
+
 }
 
 .statistics li.style4:hover {
-	background-color: #77dddf;
+	background-color: #5bc0ff;
 }
 
 .statistics li.style5 {
-	background-color: #f08c8c;
+	/*background-color: #f08c8c;*/
+	background-color: #6cb7e6;
+
 }
 
 .statistics li.style5:hover {
-	background-color: #e76c6c;
+	background-color: #25a2f0;
 }
 
 .statistics li strong,
