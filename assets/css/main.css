@@ -3498,6 +3498,7 @@ body.is-preload #header.alt .logo {
 	border-radius: 0.25em;
 }
 
+
 #main input,
 #main select,
 #main textarea {
@@ -4027,14 +4028,22 @@ body.is-preload #header.alt .logo {
 	left: 50%;
 	margin-left: -2px;
 	border-right: 2px dashed #dfaeae;
+	border-image: linear-gradient(to bottom, #efa8b0, #a89cc8, #8cc9f0) 1 fill / 2px 2px;
 	height: 100%;
 	display: block;
+	z-index: 0;
 }
 
 .timeline-row {
 	padding-left: 50%;
 	position: relative;
 	margin-bottom: 30px;
+	transition: transform 0.3s ease-in-out;
+	z-index: 1;
+}
+
+.timeline-row:hover{
+	transform: scale(1.05);
 }
 
 .timeline-row .timeline-time {
@@ -4237,9 +4246,11 @@ body.is-preload #header.alt .logo {
 .expandable-content {
 	display: none;
 }
+
 .expandable-button .arrow {
 	transition: transform 0.3s ease-in-out;
-  }
+}
+
 .expandable-button.expanded .arrow {
 	transform: rotate(180deg);
 }
