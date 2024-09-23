@@ -3014,6 +3014,7 @@ table.alt tbody tr td {
 .statistics li.style1 {
 	/*background-color: #a8caef;*/
 	background-color: #efa8b0;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .statistics li.style1:hover {
@@ -3023,7 +3024,7 @@ table.alt tbody tr td {
 .statistics li.style2 {
 	/*background-color: #9cc8b3;*/
 	background-color: #c89cc8;
-
+	transition: background-color 0.3s ease-in-out;
 }
 
 .statistics li.style2:hover {
@@ -3033,7 +3034,7 @@ table.alt tbody tr td {
 .statistics li.style3 {
 	/*background-color: #c89cbf;*/
 	background-color: #a89cc8;
-
+	transition: background-color 0.3s ease-in-out;
 }
 
 .statistics li.style3:hover {
@@ -3043,7 +3044,7 @@ table.alt tbody tr td {
 .statistics li.style4 {
 	/*background-color: #9be0e1;*/
 	background-color: #94cbed;
-
+	transition: background-color 0.3s ease-in-out;
 }
 
 .statistics li.style4:hover {
@@ -3053,7 +3054,7 @@ table.alt tbody tr td {
 .statistics li.style5 {
 	/*background-color: #f08c8c;*/
 	background-color: #6cb7e6;
-
+	transition: background-color 0.3s ease-in-out;
 }
 
 .statistics li.style5:hover {
