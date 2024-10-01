@@ -62,6 +62,7 @@
 				<li><a href="#first">Work Experience</a></li>
 				<li><a href="#second">Education</a></li>
 				<li><a href="#cta1">Skills and Interests</a></li>
+				<li><a href="#cta2">Certifications</a></li>
 				<li style="float: right;" id="rd1">
 					<a href="images/Resume.pdf" download="adityavkulkarni_resume.pdf">
 						<i class="fa-solid fa-file-arrow-down" style="margin-right: 0.5rem;"></i>
@@ -69,8 +70,8 @@
 					</a>
 				</li>
 			</ul>
-		</nav> 
-		
+		</nav>
+
 		<!-- Main -->
 		<div id="main">
 
@@ -621,6 +622,95 @@
 
 				</ul>
 			</section>
+
+			<!-- Certifications -->
+			<section id="cta2" class="main special">
+				<header class="major">
+					<h2>Certifications</h2>
+				</header>
+				<ul class="features">
+					<li>
+						<span class="image" style="size: max-width= 0.5%;">
+							<img src="images/badges/ibm-data-science-professional-certificate.png" alt="" />
+						</span>
+						<br>
+						<h3>IBM Data Science Professional Certificate<br>
+							<form style="margin-bottom:  0;">
+								<button class="expandable-button"
+									formaction="https://coursera.org/share/4701c50780839450f43867fe28200b33"
+									style="border:none; box-shadow: none; text-decoration: underline dashed;">
+									Show Credential
+								</button>
+							</form>
+						</h3>
+						<p>Earned the IBM Data Science Professional Certificate, a rigorous 10-course program covering
+							essential skills in Python, SQL, data analysis, visualization, and machine learning,
+							culminating in hands-on projects using industry-standard tools like Jupyter Notebooks and
+							IBM Watson Studio.</p>
+						<a class="button" style="font-size: small;" id="learnMoreBtnIBM">Learn More</a>
+					</li>
+				</ul>
+				<div id="myModalIBM" class="modal">
+					<div class="modal-content" style="margin: 10% auto;">
+						<span class="close">&times;</span>
+						<h2 style="margin-bottom: 0%;">IBM Data Science Professional Certificate</h2>
+						<p style="font-style: italic; margin-bottom: 0%;">September 2024</p>
+						<p style="font-weight: bold; margin-bottom: 0%;">Skills Learned: </p>
+						<p style="font-style: italic;">Python programming for data science, SQL, Data analysis and
+							visualization, Machine learning and predictive modeling, Data cleaning and preprocessing,
+							Statistical analysis, Data mining, Jupyter Notebooks, Data science methodologies, Pandas,
+							NumPy, Matplotlib and Seaborn, Plotly, Folium, Scikit-learn</p>
+						<p style="text-align: left; font-weight: bold; margin-bottom: 0%;">Courses:</p>
+						<ul style="text-align: left; list-style-type:disc;">
+							<li>What is Data Science?</li>
+							<li>Tools for Data Science</li>
+							<li>Data Science Methodology</li>
+							<li>Python for Data Science, AI & Development</li>
+							<li>Python Project for Data Science</li>
+							<li>Databases and SQL for Data Science with Python</li>
+							<li>Data Analysis with Python</li>
+							<li>Data Visualization with Python</li>
+							<li>Machine Learning with Python</li>
+							<li>Applied Data Science Capstone</li>
+						</ul>
+					</div>
+				</div>
+				<!--<header class="major">
+					<h2>Badges</h2>
+				</header>
+				<ul style="align-items: center; align-items: flex-start;"">
+					<li>
+						<ul style="text-align: left; list-style-type:disc;">
+							<li>What is Data Science?</li>
+							<li>Tools for Data Science</li>
+							<li>Data Science Methodology</li>
+							<li>Python for Data Science, AI & Development</li>
+							<li>Python Project for Data Science</li>
+							<li>Databases and SQL for Data Science with Python</li>
+							<li>Data Analysis with Python</li>
+							<li>Data Visualization with Python</li>
+							<li>Machine Learning with Python</li>
+							<li>Applied Data Science Capstone</li>
+						</ul>
+					</li>
+				</ul>
+				<ul style="align-items: center; align-items: flex-start;"">
+					<li>
+						<ul style="text-align: left; list-style-type:disc;">
+							<li>What is Data Science?</li>
+							<li>Tools for Data Science</li>
+							<li>Data Science Methodology</li>
+							<li>Python for Data Science, AI & Development</li>
+							<li>Python Project for Data Science</li>
+							<li>Databases and SQL for Data Science with Python</li>
+							<li>Data Analysis with Python</li>
+							<li>Data Visualization with Python</li>
+							<li>Machine Learning with Python</li>
+							<li>Applied Data Science Capstone</li>
+						</ul>
+					</li>
+				</ul>-->
+			</section>
 		</div>
 		<!-- Footer
 		<footer id="footer">
@@ -722,6 +812,22 @@
 		window.onclick = function (event) {
 			if (event.target == modal6) {
 				modal6.style.display = "none";
+			}
+		}
+
+		// IBM
+		var modal7 = document.getElementById("myModalIBM");
+		var btn7 = document.getElementById("learnMoreBtnIBM");
+		var span7 = modal7.getElementsByClassName("close")[0];
+		btn7.onclick = function () {
+			modal7.style.display = "block";
+		}
+		span7.onclick = function () {
+			modal7.style.display = "none";
+		}
+		window.onclick = function (event) {
+			if (event.target == modal7) {
+				modal7.style.display = "none";
 			}
 		}
 
