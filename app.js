@@ -656,6 +656,8 @@ function initAll() {
 
 const toggleBtn = document.getElementById("darkModeBtn");
 const body = document.body;
+const modeIcon = document.getElementById('modeIcon');
+
 
 // Set initial mode based on system preference or a saved preference
 const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -663,10 +665,12 @@ const savedTheme = localStorage.getItem('theme');
 
 if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
   document.documentElement.setAttribute("data-color-scheme", "dark");
-  toggleBtn.textContent = "Light Mode☀️"; // Sun icon for light mode toggle
+  //toggleBtn.textContent = "Light Mode☀️"; // Sun icon for light mode toggle
+  modeIcon.classList.replace('fa-moon', 'fa-sun');
 } else {
   document.documentElement.setAttribute("data-color-scheme", "light");
-  toggleBtn.textContent = "Dark Mode🌓"; // Moon icon for dark mode toggle
+  //toggleBtn.innerHTML = '<i id="modeIcon" class="fas fa-moon"></i>';
+  modeIcon.classList.replace('fa-sun', 'fa-moon');
 }
 
 toggleBtn.addEventListener("click", () => {
@@ -674,5 +678,10 @@ toggleBtn.addEventListener("click", () => {
   const newTheme = currentTheme === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-color-scheme", newTheme);
   localStorage.setItem('theme', newTheme); // Save preference
-  toggleBtn.textContent = newTheme === "dark" ? "Light Mode☀️" : "Dark Mode🌓";
+  //toggleBtn.innerHTML = newTheme === "dark" ? "Light Mode☀️" : '<i id="modeIcon" class="fas fa-moon"></i>';;
+  if (newTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+  modeIcon.classList.replace('fa-moon', 'fa-sun');
+} else {
+  modeIcon.classList.replace('fa-sun', 'fa-moon');
+}
 });
