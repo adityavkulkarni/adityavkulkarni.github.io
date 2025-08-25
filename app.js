@@ -82,9 +82,15 @@ const portfolioData = {
       "location": "Dallas, TX(remote)",
       "icon": "",
       "responsibilities": [
-        "Built an advanced Agentic Graph-based RAG pipeline to parse, structure, and store contracts, leases, and sequential amendments as interconnected knowledge graphs, enabling relationship analysis and efficient retrieval.",
-        "Automated query classification and tool selection using agentic workflows, enabling intelligent selection between vector search, graph traversal, and hybrid approaches based on the query type and context.",
-        "Enabled dynamic, recursive retrieval and robust error handling through agent-driven feedback loops, ensuring accurate extraction of contract metadata, parties, dates, monetary values, and amendment relationships for legal and compliance use cases."
+        "Developed ContractIQ, an AI-powered contract intelligence service leveraging RAG for automated legal document analysis and cross-referencing .",
+        "Architected a modular pipeline: scanned PDF contracts are parsed, intelligently chunked (semantic and agentic strategies), and indexed for advanced search and context-aware retrieval .",
+        "Built robust storage backends: PostgreSQL + pgvector for fast metadata/embedding search; Neo4j for dynamic knowledge graph of contract entities, relationships, and amendments .",
+        "Engineered multilevel, query-driven search: combines classifier-guided chunk/page/document retrieval, hybrid vector/metadata/graph approaches, and recursive context expansion .",
+        "Implemented entity and relationship extraction agents to populate and maintain interlinked contract graphs, enabling powerful graph-based reasoning and compliance checks .",
+        "Delivered core use cases: legal Q&A chatbot with original-document line references; portal integration for dynamic FAQ/gen analysis; automated compliance alerts from daily operational reports .",
+        "Supported plug-and-play LLMs and embeddings (Azure OpenAI, Ollama, Qwen3), ensuring flexibility across retrieval and generation tasks .",
+        "Designed extensible, microservices architecture—each component (parsing, storage, retrieval, LLM backend) is fully configurable and independently deployable .",
+        "Technologies: Python, FastAPI, Streamlit, AngularJS, PostgreSQL (pgvector), Neo4j, LangChain, LlamaIndex, Azure OpenAI .",
       ],
       "technologies": ["GPT-4o", "LangChain", "Neo4j", "OpenAI API", "Qwen3", "PostgreSQL", "Streamlit", "PyTorch", "HuggingFace Transformers"]
     },
