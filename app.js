@@ -1,4 +1,5 @@
-// Portfolio data
+// app-new.js - Script for the new brutalist design
+// This connects to the data from app.js if available
 const portfolioData = {
   "personalInfo": {
     "name": "Aditya Kulkarni",
@@ -80,7 +81,7 @@ const portfolioData = {
       "startDate": "2025-06",
       "endDate": "2025-12",
       "location": "Dallas, TX(remote)",
-      "icon": "",
+      "icon": "assets/utd.png",
       "responsibilities": [
         "Developed ContractIQ, an AI-powered contract intelligence service leveraging RAG for automated legal document analysis and cross-referencing .",
         "Architected a modular pipeline: scanned PDF contracts are parsed, intelligently chunked (semantic and agentic strategies), and indexed for advanced search and context-aware retrieval .",
@@ -119,7 +120,7 @@ const portfolioData = {
     "startDate": "2024-05",
     "endDate": "2024-12",
     "location": "Dallas, TX",
-    "icon": "",
+    "icon": "assets/utd.png",
     "responsibilities": [
       "Engineered an object detection system for aquatic animals using ResNet50 and YOLO architectures.",
       "Conducted literature review of over 25 research articles on underwater robotics and vision tracking technologies.",
@@ -258,436 +259,654 @@ const portfolioData = {
   ]
 };
 
-// DOM Elements
-const nav = document.getElementById('nav');
-const navMenu = document.getElementById('nav-menu');
-const navToggle = document.getElementById('nav-toggle');
-
-// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-  initNavigation();
-  renderProjects();
-  renderExperience();
-  renderEducation();
-  renderSkills();
-  renderCertifications();
-  initScrollAnimations();
-  //initContactForm();
-  initProjectFilters();
+    // Populate Work Section
+    populateWork();
+    
+    // Populate Skills
+    populateSkills();
+    
+    // Populate Experience Timeline
+    populateExperience();
+    
+    // Populate Certifications
+    populateCertifications();
+    
+    // Initialize interactions
+    initializeInteractions();
 });
 
-// Navigation functionality - Fixed smooth scrolling
-function initNavigation() {
-  const navLinks = document.querySelectorAll('.nav__link');
-  
-  // Mobile menu toggle
-  if (navToggle) {
-    navToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-    });
-  }
-
-  // Close mobile menu when clicking on a link
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      navMenu.classList.remove('active');
-    });
-  });
-
-  // Smooth scrolling for navigation links - Fixed
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      
-      if (targetSection) {
-        const navHeight = nav.offsetHeight;
-        const targetPosition = targetSection.offsetTop - navHeight - 20;
+function populateWork() {
+    const workGrid = document.getElementById('work-grid');
+    if (!workGrid) return;
+    
+    // Clear existing content
+    workGrid.innerHTML = '';
+    
+    // Use projects from portfolioData
+    const projects = portfolioData.projects || [];
+    
+    if (projects.length === 0) {
+        workGrid.innerHTML = '<p>Projects loading...</p>';
+        return;
+    }
+    
+    // Show featured projects (first 6)
+    const featuredProjects = projects.slice(0, 6);
+    
+    featuredProjects.forEach(project => {
+        const workItem = document.createElement('div');
+        workItem.className = 'work-item';
         
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Active section highlighting on scroll - Fixed
-  window.addEventListener('scroll', function() {
-    let current = '';
-    const sections = document.querySelectorAll('section[id]');
-    const navHeight = nav.offsetHeight;
-    
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - navHeight - 50;
-      const sectionBottom = sectionTop + section.clientHeight;
-      
-      if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionBottom) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-}
-
-// Render projects
-function renderProjects() {
-  const projectsGrid = document.getElementById('projects-grid');
-  
-  portfolioData.projects.forEach((project, index) => {
-    const projectCard = document.createElement('div');
-    projectCard.className = 'project-card fade-in';
-    projectCard.setAttribute('data-category', project.category);
-    projectCard.style.animationDelay = `${index * 0.1}s`;
-    
-    const techTags = project.techStack.map(tech => 
-      `<span class="tech-tag">${tech}</span>`
-    ).join('');
-    
-    projectCard.innerHTML = `
-      <div class="project-card__image">
-        <span class="project-card__image"><img src="${project.image}" alt="" /></span>
-      </div>
-      <div class="project-card__content">
-        <div class="project-card__header">
-          <h3 class="project-card__title">${project.title}</h3>
-        </div>
-        <p class="project-card__description">${project.description}</p>
-        <div class="project-card__tech">
-          ${techTags}
-        </div>
-        <div class="project-card__links">
-          <a href="${project.githubUrl}" target="_blank" class="project-link">GitHub</a>
-          <!--<a href="${project.liveUrl}" target="_blank" class="project-link">Live Demo</a>-->
-        </div>
-      </div>
-    `;
-    
-    projectsGrid.appendChild(projectCard);
-  });
-}
-
-// Render work experience
-function renderExperience() {
-  const experienceTimeline = document.getElementById('experience-timeline');
-  
-  portfolioData.workExperience.forEach((job, index) => {
-    const timelineItem = document.createElement('div');
-    timelineItem.className = 'timeline__item fade-in';
-    timelineItem.style.animationDelay = `${index * 0.2}s`;
-    
-    const responsibilities = job.responsibilities.map(resp => 
-      `<li>${resp}</li>`
-    ).join('');
-    
-    const techTags = job.technologies.map(tech => 
-      `<span class="tech-tag">${tech}</span>`
-    ).join('');
-    
-    timelineItem.innerHTML = `
-      <div class="timeline__content">
-        <h3 class="timeline__company">${job.company}</h3>
-        <h4 class="timeline__position">${job.position}</h4>
-        <div class="timeline__duration">${job.duration} • ${job.location}</div>
-        <ul class="timeline__responsibilities">
-          ${responsibilities}
-        </ul>
-        <div class="timeline__tech">
-          ${techTags}
-        </div>
-      </div>
-      <div class="timeline__marker">${job.icon}</div>
-    `;
-    
-    experienceTimeline.appendChild(timelineItem);
-  });
-}
-
-// Render education
-function renderEducation() {
-  const educationGrid = document.getElementById('education-grid');
-  
-  portfolioData.education.forEach((edu, index) => {
-    const educationCard = document.createElement('div');
-    educationCard.className = 'education-card fade-in';
-    educationCard.style.animationDelay = `${index * 0.2}s`;
-    
-    const details = edu.details ? edu.details.map(detail => 
-      `<li>${detail}</li>`
-    ).join('') : '';
-    
-    educationCard.innerHTML = `
-      <div class="education-card__header">
-
-        <div class="education-card__icon "><img src="${edu.icon}" alt="" /></div>
-        <div>
-          <h3 class="education-card__title">${edu.degree}</h3>
-          <div class="education-card__institution">${edu.institution}</div>
-        </div>
-      </div>
-      <div class="education-card__duration">${edu.duration}${edu.gpa ? ` • GPA: ${edu.gpa}` : ''}</div>
-      <div class="education-card__details">
-        <ul>
-          ${details}
-        </ul>
-      </div>
-    `;
-    
-    // Add click handler for expansion with visual feedback
-    educationCard.addEventListener('click', function() {
-      this.classList.toggle('expanded');
-      
-      // Add visual feedback
-      const details = this.querySelector('.education-card__details');
-      if (this.classList.contains('expanded')) {
-        details.style.paddingTop = '16px';
-        details.style.borderTop = '1px solid var(--color-border)';
-      } else {
-        details.style.paddingTop = '0';
-        details.style.borderTop = 'none';
-      }
-    });
-    
-    educationGrid.appendChild(educationCard);
-  });
-}
-
-// Render skills
-function renderSkills() {
-  // Render top skills
-  const topSkillsContainer = document.getElementById('top-skills');
-  portfolioData.skills.topSkills.forEach((skill, index) => {
-    const skillElement = document.createElement('div');
-    skillElement.className = 'top-skill fade-in';
-    skillElement.style.animationDelay = `${index * 0.1}s`;
-    skillElement.textContent = skill;
-    topSkillsContainer.appendChild(skillElement);
-  });
-  
-  // Render skill categories
-  const skillsCategoriesContainer = document.getElementById('skills-categories');
-  Object.entries(portfolioData.skills.categories).forEach(([category, skills], categoryIndex) => {
-    const categoryElement = document.createElement('div');
-    categoryElement.className = 'skill-category fade-in';
-    categoryElement.style.animationDelay = `${categoryIndex * 0.1}s`;
-    
-    const skillItems = skills.map(skill => 
-      `<div class="skill-item" title="Click to learn more about ${skill}">${skill}</div>`
-    ).join('');
-    
-    categoryElement.innerHTML = `
-      <h3 class="skill-category__title">${category}</h3>
-      <div class="skill-category__items">
-        ${skillItems}
-      </div>
-    `;
-    
-    skillsCategoriesContainer.appendChild(categoryElement);
-  });
-  
-  // Add enhanced hover effects for skill items
-  setTimeout(() => {
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach(item => {
-      item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-3px) scale(1.05)';
-        this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-      });
-      
-      item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-        this.style.boxShadow = 'none';
-      });
-    });
-  }, 1000);
-}
-
-// Render certifications
-function renderCertifications() {
-  const certificationsGrid = document.getElementById('certifications-grid');
-  
-  portfolioData.certifications.forEach((cert, index) => {
-    const certCard = document.createElement('div');
-    certCard.className = 'cert-card fade-in';
-    certCard.style.animationDelay = `${index * 0.2}s`;
-    
-    const dateFormatted = new Date(cert.dateEarned + '-01').toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-    });
-    
-    certCard.innerHTML = `
-      <div class="cert-card__badge"><img src="${cert.badge}" alt="" /></div>
-      <h3 class="cert-card__name">${cert.name}</h3>
-      <div class="cert-card__issuer">${cert.issuer}</div>
-      <div class="cert-card__date">Earned: ${dateFormatted}</div>
-      <a href="${cert.verifyUrl}" target="_blank" class="cert-link">Verify Certificate</a>
-    `;
-    
-    certificationsGrid.appendChild(certCard);
-  });
-}
-
-// Project filters
-function initProjectFilters() {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-  
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const filter = this.getAttribute('data-filter');
-      
-      // Update active button
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-      
-      // Filter projects with smooth animation
-      projectCards.forEach((card, index) => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = 'block';
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          
-          setTimeout(() => {
-            card.style.transition = 'all 0.5s ease-out';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, index * 100);
-        } else {
-          card.style.transition = 'all 0.3s ease-out';
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(-20px)';
-          
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
+        const techTags = (project.techStack || []).slice(0, 5).map(tech => 
+            `<span class="tech-tag">${tech}</span>`
+        ).join('');
+        
+        const links = [];
+        if (project.githubUrl) {
+            links.push(`<a href="${project.githubUrl}" class="work-link" target="_blank">GitHub →</a>`);
         }
-      });
+        if (project.liveUrl) {
+            links.push(`<a href="${project.liveUrl}" class="work-link" target="_blank">Demo →</a>`);
+        }
+        
+        workItem.innerHTML = `
+            <div class="work-header">
+                <div>
+                    <h3 class="work-title">${project.title}</h3>
+                </div>
+                <span class="work-category">${project.category}</span>
+            </div>
+            <div class="work-description-container">
+                <button class="description-toggle">
+                    <span class="toggle-arrow">▶</span>
+                    <span class="toggle-text">Description</span>
+                </button>
+                <p class="work-description" style="display: none;">${project.description}</p>
+            </div>
+            <div class="work-tech">${techTags}</div>
+            ${links.length > 0 ? `<div class="work-links">${links.join('')}</div>` : ''}
+        `;
+        
+        workGrid.appendChild(workItem);
+        
+        // Add event listener for description toggle
+        const toggleBtn = workItem.querySelector('.description-toggle');
+        const descriptionText = workItem.querySelector('.work-description');
+        const arrow = workItem.querySelector('.toggle-arrow');
+        
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isHidden = descriptionText.style.display === 'none';
+            descriptionText.style.display = isHidden ? 'block' : 'none';
+            arrow.classList.toggle('expanded');
+        });
     });
-  });
 }
 
-// Enhanced scroll animations
-function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+function populateSkills() {
+    const skillsContainer = document.getElementById('skills-tags');
+    if (!skillsContainer) return;
+    
+    // Clear existing content
+    skillsContainer.innerHTML = '';
+    
+    // Use skills from portfolioData
+    const skills = portfolioData.skills || {};
+    
+    // Get top skills from portfolioData
+    const actualTopSkills = skills.topSkills || [];
+    
+    actualTopSkills.forEach(skill => {
+        const skillTag = document.createElement('div');
+        skillTag.className = 'skill-tag';
+        skillTag.textContent = skill;
+        skillsContainer.appendChild(skillTag);
     });
-  }, observerOptions);
-  
-  // Observe all elements with fade-in class
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
 }
 
-
-// Add typing animation effect for hero text
-function initTypingAnimation() {
-  const heroRole = document.querySelector('.hero__role');
-  if (!heroRole) return;
-  
-  const text = heroRole.textContent;
-  heroRole.textContent = '';
-  heroRole.style.opacity = '1'; // Make sure it's visible for typing
-  
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      heroRole.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 50);
+function populateExperience() {
+    const timeline = document.getElementById('experience-timeline');
+    if (!timeline) return;
+    
+    // Clear existing content
+    timeline.innerHTML = '';
+    
+    // Use work experience from portfolioData
+    const experiences = portfolioData.workExperience || [];
+    
+    if (experiences.length === 0) {
+        timeline.innerHTML = '<p>Experience loading...</p>';
+        return;
     }
-  }
-  
-  // Start typing animation after hero name appears
-  setTimeout(typeWriter, 1200);
+    
+    experiences.forEach((exp, index) => {
+        const experienceRow = document.createElement('div');
+        experienceRow.className = 'experience-row';
+        experienceRow.dataset.expanded = 'false';
+        
+        // Get first letter of company name for placeholder
+        const companyInitial = exp.company.charAt(0);
+        
+        // Build responsibilities list
+        let responsibilitiesList = '';
+        if (exp.responsibilities && exp.responsibilities.length > 0) {
+            const bulletPoints = exp.responsibilities.map(resp => 
+                `<li>${resp}</li>`
+            ).join('');
+            responsibilitiesList = `<ul class="experience-responsibilities">${bulletPoints}</ul>`;
+        }
+        
+        experienceRow.innerHTML = `
+            <div class="experience-logo">
+                ${exp.icon && exp.icon !== '' ? 
+                    `<img src="${exp.icon}" alt="${exp.company} logo">` : 
+                    `<div class="experience-logo-placeholder">${companyInitial}</div>`
+                }
+            </div>
+            <div class="experience-content">
+                <div class="experience-header">
+                    <span class="experience-company">${exp.company}</span>
+                    <span class="experience-separator">|</span>
+                    <span class="experience-role">${exp.position}</span>
+                </div>
+                <div class="experience-details">
+                    <div class="experience-meta">${exp.duration} • ${exp.location}</div>
+                    ${responsibilitiesList}
+                </div>
+            </div>
+            <span class="experience-arrow">▼</span>
+        `;
+        
+        timeline.appendChild(experienceRow);
+    });
+    
+    // Add click handlers to expand/collapse
+    document.querySelectorAll('.experience-row').forEach(row => {
+        row.addEventListener('click', function() {
+            const isExpanded = this.dataset.expanded === 'true';
+            this.dataset.expanded = isExpanded ? 'false' : 'true';
+        });
+    });
 }
 
-// Initialize typing animation
-//setTimeout(initTypingAnimation, 500);
-initTypingAnimation();
-
-// Add click handlers for social links to prevent default if they're placeholders
-document.addEventListener('click', function(e) {
-  if (e.target.matches('.social-link, .project-link, .cert-link')) {
-    const href = e.target.getAttribute('href');
-    if (href && (href.includes('demo-') || href.includes('placeholder') || href === '#')) {
-      e.preventDefault();
-      alert('This is a demo link. In a real portfolio, this would navigate to the actual resource.');
+function populateCertifications() {
+    const certGrid = document.getElementById('cert-grid');
+    if (!certGrid) return;
+    
+    // Clear existing content
+    certGrid.innerHTML = '';
+    
+    // Use certifications from portfolioData
+    const certifications = portfolioData.certifications || [];
+    
+    if (certifications.length === 0) {
+        certGrid.innerHTML = '<p>Certifications loading...</p>';
+        return;
     }
-  }
-});
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+    
+    certifications.forEach(cert => {
+        const certItem = document.createElement('div');
+        certItem.className = 'cert-item';
+        
+        certItem.innerHTML = `
+            <div class="cert-icon">${cert.icon || '🏆'}</div>
+            <h3 class="cert-name">${cert.name}</h3>
+            <div class="cert-issuer">${cert.issuer}</div>
+            <div class="cert-date">${cert.dateEarned}</div>
+            ${cert.verifyUrl ? `<a href="${cert.verifyUrl}" class="cert-link" target="_blank">View Credential →</a>` : ''}
+        `;
+        
+        certGrid.appendChild(certItem);
+    });
 }
 
-// Initialize everything when DOM is ready
+function initializeInteractions() {
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Scroll to top button functionality
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    const homeSection = document.getElementById('home');
+    
+    if (scrollToTopBtn && homeSection) {
+        scrollToTopBtn.addEventListener('click', () => {
+            homeSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    }
+    
+    // Active navigation highlighting
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollY = window.scrollY;
+        
+        // Collapse hero section on scroll
+        const superSection1 = document.querySelector('.super-section-1');
+        if (superSection1) {
+            if (scrollY > 100) {
+                superSection1.classList.add('collapsed');
+                // Show scroll to top button
+                if (scrollToTopBtn) {
+                    scrollToTopBtn.classList.add('visible');
+                }
+            } else {
+                superSection1.classList.remove('collapsed');
+                // Hide scroll to top button
+                if (scrollToTopBtn) {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            }
+        }
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 100)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// ==========================================
+// DOT MATRIX ANIMATION FOR NAV LOGO
+// ==========================================
+
+function initDotMatrixAnimation() {
+    const canvas = document.getElementById('dotMatrixCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Text configuration
+    const text = 'ADITYA KULKARNI';
+    const fontSize = 16;
+    const dotSize = 1.0;
+    const dotSpacing = 1.8;
+    
+    // Calculate canvas size
+    ctx.font = `900 ${fontSize}px Space Mono, monospace`;
+    const textMetrics = ctx.measureText(text);
+    const canvasWidth = Math.ceil(textMetrics.width) + 40;
+    const canvasHeight = 32;
+    
+    // Set canvas size
+    canvas.width = canvasWidth * dpr;
+    canvas.height = canvasHeight * dpr;
+    canvas.style.width = canvasWidth + 'px';
+    canvas.style.height = canvasHeight + 'px';
+    ctx.scale(dpr, dpr);
+    
+    // Create dot matrix from text
+    let dots = [];
+    
+    function createDots() {
+        dots = [];
+        
+        // Create a temporary higher resolution canvas for better sampling
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        const sampleScale = 2;
+        
+        tempCanvas.width = canvasWidth * sampleScale;
+        tempCanvas.height = canvasHeight * sampleScale;
+        
+        tempCtx.font = `900 ${fontSize * sampleScale}px Space Mono, monospace`;
+        tempCtx.fillStyle = 'white';
+        tempCtx.textBaseline = 'middle';
+        tempCtx.fillText(text, 20 * sampleScale, (canvasHeight / 2) * sampleScale);
+        
+        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+        
+        // Sample at regular intervals
+        for (let y = 0; y < canvasHeight; y += dotSpacing) {
+            for (let x = 0; x < canvasWidth; x += dotSpacing) {
+                // Sample from high-res version
+                const sampleX = Math.floor(x * sampleScale);
+                const sampleY = Math.floor(y * sampleScale);
+                const i = (sampleY * tempCanvas.width + sampleX) * 4;
+                const alpha = imageData.data[i + 3];
+                
+                if (alpha > 50) {
+                    dots.push({
+                        x: x,
+                        y: y,
+                        originX: x,
+                        originY: y,
+                        vx: 0,
+                        vy: 0,
+                        size: dotSize
+                    });
+                }
+            }
+        }
+    }
+    
+    createDots();
+    
+    // Mouse interaction
+    let mouse = { x: -1000, y: -1000 };
+    const interactionRadius = 50;
+    
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        
+        dots.forEach(dot => {
+            // Calculate distance to mouse
+            const dx = mouse.x - dot.x;
+            const dy = mouse.y - dot.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            // Apply force from mouse
+            if (dist < interactionRadius) {
+                const force = (interactionRadius - dist) / interactionRadius;
+                dot.vx -= (dx / dist) * force * 3;
+                dot.vy -= (dy / dist) * force * 3;
+            }
+            
+            // Apply spring force back to origin
+            const returnForce = 0.15;
+            dot.vx += (dot.originX - dot.x) * returnForce;
+            dot.vy += (dot.originY - dot.y) * returnForce;
+            
+            // Apply damping
+            dot.vx *= 0.85;
+            dot.vy *= 0.85;
+            
+            // Update position
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+            
+            // Draw dot
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Recreate dots on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(createDots, 250);
+    });
+}
+
+// Initialize dot matrix when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener('DOMContentLoaded', initDotMatrixAnimation);
 } else {
-  initAll();
+    initDotMatrixAnimation();
 }
 
-function initAll() {
-  // Re-run initialization to make sure everything works
-  setTimeout(() => {
-    initScrollAnimations();
-  }, 100);
+// ==========================================
+// ARROW DOT MATRIX ANIMATION FOR SCROLL BUTTON
+// ==========================================
+
+function initArrowMatrixAnimation() {
+    const canvas = document.getElementById('arrowMatrixCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Arrow configuration
+    const arrowSize = 20;
+    const dotSize = 1.0;
+    const dotSpacing = 1.8;
+    
+    // Set canvas size
+    canvas.width = 50 * dpr;
+    canvas.height = 50 * dpr;
+    canvas.style.width = '50px';
+    canvas.style.height = '50px';
+    ctx.scale(dpr, dpr);
+    
+    // Create dot matrix for up arrow
+    let dots = [];
+    
+    function createArrowDots() {
+        dots = [];
+        
+        // Create temporary canvas for sampling
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        const sampleScale = 3;
+        
+        tempCanvas.width = 50 * sampleScale;
+        tempCanvas.height = 50 * sampleScale;
+        
+        // Draw inverted capital V symbol (V rotated 180 degrees)
+        tempCtx.save();
+        tempCtx.translate((50 * sampleScale) / 2, (50 * sampleScale) / 2);
+        tempCtx.rotate(Math.PI);
+        tempCtx.translate(-(50 * sampleScale) / 2, -(50 * sampleScale) / 2);
+        tempCtx.fillStyle = 'white';
+        tempCtx.font = `bold ${32 * sampleScale}px Arial`;
+        tempCtx.textAlign = 'center';
+        tempCtx.textBaseline = 'middle';
+        tempCtx.fillText('V', (50 * sampleScale) / 2, (50 * sampleScale) / 2);
+        tempCtx.restore();
+        
+        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+        
+        // Sample at regular intervals
+        for (let y = 0; y < 50; y += dotSpacing) {
+            for (let x = 0; x < 50; x += dotSpacing) {
+                const sampleX = Math.floor(x * sampleScale);
+                const sampleY = Math.floor(y * sampleScale);
+                const i = (sampleY * tempCanvas.width + sampleX) * 4;
+                const alpha = imageData.data[i + 3];
+                
+                if (alpha > 50) {
+                    dots.push({
+                        x: x,
+                        y: y,
+                        originX: x,
+                        originY: y,
+                        vx: 0,
+                        vy: 0,
+                        size: dotSize
+                    });
+                }
+            }
+        }
+    }
+    
+    createArrowDots();
+    
+    // Mouse interaction
+    let mouse = { x: -1000, y: -1000 };
+    const interactionRadius = 40;
+    
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, 50, 50);
+        
+        dots.forEach(dot => {
+            // Calculate distance to mouse
+            const dx = mouse.x - dot.x;
+            const dy = mouse.y - dot.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            // Apply force from mouse
+            if (dist < interactionRadius) {
+                const force = (interactionRadius - dist) / interactionRadius;
+                dot.vx -= (dx / dist) * force * 2.5;
+                dot.vy -= (dy / dist) * force * 2.5;
+            }
+            
+            // Apply spring force back to origin
+            const returnForce = 0.12;
+            dot.vx += (dot.originX - dot.x) * returnForce;
+            dot.vy += (dot.originY - dot.y) * returnForce;
+            
+            // Apply damping
+            dot.vx *= 0.85;
+            dot.vy *= 0.85;
+            
+            // Update position
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+            
+            // Draw dot
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Recreate dots on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(createArrowDots, 250);
+    });
 }
 
-const toggleBtn = document.getElementById("darkModeBtn");
-const body = document.body;
-const modeIcon = document.getElementById('modeIcon');
-
-
-// Set initial mode based on system preference or a saved preference
-const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-  document.documentElement.setAttribute("data-color-scheme", "dark");
-  //toggleBtn.textContent = "Light Mode☀️"; // Sun icon for light mode toggle
-  modeIcon.classList.replace('fa-moon', 'fa-sun');
+// Initialize arrow dot matrix when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArrowMatrixAnimation);
 } else {
-  document.documentElement.setAttribute("data-color-scheme", "light");
-  //toggleBtn.innerHTML = '<i id="modeIcon" class="fas fa-moon"></i>';
-  modeIcon.classList.replace('fa-sun', 'fa-moon');
+    initArrowMatrixAnimation();
 }
 
-toggleBtn.addEventListener("click", () => {
-  const currentTheme = document.documentElement.getAttribute("data-color-scheme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-color-scheme", newTheme);
-  localStorage.setItem('theme', newTheme); // Save preference
-  //toggleBtn.innerHTML = newTheme === "dark" ? "Light Mode☀️" : '<i id="modeIcon" class="fas fa-moon"></i>';;
-  if (newTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-  modeIcon.classList.replace('fa-moon', 'fa-sun');
-} else {
-  modeIcon.classList.replace('fa-sun', 'fa-moon');
+// Dark Mode Toggle
+function initializeDarkMode() {
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    const modeIcon = document.getElementById('modeIcon');
+    const html = document.documentElement;
+    
+    // Check if user has a saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Set initial state based on: saved preference > system preference > light mode (false)
+    const isDarkMode = savedMode !== null ? savedMode === 'true' : prefersDark;
+    
+    if (isDarkMode) {
+        html.style.colorScheme = 'dark';
+        document.body.classList.add('dark-mode');
+        modeIcon.classList.remove('fa-moon');
+        modeIcon.classList.add('fa-sun');
+    } else {
+        html.style.colorScheme = 'light';
+        document.body.classList.remove('dark-mode');
+        modeIcon.classList.add('fa-moon');
+        modeIcon.classList.remove('fa-sun');
+    }
+    
+    // Add click listener
+    darkModeBtn.addEventListener('click', function() {
+        const isCurrentlyDark = document.body.classList.contains('dark-mode');
+        
+        if (isCurrentlyDark) {
+            // Switch to light mode
+            html.style.colorScheme = 'light';
+            document.body.classList.remove('dark-mode');
+            modeIcon.classList.remove('fa-sun');
+            modeIcon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'false');
+        } else {
+            // Switch to dark mode
+            html.style.colorScheme = 'dark';
+            document.body.classList.add('dark-mode');
+            modeIcon.classList.remove('fa-moon');
+            modeIcon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'true');
+        }
+    });
+    
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        // Only auto-switch if user hasn't set a preference
+        if (localStorage.getItem('darkMode') === null) {
+            if (e.matches) {
+                html.style.colorScheme = 'dark';
+                document.body.classList.add('dark-mode');
+                modeIcon.classList.remove('fa-moon');
+                modeIcon.classList.add('fa-sun');
+            } else {
+                html.style.colorScheme = 'light';
+                document.body.classList.remove('dark-mode');
+                modeIcon.classList.add('fa-moon');
+                modeIcon.classList.remove('fa-sun');
+            }
+        }
+    });
 }
-});
+
+// Initialize dark mode when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDarkMode);
+} else {
+    initializeDarkMode();
+}
+
+// Export for use in other scripts if needed
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        populateWork,
+        populateSkills,
+        populateExperience,
+        populateCertifications
+    };
+}
