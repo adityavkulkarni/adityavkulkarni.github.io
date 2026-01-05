@@ -76,9 +76,9 @@ const portfolioData = {
       "id": 1,
       "company": "UT System, University Lands",
       "position": "ML Engineer Intern",
-      "duration": "June 2025 - Present",
+      "duration": "June 2025 - December 2025",
       "startDate": "2025-06",
-      "endDate": "Present",
+      "endDate": "2025-12",
       "location": "Dallas, TX(remote)",
       "icon": "",
       "responsibilities": [
