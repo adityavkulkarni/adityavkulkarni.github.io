@@ -181,7 +181,9 @@ const portfolioData = {
             "Neo4j",
             "SQL",
             "PyTorch",
-            "HuggingFace Transformers"
+            "Computer Vision",
+            "3D Image Processing",
+            "Medical Imaging",
         ],
         "categories": {
           "Machine Learning & AI": [
@@ -492,7 +494,7 @@ function initializeInteractions() {
         const workScrollbar = document.getElementById('workScrollbar');
         
         if (targets.includes('about')) {
-            document.body.classList.add('scroll-lock');
+            //document.body.classList.add('scroll-lock');
             if (workScrollbar) workScrollbar.classList.remove('active');
         } else if (key === 'work') {
             // Enable natural scrolling for work section - no scroll lock
@@ -519,13 +521,7 @@ function initializeInteractions() {
         });
     });
 
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateScrollOffset, 150);
-    });
-
     // Ensure default view shows hero + work ex + projects
-    updateScrollOffset();
     setActiveSections('work');
 }
 
@@ -896,6 +892,109 @@ function initializeDarkMode() {
     });
 }
 
+// Populate updates timeline
+function populateUpdates() {
+    const updatesContainer = document.getElementById('updates-timeline');
+    if (!updatesContainer || typeof updates === 'undefined') return;
+    
+    updatesContainer.innerHTML = `
+        <div class="timeline-track">
+            <div class="timeline-line"></div>
+            <div class="timeline-items">
+                ${updates.map((update, index) => {
+                    const isTop = index % 2 === 0;
+                    return `
+                        <div class="timeline-item ${isTop ? 'top' : 'bottom'}">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-card">
+                                <h4 class="update-title">${update.title}</h4>
+                                <div class="timeline-card-expanded">
+                                    <div class="update-date">
+                                        <span class="update-month">${update.month}</span>
+                                        <span class="update-year">${update.year}</span>
+                                    </div>
+                                    <p class="update-description">${update.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
+}
+
+// Populate blogs grid
+function populateBlogs() {
+    const blogsContainer = document.getElementById('blogs-grid');
+    if (!blogsContainer || typeof blogs === 'undefined') return;
+    
+    blogsContainer.innerHTML = blogs.map(blog => `
+        <div class="blog-card">
+            <div class="blog-card-content">
+                <span class="blog-category">${blog.category}</span>
+                <h3 class="blog-title">${blog.title}</h3>
+                <p class="blog-date">${blog.date}</p>
+                <p class="blog-excerpt">${blog.excerpt}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    // Attach read more handlers
+    document.querySelectorAll('.blog-read-more').forEach(btn => {
+        btn.addEventListener('click', () => loadBlogModal(btn.dataset.blogId));
+    });
+}
+
+// Load blog content in modal
+function loadBlogModal(blogId) {
+    const modal = document.getElementById('blogModal');
+    const blogContent = document.getElementById('blogContent');
+    
+    if (!modal || !blogContent || typeof blogs === 'undefined') return;
+    
+    const blog = blogs.find(b => b.id === parseInt(blogId));
+    if (!blog) return;
+    
+    blogContent.innerHTML = blog.content;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close blog modal
+function closeBlogModal() {
+    const modal = document.getElementById('blogModal');
+    if (!modal) return;
+    
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Initialize blog modal handlers
+function initBlogModal() {
+    const modal = document.getElementById('blogModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    if (!modal || !modalClose) return;
+    
+    // Close on button click
+    modalClose.addEventListener('click', closeBlogModal);
+    
+    // Close on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeBlogModal();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeBlogModal();
+        }
+    });
+}
+
 // Work section scrollbar functionality
 function scrollToWorkStep(step) {
     const heroSection = document.getElementById('home');
@@ -1006,6 +1105,24 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWorkScrollbar);
 } else {
     initWorkScrollbar();
+}
+
+// Initialize updates timeline when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', populateUpdates);
+} else {
+    populateUpdates();
+}
+
+// Initialize blogs when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        populateBlogs();
+        initBlogModal();
+    });
+} else {
+    populateBlogs();
+    initBlogModal();
 }
 
 // Export for use in other scripts if needed
