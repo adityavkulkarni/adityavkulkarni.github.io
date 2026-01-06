@@ -25,7 +25,7 @@ const portfolioData = {
     },
     {
       "id": 2,
-      "title": "Agentic PDF Parser",
+      "title": "Agentic PDF Parser for Structured PDF",
       "description": "An Agentic Retrieval-Augmented Generation (RAG) system that can retrieve answers from uploaded PDF documents, specified website URLs, or both simultaneously. It uses an intelligent agent to determine the most relevant source for a given query.<br>The system supports PDF retrieval by extracting and indexing text from uploaded files, website retrieval by parsing and processing content from supplied URLs, and combined query handling when both sources are available.<br>Agent logic prioritizes answers from PDFs first, then websites, and clearly indicates when a question falls outside the provided data.<br>With a simple Streamlit-based UI, users can upload documents, index them, and ask questions. The backend uses semantic embeddings and QA models to search and answer queries accurately, powered by OpenAI API and Qwen3. Qdrant handles vector search, while PyPDF2 and BeautifulSoup parse PDFs and web pages respectively.",
       "image": "assets/pdf.png",
       "techStack": ["Streamlit", "PyPDF2", "BeautifulSoup", "OpenAI API", "Qwen3", "Qdrant", "PostgresSQL", "Python"],
@@ -44,10 +44,10 @@ const portfolioData = {
     },
     {
       "id": 4,
-      "title": "2D Dynamic Object Grasping",
+      "title": "2D Dynamic Object Grasping using Predictive Tracking",
       "description": "A robotics project featuring a sophisticated system for real-time detection and tracking of deterministically moving objects in 2D. It uses a predictive algorithm to enable a robotic manipulator to calculate optimal grasping points and trajectories with high precision. The primary simulation environment is Gazebo. The system leverages OpenCV for computer vision and integrates with ROS (Robot Operating System) to create a seamless interface between vision processing and robotic control systems.",
       "image": "assets/ros.png",
-      "techStack": ["Gazebo", "OpenCV", "ROS", "Python", "Robotics"],
+      "techStack": ["Gazebo", "OpenCV", "ROS", "Robotic Manipulation", "Python"],
       "githubUrl": "https://github.com/adityavkulkarni/2D_dynamic_object_grasping",
       "liveUrl": "https://utdallas.app.box.com/s/mlh7mzs4jasjsx9vxsymagupyqrti79v",
       "category": "Robotics"
@@ -57,7 +57,7 @@ const portfolioData = {
       "title": "InvestAid: An AI-powered Investment Dashboard",
       "description": "Designed an AI-powered investment advisory system leveraging NLP and aspect-based sentiment detection techniques. Utilized Spacy models to analyze sentiment and topics in over 50,000 social media posts and financial news articles, achieving a classification accuracy of 85% and identifying 10 key topics relevant to financial markets. Integrated historical data analysis to generate data-driven stock position recommendations for the top 3 performing stocks.",
       "image": "assets/investaid.png",
-      "techStack": ["NLP", "Spacy", "Sentiment Analysis", "Aspect-based Sentiment Detection", "Financial Data Analysis", "Python"],
+      "techStack": ["NLP", "Spacy", "Sentiment Analysis", "Financial Data Analysis", "Python"],
       "githubUrl": "https://github.com/sauravdosi/investaid",
       "category": "ML Engineering"
 
@@ -81,7 +81,7 @@ const portfolioData = {
       "startDate": "2025-06",
       "endDate": "2025-12",
       "location": "Dallas, TX(remote)",
-      "icon": "assets/utd.png",
+      "icon": "assets/utsi.png",
       "responsibilities": [
         "Developed ContractIQ, an AI-powered contract intelligence service leveraging RAG for automated legal document analysis and cross-referencing .",
         "Architected a modular pipeline: scanned PDF contracts are parsed, intelligently chunked (semantic and agentic strategies), and indexed for advanced search and context-aware retrieval .",
@@ -103,7 +103,7 @@ const portfolioData = {
     "startDate": "2025-01",
     "endDate": "2025-05",
     "location": "Ridgefield, CT",
-    "icon": "",
+    "icon": "assets/bi.png",
     "responsibilities": [
       "Developed and optimized LLM frameworks (GPT-4o, Claude Sonnet 3.5) for vendor classification and webpage analysis, achieving an 8% accuracy improvement using advanced prompt engineering and parameter-efficient fine-tuning.",
       "Built Streamlit applications with multiprocessing, reducing processing time by 30%.",
@@ -137,7 +137,7 @@ const portfolioData = {
     "startDate": "2021-04",
     "endDate": "2023-06",
     "location": "Pune, India",
-    "icon": "",
+    "icon": "assets/pub.png",
     "responsibilities": [
       "Designed and executed automated testing frameworks for large-scale ad-tech platform components.",
       "Collaborated with cross-functional teams to ensure quality and performance in product releases.",
@@ -298,7 +298,7 @@ function populateWork() {
         const workItem = document.createElement('div');
         workItem.className = 'work-item';
         
-        const techTags = (project.techStack || []).slice(0, 5).map(tech => 
+        const techTags = (project.techStack || []).slice(0, 4).map(tech => 
             `<span class="tech-tag">${tech}</span>`
         ).join('');
         
@@ -309,13 +309,13 @@ function populateWork() {
         if (project.liveUrl) {
             links.push(`<a href="${project.liveUrl}" class="work-link" target="_blank">Demo →</a>`);
         }
+        links.push(`<span class="work-category">${project.category}</span>`);
         
         workItem.innerHTML = `
             <div class="work-header">
                 <div>
                     <h3 class="work-title">${project.title}</h3>
                 </div>
-                <span class="work-category">${project.category}</span>
             </div>
             <div class="work-description-container">
                 <button class="description-toggle">
@@ -462,74 +462,71 @@ function populateCertifications() {
 }
 
 function initializeInteractions() {
-    // Smooth scroll for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Scroll to top button functionality
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    const homeSection = document.getElementById('home');
-    
-    if (scrollToTopBtn && homeSection) {
-        scrollToTopBtn.addEventListener('click', () => {
-            homeSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    }
-    
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const scrollY = window.scrollY;
-        
-        // Collapse hero section on scroll
-        const superSection1 = document.querySelector('.super-section-1');
-        if (superSection1) {
-            if (scrollY > 100) {
-                superSection1.classList.add('collapsed');
-                // Show scroll to top button
-                if (scrollToTopBtn) {
-                    scrollToTopBtn.classList.add('visible');
-                }
-            } else {
-                superSection1.classList.remove('collapsed');
-                // Hide scroll to top button
-                if (scrollToTopBtn) {
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            }
-        }
-        
+    const sectionTriggers = document.querySelectorAll('[data-section]');
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    const sections = document.querySelectorAll('.content-section');
+    let resizeTimeout;
+
+    const sectionMap = {
+        home: ['home', 'about'],
+        about: ['about'],
+        experience: ['experience'],
+        work: ['home', 'experience', 'work'],
+        certification: ['certification'],
+        play: ['play']
+    };
+
+    const setActiveSections = (key) => {
+        const targets = sectionMap[key] || sectionMap.home;
+
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
+            const shouldShow = targets.includes(section.id);
+            section.classList.toggle('active', shouldShow);
         });
-        
+
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
-            }
+            link.classList.toggle('active', link.dataset.section === key);
+        });
+
+        // Handle scroll locking and work scrollbar
+        const workScrollbar = document.getElementById('workScrollbar');
+        
+        if (targets.includes('about')) {
+            document.body.classList.add('scroll-lock');
+            if (workScrollbar) workScrollbar.classList.remove('active');
+        } else if (key === 'work') {
+            // Enable natural scrolling for work section - no scroll lock
+            document.body.classList.remove('scroll-lock');
+            if (workScrollbar) workScrollbar.classList.add('active');
+            // Scroll to top to show hero section
+            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+        } else {
+            document.body.classList.remove('scroll-lock');
+            if (workScrollbar) workScrollbar.classList.remove('active');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+
+    sectionTriggers.forEach(trigger => {
+        const target = trigger.dataset.section;
+        if (!target) return;
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            setActiveSections(target);
         });
     });
+
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateScrollOffset, 150);
+    });
+
+    // Ensure default view shows hero + work ex + projects
+    updateScrollOffset();
+    setActiveSections('work');
 }
 
 // ==========================================
@@ -577,7 +574,8 @@ function initDotMatrixAnimation() {
         tempCanvas.height = canvasHeight * sampleScale;
         
         tempCtx.font = `900 ${fontSize * sampleScale}px Space Mono, monospace`;
-        tempCtx.fillStyle = 'white';
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        tempCtx.fillStyle = isDarkMode ? 'black' : 'white';
         tempCtx.textBaseline = 'middle';
         tempCtx.fillText(text, 20 * sampleScale, (canvasHeight / 2) * sampleScale);
         
@@ -654,8 +652,10 @@ function initDotMatrixAnimation() {
             dot.x += dot.vx;
             dot.y += dot.vy;
             
-            // Draw dot
-            ctx.fillStyle = 'white';
+            // Draw dot - black when hovered in dark mode, otherwise white
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const isHovered = dist < interactionRadius;
+            ctx.fillStyle = (isDarkMode && isHovered) ? 'black' : 'white';
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
             ctx.fill();
@@ -723,7 +723,8 @@ function initArrowMatrixAnimation() {
         tempCtx.translate((50 * sampleScale) / 2, (50 * sampleScale) / 2);
         tempCtx.rotate(Math.PI);
         tempCtx.translate(-(50 * sampleScale) / 2, -(50 * sampleScale) / 2);
-        tempCtx.fillStyle = 'white';
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        tempCtx.fillStyle = isDarkMode ? 'black' : 'white';
         tempCtx.font = `bold ${32 * sampleScale}px Arial`;
         tempCtx.textAlign = 'center';
         tempCtx.textBaseline = 'middle';
@@ -802,8 +803,9 @@ function initArrowMatrixAnimation() {
             dot.x += dot.vx;
             dot.y += dot.vy;
             
-            // Draw dot
-            ctx.fillStyle = 'white';
+            // Draw dot - black in dark mode, white in light mode
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            ctx.fillStyle = isDarkMode ? 'black' : 'white';
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
             ctx.fill();
@@ -894,11 +896,116 @@ function initializeDarkMode() {
     });
 }
 
+// Work section scrollbar functionality
+function scrollToWorkStep(step) {
+    const heroSection = document.getElementById('home');
+    const experienceSection = document.getElementById('experience');
+    const workSection = document.getElementById('work');
+    const scrollbarSteps = document.querySelectorAll('.scrollbar-step');
+    
+    if (!heroSection || !experienceSection || !workSection) return;
+    
+    // Update active step indicator
+    scrollbarSteps.forEach((stepEl, index) => {
+        stepEl.classList.toggle('active', (index + 1) === step);
+    });
+    
+    // Calculate scroll position based on step
+    let scrollTarget = 0;
+    const navHeight = 60;
+    
+    if (step === 1) {
+        // Hero section
+        scrollTarget = heroSection.offsetTop - navHeight;
+    } else if (step === 2) {
+        // Experience section
+        scrollTarget = experienceSection.offsetTop - navHeight;
+    } else if (step === 3) {
+        // Work section
+        scrollTarget = workSection.offsetTop - navHeight;
+    }
+    
+    window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+}
+
+function initWorkScrollbar() {
+    const scrollbarSteps = document.querySelectorAll('.scrollbar-step');
+    
+    // Click handlers for scrollbar steps - smooth scroll to sections
+    scrollbarSteps.forEach((stepEl, index) => {
+        stepEl.addEventListener('click', () => {
+            scrollToWorkStep(index + 1);
+        });
+    });
+    
+    // Update active step based on scroll position (natural scrolling)
+    let ticking = false;
+    
+    function updateStepBasedOnScroll() {
+        const workScrollbar = document.getElementById('workScrollbar');
+        if (!workScrollbar || !workScrollbar.classList.contains('active')) return;
+        
+        const heroSection = document.getElementById('home');
+        const experienceSection = document.getElementById('experience');
+        const workSection = document.getElementById('work');
+        
+        if (!heroSection || !experienceSection || !workSection) return;
+        
+        const scrollPos = window.scrollY;
+        const navHeight = 60;
+        
+        // Get section positions
+        const heroTop = heroSection.offsetTop;
+        const heroBottom = heroTop + heroSection.offsetHeight;
+        const experienceTop = experienceSection.offsetTop;
+        const experienceBottom = experienceTop + experienceSection.offsetHeight;
+        const workTop = workSection.offsetTop;
+        
+        // Determine which section is most visible
+        let currentStep = 1;
+        const viewportCenter = scrollPos + window.innerHeight / 2;
+        
+        if (viewportCenter >= workTop) {
+            currentStep = 3;
+        } else if (viewportCenter >= experienceTop) {
+            currentStep = 2;
+        } else {
+            currentStep = 1;
+        }
+        
+        // Update step indicator
+        scrollbarSteps.forEach((stepEl, index) => {
+            stepEl.classList.toggle('active', (index + 1) === currentStep);
+        });
+    }
+    
+    // Throttled scroll event listener using requestAnimationFrame
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateStepBasedOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // Initial update
+    updateStepBasedOnScroll();
+}
+
 // Initialize dark mode when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeDarkMode);
 } else {
     initializeDarkMode();
+}
+
+// Initialize work scrollbar when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkScrollbar);
+} else {
+    initWorkScrollbar();
 }
 
 // Export for use in other scripts if needed

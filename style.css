@@ -23,6 +23,7 @@
     --space-md: 2rem;
     --space-lg: 4rem;
     --space-xl: 6rem;
+    --scroll-offset: 0px;
     
     /* Transitions */
     --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -102,7 +103,8 @@ a {
 }
 
 .nav-logo:hover {
-    background: var(--color-accent-hover);
+    background: var(--color-text);
+    border-color: var(--color-border);
     color: var(--color-bg);
 
     transform: translateY(-1px);
@@ -147,19 +149,129 @@ a {
 }
 
 #darkModeBtn {
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5rem;
+    position: fixed;
+    top: 6rem;
+    right: 1.5rem;
+    width: 52px;
+    height: 52px;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition);
+    cursor: pointer;
     color: var(--color-text);
+    z-index: 1200;
+    box-shadow: 8px 8px 0 var(--color-border);
+    transition: all var(--transition);
 }
 
 #darkModeBtn:hover {
-    color: var(--color-accent);
-    transform: scale(1.1);
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: translate(-3px, -3px);
+    box-shadow: 12px 12px 0 var(--color-border);
+}
+
+#darkModeBtn:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+#modeIcon {
+    font-size: 1.1rem;
+}
+
+#downloadResumeBtn {
+    position: fixed;
+    top: 9.5rem;
+    right: 1.5rem;
+    width: 52px;
+    height: 52px;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text);
+    z-index: 1200;
+    box-shadow: 8px 8px 0 var(--color-border);
+    transition: all var(--transition);
+    font-size: 1.1rem;
+}
+
+#downloadResumeBtn:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: translate(-3px, -3px);
+    box-shadow: 12px 12px 0 var(--color-border);
+}
+
+#downloadResumeBtn:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* ==========================================
+   WORK SECTION SCROLLBAR
+   ========================================== */
+
+.work-scrollbar {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: none; /* Hidden by default, shown when work section is active */
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.work-scrollbar.active {
+    display: flex;
+}
+
+.work-scrollbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--color-border);
+    z-index: -1;
+}
+
+.scrollbar-step {
+    position: relative;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.scrollbar-step:hover .step-dot {
+    transform: scale(1.2);
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-border);
+    background: var(--color-bg);
+    transition: all var(--transition);
+}
+
+.scrollbar-step.active .step-dot {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    width: 16px;
+    height: 16px;
+}
+
+.step-label {
+    display: none;
 }
 
 /* ==========================================
@@ -269,7 +381,7 @@ a {
 
 .btn-primary {
     background: var(--color-accent);
-    color: white;
+    color: var(--color-bg);
     padding: 0.8rem 2rem;
     border: 2px solid var(--color-accent);
     font-weight: 600;
@@ -285,7 +397,7 @@ a {
     border-color: var(--color-border);
     color: var(--color-bg);
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--color-accent);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
@@ -352,6 +464,23 @@ a {
 
 .section {
     padding: var(--space-md) var(--space-md);
+    border-top: 2px solid var(--color-border);
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section.hero.active {
+    display: flex;
+}
+
+.nav-link.active {
+    color: var(--color-accent);
 }
 
 .section-alt {
@@ -372,6 +501,7 @@ a {
     border-bottom: 3px solid var(--color-border);
     padding-bottom: var(--space-sm);
     display: inline-block;
+    flex-shrink: 0;
 }
 
 /* ==========================================
@@ -391,11 +521,14 @@ a {
     padding: var(--space-md);
     transition: all var(--transition);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .work-item:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 8px 8px 0 var(--color-accent);
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .work-header {
@@ -419,6 +552,7 @@ a {
     padding: 0.3rem 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-left: auto;
 }
 
 .work-description {
@@ -480,7 +614,7 @@ a {
 .work-links {
     display: flex;
     gap: var(--space-sm);
-    margin-top: var(--space-sm);
+    margin-top: auto;
     padding-top: var(--space-sm);
     border-top: 1px solid var(--color-border);
 }
@@ -499,6 +633,15 @@ a {
 /* ==========================================
    ABOUT SECTION
    ========================================== */
+#about{
+    padding-top: var(--space-xl);
+    overflow: hidden;
+}
+
+body.scroll-lock {
+    overflow: hidden;
+    height: 100vh;
+}
 
 .about-content {
     display: grid;
@@ -629,7 +772,6 @@ a {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding: 4px;
 }
 
 /* Company logo placeholder when no image */
@@ -810,10 +952,10 @@ a {
    ========================================== */
 
 .footer {
-    background: var(--color-bg);
+    background: var(--color-border);
     color: var(--color-text);
     text-align: center;
-    padding: var(--space-md);
+    padding: var(--space-xs);
     border-top: 3px solid var(--color-border);
 }
 
@@ -883,6 +1025,15 @@ a {
     
     .section {
         padding: var(--space-md);
+    }
+
+    #darkModeBtn {
+        top: auto;
+        bottom: 5.5rem;
+        right: 1rem;
+        width: 48px;
+        height: 48px;
+        box-shadow: 6px 6px 0 var(--color-border);
     }
     
     /* Experience section mobile styles */

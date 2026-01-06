@@ -15,80 +15,98 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
-            <a href="#home" class="nav-logo" style="    padding: 0.4rem 1.2rem;">
+            <a href="#home" class="nav-logo" data-section="home" style="padding: 0.4rem 1.2rem;">
                 <canvas id="dotMatrixCanvas"></canvas>
             </a>
             <div class="nav-links">
-                <a href="#experience" class="nav-link">EXPERIENCE</a>
-                <a href="#work" class="nav-link">WORK</a>
-                <a href="assets/Aditya_Kulkarni_Resume.pdf" class="nav-link" download>RESUME</a>
-                <a href="#certification" class="nav-link">CERTIFICATIONS</a>
-                <a href="#play" class="nav-link">PLAY</a>
-                <span id="darkModeBtn" role="button" aria-label="Toggle dark/light mode"><i id="modeIcon" class="fas fa-moon"></i></span>
+                <a href="#work" class="nav-link" data-section="work">WORK</a>
+                <a href="#about" class="nav-link" data-section="about">ABOUT</a>
+                <a href="#play" class="nav-link" data-section="play">PLAY</a>
             </div>
         </div>
     </nav>
 
-    <!-- Super Section 1: Hero -->
-    <div class="super-section-1">
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <!-- Background Illustration -->
+    <!-- Floating Dark Mode Toggle -->
+    <button id="darkModeBtn" class="floating-toggle" aria-label="Toggle dark/light mode">
+        <i id="modeIcon" class="fas fa-moon"></i>
+    </button>
 
-            <!-- Hero Card -->
-            <div class="hero-card">
-                <h1 class="hero-title">Building AI solutions that bridge the gap between complex technology and real-world impact.</h1>
-                <p class="hero-status">AI Scientist & SDE at Navinetics AI</p>
-                <p class="hero-status">Previously ML Engineer at University Lands</p>
-                <p class="hero-status">Previously Data Scientist at Boehringer Ingelheim</p>
-                <div class="hero-cta">
-                    <a href="#work" class="btn-primary">View My Work</a>
-                    <a href="assets/Aditya_Kulkarni_Resume.pdf" class="btn-secondary" download>RESUME</a>
-                </div>
-            </div>
-        </section>
+    <!-- Download Resume Button -->
+    <a id="downloadResumeBtn" href="assets/Aditya_Kulkarni_Resume.pdf" download class="floating-button" aria-label="Download resume">
+        <i class="fas fa-download"></i>
+    </a>
+
+    <!-- Work Section Scrollbar -->
+    <div id="workScrollbar" class="work-scrollbar active">
+        <div class="scrollbar-step" data-step="1">
+            <div class="step-dot"></div>
+            <span class="step-label">HERO</span>
+        </div>
+        <div class="scrollbar-step" data-step="2">
+            <div class="step-dot"></div>
+            <span class="step-label">EXPERIENCE</span>
+        </div>
+        <div class="scrollbar-step" data-step="3">
+            <div class="step-dot"></div>
+            <span class="step-label">WORK</span>
+        </div>
     </div>
 
-    <!-- Super Section 2: Main Content -->
-    <div class="super-section-2">
-        <!-- About Section -->
-        <section class="section section-alt" id="about">
-        <div class="section-container">
-            <h2 class="section-title">ABOUT ME</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">I'm a Machine Learning Engineer and CS Graduate Student at UTD, passionate about developing AI solutions that create tangible value.</p>
-                    <p>With experience spanning legal tech, healthcare, and finance, I specialize in deep learning, NLP, and computer vision. I thrive on leading projects from concept to deployment, transforming complex technical challenges into elegant solutions.</p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <span class="detail-label">LOCATION</span>
-                            <span class="detail-value">Dallas, TX</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">EMAIL</span>
-                            <span class="detail-value"><a href="mailto:adityavkulkarni0999@gmail.com">adityavkulkarni0999@gmail.com</a></span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">CONNECT</span>
-                            <span class="detail-value">
-                                <a href="https://www.linkedin.com/in/adityavkulkarni" target="_blank">LinkedIn</a> · 
-                                <a href="https://github.com/adityavkulkarni" target="_blank">GitHub</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-list">
-                    <h3>CORE EXPERTISE</h3>
-                    <div class="skill-tags" id="skills-tags">
-                        <!-- Skills will be dynamically inserted -->
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero content-section active" id="home">
+        <!-- Background Illustration -->
+
+        <!-- Hero Card -->
+        <div class="hero-card">
+            <h1 class="hero-title">Building AI solutions that bridge the gap between complex technology and real-world impact.</h1>
+            <p class="hero-status">AI Scientist & SDE at Navinetics AI</p>
+            <p class="hero-status">Previously ML Engineer at University Lands</p>
+            <p class="hero-status">Previously Data Scientist at Boehringer Ingelheim</p>
+            <div class="hero-cta">
+                <a href="assets/Aditya_Kulkarni_Resume.pdf" class="btn-primary" download>RESUME</a>
             </div>
         </div>
     </section>
-    
+
+
+    <!-- About Section -->
+    <section class="section section-alt content-section" id="about">
+    <div class="section-container">
+        <h2 class="section-title">ABOUT ME</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="about-intro">I'm a Machine Learning Engineer and CS Graduate Student at UTD, passionate about developing AI solutions that create tangible value.</p>
+                <p>With experience spanning legal tech, healthcare, and finance, I specialize in deep learning, NLP, and computer vision. I thrive on leading projects from concept to deployment, transforming complex technical challenges into elegant solutions.</p>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <span class="detail-label">LOCATION</span>
+                        <span class="detail-value">Dallas, TX</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">EMAIL</span>
+                        <span class="detail-value"><a href="mailto:adityavkulkarni0999@gmail.com">adityavkulkarni0999@gmail.com</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">CONNECT</span>
+                        <span class="detail-value">
+                            <a href="https://www.linkedin.com/in/adityavkulkarni" target="_blank">LinkedIn</a> · 
+                            <a href="https://github.com/adityavkulkarni" target="_blank">GitHub</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-list">
+                <h3>CORE EXPERTISE</h3>
+                <div class="skill-tags" id="skills-tags">
+                    <!-- Skills will be dynamically inserted -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
     <!-- Experience Section -->
-    <section class="section" id="experience">
+    <section class="section content-section active" id="experience">
         <div class="section-container">
             <h2 class="section-title">EXPERIENCE</h2>
             <div class="timeline" id="experience-timeline">
@@ -98,38 +116,22 @@
     </section>
 
     <!-- Work Section -->
-    <section class="section" id="work">
+    <section class="section content-section active" id="work">
         <div class="section-container">
-            <h2 class="section-title">SELECTED WORK</h2>
+            <h2 class="section-title">PROJECTS</h2>
             <div class="work-grid" id="work-grid">
                 <!-- Projects will be dynamically inserted here from app.js -->
             </div>
         </div>
     </section>
 
-    <!-- Certification Section -->
-    <section class="section section-alt" id="certification">
-        <div class="section-container">
-            <h2 class="section-title">CERTIFICATIONS & MORE</h2>
-            <div class="cert-grid" id="cert-grid">
-                <!-- Certifications will be dynamically inserted -->
-            </div>
-        </div>
-    </section>
-
     <!-- Play Section -->
-    <section class="section section-alt" id="play">
+    <section class="section section-alt content-section" id="play">
         <div class="section-container">
 
         </div>
     </section>
-    </div>
-    <!-- End of Super Section 2 -->
 
-    <!-- Floating Scroll to Top Button -->
-    <button class="scroll-to-top-btn" id="scrollToTopBtn">
-        <canvas id="arrowMatrixCanvas"></canvas>
-    </button>
 
     <!-- Footer -->
     <footer class="footer">
