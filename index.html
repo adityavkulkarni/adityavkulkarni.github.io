@@ -19,8 +19,11 @@
                 <canvas id="dotMatrixCanvas"></canvas>
             </a>
             <div class="nav-links">
-                <a href="#work" class="nav-link" data-section="work">WORK</a>
-                <a href="#about" class="nav-link" data-section="about">ABOUT</a>
+                <a href="#home" class="nav-link" data-section="home">Home</a>
+                <a href="#experience" class="nav-link" data-section="experience">EXPERIENCE</a>
+                <a href="#education" class="nav-link" data-section="education">EDUCATION</a>
+                <a href="#work" class="nav-link" data-section="work">PROJECTS</a>
+                <a href="#resume" class="nav-link" data-section="resume">RESUME</a>
             </div>
         </div>
     </nav>
@@ -31,7 +34,7 @@
     </button>
 
     <!-- Download Resume Button -->
-    <a id="downloadResumeBtn" href="assets/Aditya_Kulkarni_Resume.pdf" download class="floating-button" aria-label="Download resume">
+    <a id="downloadResumeBtn" href="https://drive.google.com/file/d/1g8y4Um3MvQXAS4IU8J3eF_YSGsRTLha5/view?usp=sharing" target="_blank" class="floating-button" aria-label="View resume">
         <i class="fas fa-download"></i>
     </a>
 
@@ -43,11 +46,7 @@
         </div>
         <div class="scrollbar-step" data-step="2">
             <div class="step-dot"></div>
-            <span class="step-label">EXPERIENCE</span>
-        </div>
-        <div class="scrollbar-step" data-step="3">
-            <div class="step-dot"></div>
-            <span class="step-label">WORK</span>
+            <span class="step-label">ABOUT</span>
         </div>
     </div>
 
@@ -62,7 +61,10 @@
             <p class="hero-status">Previously ML Engineer at University Lands</p>
             <p class="hero-status">Previously Data Scientist at Boehringer Ingelheim</p>
             <div class="hero-cta">
-                <a href="assets/Aditya_Kulkarni_Resume.pdf" class="btn-primary" download>RESUME</a>
+                <a href="https://drive.google.com/file/d/1g8y4Um3MvQXAS4IU8J3eF_YSGsRTLha5/view?usp=sharing" class="btn-primary" target="_blank">RESUME</a>
+                <a href="https://www.linkedin.com/in/adityavkulkarni" class="btn-secondary" target="_blank">LINKEDIN</a>
+                <a href="mailto:adityavkulkarni0999@gmail.com" class="btn-secondary" target="_blank">EMAIL</a>
+                <a href="https://github.com/adityavkulkarni" class="btn-secondary" target="_blank">GITHUB</a>
             </div>
         </div>
     </section>
@@ -101,6 +103,16 @@
             </div>
         </div>
     </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education section content-section" id="education">
+        <div class="section-container">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-timeline" id="education-timeline">
+                <!-- Education items will be dynamically inserted -->
+            </div>
+        </div>
     </section>
 
     <!-- Experience Section -->
@@ -145,11 +157,19 @@
         </div>
     </section>
 
+    <!-- Resume Section -->
+    <section class="section content-section" id="resume">
+        <div class="section-container">
+            <div id="resume-content">
+                <!-- Resume content will be dynamically inserted -->
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- Footer
     <footer class="footer">
         <p>Vibe coded with a lot of coffee</p>
-    </footer>
+    </footer> -->
 
     <script src="updates.js"></script>
     <script src="blogs.js"></script>

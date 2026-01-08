@@ -368,7 +368,6 @@ body.dark-mode .nav {
 
 .hero-card {
     background: var(--color-surface);
-    opacity: 0.8;
     border: 2px solid var(--color-border);
     padding: var(--space-lg);
     max-width: 900px;
@@ -532,7 +531,7 @@ body.dark-mode .nav {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
     margin-top: var(--space-lg);
 }
@@ -660,6 +659,23 @@ body.dark-mode .nav {
 }
 
 #play{
+    padding-top: var(--space-xl);
+}
+
+#resume {
+    padding-top: var(--space-xl);
+}
+
+#education {
+    padding-top: var(--space-xl);
+    min-height: 80vh;
+}
+
+#work {
+    padding-top: var(--space-xl);
+}
+
+#experience {
     padding-top: var(--space-xl);
 }
 
@@ -910,6 +926,442 @@ body.scroll-lock {
 }
 
 .experience-row:hover .experience-arrow {
+    color: var(--color-text);
+}
+
+/* ==========================================
+   EXPERIENCE TIMELINE - INTERACTIVE
+   ========================================== */
+
+.experience-timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+/* Markers Container */
+.experience-markers-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    gap: var(--space-md);
+}
+
+.experience-marker-line {
+    position: relative;
+    width: 80%;
+    flex-shrink: 1;
+}
+
+/* Horizontal line */
+.experience-marker-line::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+    z-index: 0;
+}
+
+.experience-markers-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 var(--space-sm);
+}
+
+/* Marker styles */
+.experience-marker {
+    width: 12px;
+    height: 12px;
+    background: var(--color-border);
+    border: 1px solid var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.experience-marker:hover {
+    background: var(--color-text-light);
+    transform: scale(1.3);
+}
+
+.experience-marker.active {
+    width: 18px;
+    height: 18px;
+    background: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(252, 95, 95, 0.2);
+    transform: scale(1);
+}
+
+body.dark-mode .experience-marker.active {
+    box-shadow: 0 0 0 4px rgba(255, 122, 122, 0.3);
+}
+
+/* Card Container */
+.experience-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Arrow buttons */
+.experience-arrow-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.experience-arrow-btn:hover:not(:disabled) {
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-border);
+}
+
+.experience-arrow-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.arrow-symbol {
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+/* Experience Card */
+.experience-card {
+    flex: 1;
+    max-width: 100%;
+    background: var(--color-surface);
+    padding: var(--space-md);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    border: 2px solid var(--color-border);
+}
+
+.experience-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+
+}
+.experience-card.transitioning {
+    opacity: 0.6;
+}
+
+/* Card content styles */
+.experience-card-date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.experience-card-position {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.experience-card-company {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.experience-card-description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    list-style-type: square;
+    margin-left: 1.5rem;
+}
+
+.experience-card-description li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tags/Technologies */
+.experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.experience-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .experience-markers-wrapper {
+        padding: 0;
+    }
+    
+    .experience-marker-line::before {
+        display: none;
+    }
+    
+    .experience-markers-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .experience-marker {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .experience-marker.active {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .experience-card-container {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .experience-arrow-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .experience-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-arrow-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .experience-card {
+        padding: var(--space-sm);
+    }
+    
+    .experience-card-position {
+        font-size: 1rem;
+    }
+    
+    .experience-marker {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .experience-marker.active {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* ==========================================
+   EDUCATION SECTION
+   ========================================== */
+
+.education {
+    background: var(--color-bg-alt);
+}
+
+.education-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.education-row {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--space-md) 0;
+    background: transparent;
+    transition: all var(--transition);
+    cursor: pointer;
+    position: relative;
+    gap: var(--space-md);
+}
+
+.education-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    border-radius: 8px;
+}
+
+/* Institution logo */
+.education-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.education-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Institution logo placeholder when no image */
+.education-logo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+
+/* Content area */
+.education-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Institution name header */
+.education-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.education-institution {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    transition: color var(--transition);
+}
+
+.education-degree {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    transition: color var(--transition);
+    margin-bottom: 0.5rem;
+}
+
+/* Collapsible details section */
+.education-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+
+.education-row[data-expanded="true"] .education-details {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 0.75rem;
+}
+
+/* Duration and GPA */
+.education-meta {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+}
+
+.education-separator {
+    margin: 0 0.5rem;
+}
+
+.education-duration,
+.education-gpa {
+    display: inline;
+}
+
+/* Details list */
+.education-details-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.education-details-list li {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.education-details-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+/* Dropdown arrow */
+.education-arrow {
+    position: absolute;
+    right: var(--space-sm);
+    top: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    transition: all var(--transition);
+    transform: rotate(0deg);
+}
+
+.education-row[data-expanded="true"] .education-arrow {
+    transform: rotate(180deg);
+}
+
+.education-row:hover .education-arrow {
     color: var(--color-text);
 }
 
@@ -1475,6 +1927,220 @@ body.scroll-lock {
     margin-bottom: var(--space-md);
     font-size: 0.9rem;
     color: var(--color-text-light);
+}
+
+/* ==========================================
+   RESUME SECTION
+   ========================================== */
+
+#resume-content {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    padding: var(--space-lg);
+}
+
+.resume-header {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.resume-title-section {
+    margin-bottom: var(--space-md);
+}
+
+.resume-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    line-height: 1.2;
+}
+
+.resume-title {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+}
+
+.resume-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
+.resume-contact-item {
+    color: var(--color-text-light);
+}
+
+.resume-contact-item a {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.resume-contact-item a:hover {
+    color: var(--color-accent-hover);
+}
+
+.resume-contact-separator {
+    color: var(--color-border);
+}
+
+.resume-links {
+    display: flex;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.resume-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.resume-link:hover {
+    color: var(--color-accent-hover);
+}
+
+.resume-section {
+    margin-bottom: var(--space-lg);
+}
+
+.resume-section-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-border);
+    display: inline-block;
+}
+
+.resume-entries {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.resume-entry {
+    margin-bottom: var(--space-sm);
+}
+
+.resume-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-xs);
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.resume-entry-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.resume-entry-date {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.resume-entry-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+
+.resume-project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-md);
+}
+
+.resume-project-link {
+    color: var(--color-text);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.resume-project-link:hover {
+    color: var(--color-accent);
+}
+
+.resume-entry-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.resume-entry-list li {
+    margin-bottom: var(--space-xs);
+    padding-left: var(--space-md);
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.resume-entry-list li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.resume-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+    padding-left: var(--space-md);
+}
+
+.resume-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-md);
+}
+
+.resume-skill-category {
+    margin-bottom: var(--space-sm);
+}
+
+.resume-skill-category-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.resume-skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.resume-skill-tag {
+    display: inline-block;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    font-weight: 500;
 }
 
 /* ==========================================

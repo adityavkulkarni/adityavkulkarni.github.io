@@ -75,6 +75,20 @@ const portfolioData = {
   "workExperience": [
     {
       "id": 1,
+      "company": "Navinetics AI (An Mayo Clinic Company)",
+      "position": "AI Scientist and Software Engineer",
+      "duration": "Janauary 2026 - Present",
+      "startDate": "2026-01",
+      "endDate": "Present",
+      "location": "Rochster, MN",
+      "icon": "assets/utsi.png",
+      "responsibilities": [
+        
+      ],
+      "technologies": []
+    },
+    {
+      "id": 2,
       "company": "UT System, University Lands",
       "position": "ML Engineer Intern",
       "duration": "June 2025 - December 2025",
@@ -91,7 +105,6 @@ const portfolioData = {
         "Delivered core use cases: legal Q&A chatbot with original-document line references; portal integration for dynamic FAQ/gen analysis; automated compliance alerts from daily operational reports .",
         "Supported plug-and-play LLMs and embeddings (Azure OpenAI, Ollama, Qwen3), ensuring flexibility across retrieval and generation tasks .",
         "Designed extensible, microservices architecture—each component (parsing, storage, retrieval, LLM backend) is fully configurable and independently deployable .",
-        "Technologies: Python, FastAPI, Streamlit, AngularJS, PostgreSQL (pgvector), Neo4j, LangChain, LlamaIndex, Azure OpenAI .",
       ],
       "technologies": ["GPT-4o", "LangChain", "Neo4j", "OpenAI API", "Qwen3", "PostgreSQL", "Streamlit", "PyTorch", "HuggingFace Transformers"]
     },
@@ -261,6 +274,69 @@ const portfolioData = {
   ]
 };
 
+const timeLine = [
+    {
+        startDate: "2021-04",
+        position: "Software Development Engineer in Test-1",
+        company: "PubMatic Inc.",
+        description: [
+            "Automated functional test cases in Python to achieve a 90% reduction in testing time.",
+            "Owned end-to-end testing for high-impact, high-revenue features improving release reliability.",
+            "Participated in feature design discussions and code reviews to ensure best practices in test automation.",
+            "Enhanced development velocity through continuous integration and automation improvements."
+        ],
+        technologies: ["SDET", "Python", "Automation Testing", "QA", "Continuous Integration", "Software Testing"]
+    },
+    {
+        startDate: "2024-08",
+        position: "Graduate Research Assistant",
+        company: "HBS Labs, University of Texas at Dallas",
+        description: [
+            "Researched machine learning-based underwater object detection and tracking systems under Dr. Yonas Tadesse and Dr. Balakrishnan Prabhakaran.",
+            "Developed an object detection pipeline using ResNet50 optimized for aquatic lighting conditions and underwater imagery.",
+            "Conducted extensive literature review of underwater robotics and computer vision-based tracking methods."
+        ],
+        technologies: ["Python", "TensorFlow", "ResNet50", "Computer Vision", "Object Detection", "Deep Learning"]
+    },
+    {
+        startDate: "2025-01",
+        position: "Data Science Intern",
+        company: "Boehringer Ingelheim",
+        description: [
+            "Developed a Streamlit-based application to automate scraping and analysis of medical entity websites for structured data extraction.",
+            "Integrated GPT-4o with advanced prompt engineering (chain-of-thought and structured output) for classification into Class-of-Trade codes.",
+            "Built an evaluation framework using the LLM-as-a-judge methodology with deepeval to assess model accuracy and consistency.",
+            "Created dashboards to visualize evaluation metrics and performance history, driving data-driven improvement cycles.",
+            "Contributed to MLOps workflows by deploying and managing models on OpenShift, ensuring scalability and uptime.",
+            "Collaborated with cross-functional teams to align data-driven insights with business and regulatory needs."
+        ],
+        technologies: ["Python", "Streamlit", "GPT-4o", "deepeval", "OpenShift", "LLM Evaluation", "Prompt Engineering"]
+    },
+    {
+    startDate: "2025-06",
+    position: "Machine Learning Engineer Intern",
+    company: "University of Texas System",
+    description: [
+        "Developed ContractIQ, an AI-powered contract intelligence platform leveraging Retrieval-Augmented Generation (RAG) for automated legal document analysis and cross-referencing.",
+        "Architected a modular pipeline for parsing, chunking, indexing, and retrieving scanned PDF contracts using semantic and agentic strategies.",
+        "Built storage backends using PostgreSQL + pgvector for embedding search and Neo4j for knowledge graph representation of contract entities and relationships.",
+        "Implemented entity and relationship extraction agents enabling graph-based reasoning and compliance verification.",
+        "Delivered end-user applications such as a legal Q&A chatbot with document citations, dynamic FAQ generation, and automated compliance alerts.",
+        "Designed an extensible microservices architecture with modular components for parsing, storage, retrieval, and LLM backends."
+    ],
+    technologies: ["Python", "FastAPI", "Streamlit", "AngularJS", "PostgreSQL", "pgvector", "Neo4j", "LangChain", "LlamaIndex", "Azure OpenAI"]
+    },
+    {
+    startDate: "2026-01",
+    position: "AI Scientist and Software Engineer",
+    company: "Navinetics AI (An Mayo Clinic Company)",
+    description: [
+        "Leading the development of AI-driven neuroimaging solutions for surgical applications.",
+    ],
+    technologies: []
+    }
+];
+
 document.addEventListener('DOMContentLoaded', function() {
     // Populate Work Section
     populateWork();
@@ -268,11 +344,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Populate Skills
     populateSkills();
     
+    // Populate Education Timeline
+    populateEducation();
+    
     // Populate Experience Timeline
     populateExperience();
     
     // Populate Certifications
     populateCertifications();
+    
+    // Populate Resume Section
+    populateResume();
     
     // Initialize interactions
     initializeInteractions();
@@ -367,6 +449,77 @@ function populateSkills() {
     });
 }
 
+function populateEducation() {
+    const timeline = document.getElementById('education-timeline');
+    if (!timeline) return;
+    
+    // Clear existing content
+    timeline.innerHTML = '';
+    
+    // Use education from portfolioData
+    const education = portfolioData.education || [];
+    
+    if (education.length === 0) {
+        timeline.innerHTML = '<p>Education data loading...</p>';
+        return;
+    }
+    
+    education.forEach(edu => {
+        const eduRow = document.createElement('div');
+        eduRow.className = 'education-row';
+        eduRow.dataset.expanded = 'true';
+        
+        const logoHTML = edu.icon 
+            ? `<img src="${edu.icon}" alt="${edu.institution} Logo">` 
+            : `<div class="education-logo-placeholder">${edu.institution.charAt(0)}</div>`;
+        
+        const detailsHTML = edu.details && edu.details.length > 0
+            ? `<ul class="education-details-list">
+                ${edu.details.map(detail => `<li>${detail}</li>`).join('')}
+               </ul>`
+            : '';
+        
+        eduRow.innerHTML = `
+            <div class="education-logo">
+                ${logoHTML}
+            </div>
+            <div class="education-content">
+                <div class="education-header">
+                    <h3 class="education-institution">${edu.institution}</h3>
+                    <span class="education-arrow" style="transform: rotate(180deg);">▼</span>
+                </div>
+                <div class="education-degree">${edu.degree}</div>
+                <div class="education-details" style="display: block;">
+                    <div class="education-meta">
+                        <span class="education-duration">${edu.duration}</span>
+                        ${edu.gpa ? `<span class="education-separator">•</span><span class="education-gpa">GPA: ${edu.gpa}</span>` : ''}
+                    </div>
+                    ${detailsHTML}
+                </div>
+            </div>
+        `;
+        
+        // Add click handler for expand/collapse
+        eduRow.addEventListener('click', function() {
+            const isExpanded = this.dataset.expanded === 'true';
+            const details = this.querySelector('.education-details');
+            const arrow = this.querySelector('.education-arrow');
+            
+            if (isExpanded) {
+                this.dataset.expanded = 'false';
+                details.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                this.dataset.expanded = 'true';
+                details.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        });
+        
+        timeline.appendChild(eduRow);
+    });
+}
+
 function populateExperience() {
     const timeline = document.getElementById('experience-timeline');
     if (!timeline) return;
@@ -374,62 +527,149 @@ function populateExperience() {
     // Clear existing content
     timeline.innerHTML = '';
     
-    // Use work experience from portfolioData
-    const experiences = portfolioData.workExperience || [];
+    // Use timeline data from portfolioData.workExperience for detailed info
+    const experiences = timeLine || [];
     
     if (experiences.length === 0) {
         timeline.innerHTML = '<p>Experience loading...</p>';
         return;
     }
     
+    // Initialize with last entry active
+    let activeIndex = experiences.length - 1;
+    
+    // Create timeline container
+    const timelineWrapper = document.createElement('div');
+    timelineWrapper.className = 'experience-timeline-wrapper';
+    
+    // Create markers line
+    const markersContainer = document.createElement('div');
+    markersContainer.className = 'experience-markers-container';
+    
+    const markerLine = document.createElement('div');
+    markerLine.className = 'experience-marker-line';
+    
+    const markersWrapper = document.createElement('div');
+    markersWrapper.className = 'experience-markers-wrapper';
+    
     experiences.forEach((exp, index) => {
-        const experienceRow = document.createElement('div');
-        experienceRow.className = 'experience-row';
-        experienceRow.dataset.expanded = 'false';
-        
-        // Get first letter of company name for placeholder
-        const companyInitial = exp.company.charAt(0);
-        
-        // Build responsibilities list
-        let responsibilitiesList = '';
-        if (exp.responsibilities && exp.responsibilities.length > 0) {
-            const bulletPoints = exp.responsibilities.map(resp => 
-                `<li>${resp}</li>`
-            ).join('');
-            responsibilitiesList = `<ul class="experience-responsibilities">${bulletPoints}</ul>`;
+        const marker = document.createElement('button');
+        marker.className = 'experience-marker';
+        marker.setAttribute('data-index', index);
+        if (index === activeIndex) {
+            marker.classList.add('active');
         }
-        
-        experienceRow.innerHTML = `
-            <div class="experience-logo">
-                ${exp.icon && exp.icon !== '' ? 
-                    `<img src="${exp.icon}" alt="${exp.company} logo">` : 
-                    `<div class="experience-logo-placeholder">${companyInitial}</div>`
-                }
-            </div>
-            <div class="experience-content">
-                <div class="experience-header">
-                    <span class="experience-company">${exp.company}</span>
-                    <span class="experience-separator">|</span>
-                    <span class="experience-role">${exp.position}</span>
-                </div>
-                <div class="experience-details">
-                    <div class="experience-meta">${exp.duration} • ${exp.location}</div>
-                    ${responsibilitiesList}
-                </div>
-            </div>
-            <span class="experience-arrow">▼</span>
-        `;
-        
-        timeline.appendChild(experienceRow);
+        marker.setAttribute('aria-label', `${exp.position} at ${exp.company}`);
+        marker.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateActiveExperience(index);
+        });
+        markersWrapper.appendChild(marker);
     });
     
-    // Add click handlers to expand/collapse
-    document.querySelectorAll('.experience-row').forEach(row => {
-        row.addEventListener('click', function() {
-            const isExpanded = this.dataset.expanded === 'true';
-            this.dataset.expanded = isExpanded ? 'false' : 'true';
-        });
+    markerLine.appendChild(markersWrapper);
+    
+    // Left arrow
+    const leftArrow = document.createElement('button');
+    leftArrow.className = 'experience-arrow-btn experience-arrow-left';
+    leftArrow.innerHTML = '<span class="arrow-symbol">&lt;</span>';
+    leftArrow.setAttribute('aria-label', 'Previous experience');
+    leftArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (activeIndex > 0) {
+            updateActiveExperience(activeIndex - 1);
+        }
     });
+    
+    // Right arrow
+    const rightArrow = document.createElement('button');
+    rightArrow.className = 'experience-arrow-btn experience-arrow-right';
+    rightArrow.innerHTML = '<span class="arrow-symbol">&gt;</span>';
+    rightArrow.setAttribute('aria-label', 'Next experience');
+    rightArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (activeIndex < experiences.length - 1) {
+            updateActiveExperience(activeIndex + 1);
+        }
+    });
+    
+    markersContainer.appendChild(leftArrow);
+    markersContainer.appendChild(markerLine);
+    markersContainer.appendChild(rightArrow);
+    timelineWrapper.appendChild(markersContainer);
+    
+    // Create card container
+    const cardContainer = document.createElement('div');
+    cardContainer.className = 'experience-card-container';
+    
+    // Card content
+    const card = document.createElement('div');
+    card.className = 'experience-card';
+    card.id = 'experience-card';
+    
+    cardContainer.appendChild(card);
+    timelineWrapper.appendChild(cardContainer);
+    
+    timeline.appendChild(timelineWrapper);
+    
+    // Function to update active experience
+    function updateActiveExperience(index) {
+        if (index < 0 || index >= experiences.length) return;
+        
+        activeIndex = index;
+        
+        // Update markers
+        document.querySelectorAll('.experience-marker').forEach((m, i) => {
+            m.classList.toggle('active', i === activeIndex);
+        });
+        
+        // Update card with transition
+        const card = document.getElementById('experience-card');
+        card.classList.add('transitioning');
+        
+        setTimeout(() => {
+            renderExperienceCard(experiences[activeIndex]);
+            card.classList.remove('transitioning');
+        }, 150);
+        
+        // Update arrow states
+        leftArrow.disabled = activeIndex === 0;
+        rightArrow.disabled = activeIndex === experiences.length - 1;
+    }
+    
+    // Initial render with correct arrow states
+    updateActiveExperience(activeIndex);
+}
+
+function renderExperienceCard(experience) {
+    const card = document.getElementById('experience-card');
+    if (!card) return;
+    
+    // Format date for display
+    const dateStr = experience.startDate || experience.Date || '';
+    const [year, month] = dateStr.split('-');
+    const monthNames = ['', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const formattedDate = `${monthNames[parseInt(month) || 1]} ${year}`;
+    
+    // Format tags/technologies
+    const tags = experience.technologies || [];
+    const tagsHTML = tags.length > 0 
+        ? `<div class="experience-tags">${tags.map(tag => `<span class="experience-tag">${tag}</span>`).join('')}</div>`
+        : '';
+    
+    // Format description as bullet points if it's an array
+    const descriptionHTML = Array.isArray(experience.description)
+        ? `<ul class="experience-card-description">${experience.description.map(item => `<li>${item}</li>`).join('')}</ul>`
+        : `<p class="experience-card-description">${experience.description || ''}</p>`;
+    
+    card.innerHTML = `
+        <div class="experience-card-date">${formattedDate}</div>
+        <h3 class="experience-card-position">${experience.position}</h3>
+        <div class="experience-card-company">${experience.company}</div>
+        ${tagsHTML}
+        <br>
+        ${descriptionHTML}
+    `;
 }
 
 function populateCertifications() {
@@ -463,6 +703,129 @@ function populateCertifications() {
     });
 }
 
+function populateResume() {
+    const resumeContainer = document.getElementById('resume-content');
+    if (!resumeContainer) return;
+    
+    // Clear existing content
+    resumeContainer.innerHTML = '';
+    
+    const personalInfo = portfolioData.personalInfo || {};
+    const experiences = portfolioData.workExperience || [];
+    const education = portfolioData.education || [];
+    const skills = portfolioData.skills || {};
+    
+    // Build resume HTML
+    let resumeHTML = `
+        <div class="resume-header">
+            <div class="resume-title-section">
+                <h1 class="resume-name">${personalInfo.name || 'Name'}</h1>
+                <p class="resume-title">${personalInfo.title || 'Title'}</p>
+            </div>
+            <div class="resume-contact">
+                <a href="mailto:${personalInfo.email}" class="resume-contact-item">${personalInfo.email}</a>
+                <span class="resume-contact-separator">•</span>
+                <span class="resume-contact-item">${personalInfo.phone}</span>
+                <span class="resume-contact-separator">•</span>
+                <span class="resume-contact-item">${personalInfo.location}</span>
+            </div>
+            <div class="resume-links">
+                ${personalInfo.linkedin ? `<a href="${personalInfo.linkedin}" target="_blank" class="resume-link">LinkedIn</a>` : ''}
+                ${personalInfo.github ? `<a href="${personalInfo.github}" target="_blank" class="resume-link">GitHub</a>` : ''}
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 class="resume-section-title">EDUCATION</h2>
+            <div class="resume-entries">
+                ${education.map(edu => `
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <div class="resume-entry-title">${edu.degree}</div>
+                            <div class="resume-entry-date">${edu.duration}</div>
+                        </div>
+                        <div class="resume-entry-subtitle">${edu.institution} ${edu.gpa ? `• GPA: ${edu.gpa}` : ''}</div>
+                        ${edu.details && edu.details.length > 0 ? `
+                            <ul class="resume-entry-list">
+                                ${edu.details.map(detail => `<li>${detail}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 class="resume-section-title">EXPERIENCE</h2>
+            <div class="resume-entries">
+                ${experiences.map(exp => `
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <div class="resume-entry-title">${exp.position}</div>
+                            <div class="resume-entry-date">${exp.duration}</div>
+                        </div>
+                        <div class="resume-entry-subtitle">${exp.company} • ${exp.location}</div>
+                        ${exp.responsibilities && exp.responsibilities.length > 0 ? `
+                            <ul class="resume-entry-list">
+                                ${exp.responsibilities.map(resp => `<li>${resp}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        ${exp.technologies && exp.technologies.length > 0 ? `
+                            <div class="resume-tech-tags">
+                                ${exp.technologies.map(tech => `<span class="resume-skill-tag">${tech}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        
+
+        <div class="resume-section">
+            <h2 class="resume-section-title">PROJECTS</h2>
+            <div class="resume-entries">
+                ${portfolioData.projects && portfolioData.projects.length > 0 ? portfolioData.projects.slice(0, 6).map(project => `
+                    <div class="resume-entry">
+                        <div class="resume-entry-header">
+                            <div class="resume-entry-title">${project.title}</div>
+                            <div class="resume-entry-date">${project.category}</div>
+                        </div>
+                        ${project.description ? `<p class="resume-project-description">${project.description.replace(/<br>/g, ' ')}</p>` : ''}
+                        ${(project.githubUrl || project.liveUrl) ? `
+                            <div class="resume-project-links">
+                                ${project.githubUrl ? `<a href="${project.githubUrl}" class="resume-project-link" target="_blank">GitHub →</a>` : ''}
+                                ${project.liveUrl ? `<a href="${project.liveUrl}" class="resume-project-link" target="_blank">Live →</a>` : ''}
+                            </div>
+                        ` : ''}
+                        ${project.techStack && project.techStack.length > 0 ? `
+                            <div class="resume-tech-tags">
+                                ${project.techStack.map(tech => `<span class="resume-skill-tag">${tech}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('') : ''}
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 class="resume-section-title">SKILLS</h2>
+            <div class="resume-skills-grid">
+                ${skills.categories ? Object.entries(skills.categories).map(([category, skillList]) => `
+                    <div class="resume-skill-category">
+                        <h3 class="resume-skill-category-name">${category}</h3>
+                        <div class="resume-skill-tags">
+                            ${skillList.map(skill => `<span class="resume-skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('') : ''}
+            </div>
+        </div>
+    `;
+    
+    resumeContainer.innerHTML = resumeHTML;
+}
+
 function initializeInteractions() {
     const sectionTriggers = document.querySelectorAll('[data-section]');
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
@@ -471,15 +834,20 @@ function initializeInteractions() {
 
     const sectionMap = {
         home: ['home', 'about'],
-        about: ['about'],
+        hero: ['home', 'about'], // alias for any existing hero references
+        about: ['home', 'about'],
+        education: ['education'],
         experience: ['experience'],
-        work: ['home', 'experience', 'work'],
+        work: ['work'],
         certification: ['certification'],
+        resume: ['resume'],
         play: ['play']
     };
 
     const setActiveSections = (key) => {
-        const targets = sectionMap[key] || sectionMap.home;
+        // Prefer explicit map entries; fall back to a section whose id matches the key; otherwise default home
+        const directTarget = document.getElementById(key) ? [key] : null;
+        const targets = sectionMap[key] || directTarget || sectionMap.home;
 
         sections.forEach(section => {
             const shouldShow = targets.includes(section.id);
@@ -492,19 +860,11 @@ function initializeInteractions() {
 
         // Handle scroll locking and work scrollbar
         const workScrollbar = document.getElementById('workScrollbar');
-        
-        if (targets.includes('about')) {
-            //document.body.classList.add('scroll-lock');
-            if (workScrollbar) workScrollbar.classList.remove('active');
-        } else if (key === 'work') {
-            // Enable natural scrolling for work section - no scroll lock
-            document.body.classList.remove('scroll-lock');
-            if (workScrollbar) workScrollbar.classList.add('active');
-            // Scroll to top to show hero section
-            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-        } else {
-            document.body.classList.remove('scroll-lock');
-            if (workScrollbar) workScrollbar.classList.remove('active');
+        const showingHeroAbout = targets.includes('home') || targets.includes('about');
+
+        document.body.classList.remove('scroll-lock');
+        if (workScrollbar) {
+            workScrollbar.classList.toggle('active', showingHeroAbout);
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -522,7 +882,7 @@ function initializeInteractions() {
     });
 
     // Ensure default view shows hero + work ex + projects
-    setActiveSections('work');
+    setActiveSections('home');
 }
 
 // ==========================================
@@ -998,11 +1358,10 @@ function initBlogModal() {
 // Work section scrollbar functionality
 function scrollToWorkStep(step) {
     const heroSection = document.getElementById('home');
-    const experienceSection = document.getElementById('experience');
-    const workSection = document.getElementById('work');
+    const aboutSection = document.getElementById('about');
     const scrollbarSteps = document.querySelectorAll('.scrollbar-step');
     
-    if (!heroSection || !experienceSection || !workSection) return;
+    if (!heroSection || !aboutSection) return;
     
     // Update active step indicator
     scrollbarSteps.forEach((stepEl, index) => {
@@ -1010,19 +1369,9 @@ function scrollToWorkStep(step) {
     });
     
     // Calculate scroll position based on step
-    let scrollTarget = 0;
     const navHeight = 60;
-    
-    if (step === 1) {
-        // Hero section
-        scrollTarget = heroSection.offsetTop - navHeight;
-    } else if (step === 2) {
-        // Experience section
-        scrollTarget = experienceSection.offsetTop - navHeight;
-    } else if (step === 3) {
-        // Work section
-        scrollTarget = workSection.offsetTop - navHeight;
-    }
+    const clampedStep = Math.min(Math.max(step, 1), 2);
+    const scrollTarget = (clampedStep === 1 ? heroSection : aboutSection).offsetTop - navHeight;
     
     window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
 }
@@ -1045,32 +1394,15 @@ function initWorkScrollbar() {
         if (!workScrollbar || !workScrollbar.classList.contains('active')) return;
         
         const heroSection = document.getElementById('home');
-        const experienceSection = document.getElementById('experience');
-        const workSection = document.getElementById('work');
-        
-        if (!heroSection || !experienceSection || !workSection) return;
-        
+        const aboutSection = document.getElementById('about');
+
+        if (!heroSection || !aboutSection) return;
+
         const scrollPos = window.scrollY;
-        const navHeight = 60;
-        
-        // Get section positions
-        const heroTop = heroSection.offsetTop;
-        const heroBottom = heroTop + heroSection.offsetHeight;
-        const experienceTop = experienceSection.offsetTop;
-        const experienceBottom = experienceTop + experienceSection.offsetHeight;
-        const workTop = workSection.offsetTop;
-        
-        // Determine which section is most visible
-        let currentStep = 1;
+        const aboutTop = aboutSection.offsetTop;
         const viewportCenter = scrollPos + window.innerHeight / 2;
-        
-        if (viewportCenter >= workTop) {
-            currentStep = 3;
-        } else if (viewportCenter >= experienceTop) {
-            currentStep = 2;
-        } else {
-            currentStep = 1;
-        }
+
+        const currentStep = viewportCenter >= aboutTop ? 2 : 1;
         
         // Update step indicator
         scrollbarSteps.forEach((stepEl, index) => {
