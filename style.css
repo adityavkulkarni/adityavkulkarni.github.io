@@ -1,5 +1,5 @@
 /* ==========================================
-   BRUTALIST MINIMALIST PORTFOLIO STYLES
+ MINIMALIST PORTFOLIO STYLES
    ========================================== */
 
 /* CSS Variables */
@@ -9,8 +9,8 @@
     --color-surface: #eeeeee;
     --color-text: #1a1a1a;
     --color-text-light: #666666;
-    --color-accent: #fc5f5f;
-    --color-accent-hover: #782d2d;
+    --color-accent: #007c92;
+    --color-accent-hover: #015564;
     --color-border: #d0d0d0;
     
     /* Typography */
@@ -34,8 +34,8 @@ body.dark-mode {
     --color-surface: #2a2a2a;
     --color-text: #f8f8f8;
     --color-text-light: #999999;
-    --color-accent: #ff7a7ac0;
-    --color-accent-hover: #ff5f5fb4;
+    --color-accent: #007c92;
+    --color-accent-hover: #015564;
     --color-border: #444444;
 }
 
@@ -170,7 +170,7 @@ body.dark-mode .nav {
     cursor: pointer;
     color: var(--color-text);
     z-index: 1200;
-    box-shadow: 8px 8px 0 var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-border);
     transition: all var(--transition);
 }
 
@@ -178,7 +178,7 @@ body.dark-mode .nav {
     background: var(--color-accent);
     color: var(--color-bg);
     transform: translate(-3px, -3px);
-    box-shadow: 12px 12px 0 var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 #darkModeBtn:focus-visible {
@@ -204,7 +204,7 @@ body.dark-mode .nav {
     cursor: pointer;
     color: var(--color-text);
     z-index: 1200;
-    box-shadow: 8px 8px 0 var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-border);
     transition: all var(--transition);
     font-size: 1.1rem;
 }
@@ -213,7 +213,7 @@ body.dark-mode .nav {
     background: var(--color-accent);
     color: var(--color-bg);
     transform: translate(-3px, -3px);
-    box-shadow: 12px 12px 0 var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 #downloadResumeBtn:focus-visible {
@@ -411,6 +411,7 @@ body.dark-mode .nav {
     transition: all var(--transition);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .btn-primary:hover {
@@ -418,7 +419,7 @@ body.dark-mode .nav {
     border-color: var(--color-border);
     color: var(--color-bg);
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
@@ -432,13 +433,14 @@ body.dark-mode .nav {
     transition: all var(--transition);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .btn-secondary:hover {
     background: var(--color-text);
     color: var(--color-bg);
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 /* ==========================================
@@ -999,12 +1001,7 @@ body.scroll-lock {
     height: 18px;
     background: var(--color-accent);
     border: 2px solid var(--color-accent);
-    box-shadow: 0 0 0 4px rgba(252, 95, 95, 0.2);
     transform: scale(1);
-}
-
-body.dark-mode .experience-marker.active {
-    box-shadow: 0 0 0 4px rgba(255, 122, 122, 0.3);
 }
 
 /* Card Container */
