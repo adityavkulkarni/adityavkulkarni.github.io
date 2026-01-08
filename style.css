@@ -9,9 +9,10 @@
     --color-bg: #f8f8f8;
     --color-surface: #eeeeee;
     --color-text: #1a1a1a;
-    --color-text-light: #666666;
-    --color-accent: #007c92;
-    --color-accent-hover: #015564;
+    --color-text-light: #636363;
+    --color-text-primary: #eeeeee;
+    --color-accent: #080808;
+    --color-accent-hover: #101010;
     --color-border: #d0d0d0;
     
     /* Typography */
@@ -34,9 +35,10 @@ body.dark-mode {
     --color-bg: #1a1a1a;
     --color-surface: #2a2a2a;
     --color-text: #f8f8f8;
-    --color-text-light: #999999;
-    --color-accent: #007c92;
-    --color-accent-hover: #015564;
+    --color-text-light: #757474;
+    --color-text-primary: #eeeeee;
+    --color-accent: #080808;
+    --color-accent-hover: #101010;
     --color-border: #444444;
 }
 
@@ -109,12 +111,14 @@ body.dark-mode .nav {
     letter-spacing: -0.02em;
     transition: all var(--transition);
     display: block;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .nav-logo:hover {
     border-color: var(--color-border);
+    background: var(--color-accent-hover);
     color: var(--color-bg);
-
+    box-shadow: 8px 8px 0 var(--color-border);
     transform: translateY(-1px);
 }
 
@@ -175,7 +179,7 @@ body.dark-mode .nav {
 }
 
 #darkModeBtn:hover {
-    background: var(--color-accent);
+    background: var(--color-accent-hover);
     color: var(--color-bg);
     transform: translate(-3px, -3px);
     box-shadow: 8px 8px 0 var(--color-border);
@@ -210,7 +214,7 @@ body.dark-mode .nav {
 }
 
 #downloadResumeBtn:hover {
-    background: var(--color-accent);
+    background: var(--color-accent-hover);
     color: var(--color-bg);
     transform: translate(-3px, -3px);
     box-shadow: 8px 8px 0 var(--color-border);
@@ -373,7 +377,7 @@ body.dark-mode .nav {
     max-width: 900px;
     position: relative;
     z-index: 3;
-    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 12px 12px 0 var(--color-border);
 }
 
 .hero-title {
@@ -406,7 +410,7 @@ body.dark-mode .nav {
 
 .btn-primary {
     background: var(--color-accent);
-    color: var(--color-bg);
+    color: var(--color-text-primary);
     padding: 0.8rem 2rem;
     border: 2px solid var(--color-accent);
     font-weight: 600;
@@ -419,11 +423,11 @@ body.dark-mode .nav {
 }
 
 .btn-primary:hover {
-    background: var(--color-text);
+    background: var(--color-accent-hover);
     border-color: var(--color-border);
-    color: var(--color-bg);
+    color: var(--color-text-primary);
     transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 .btn-secondary {
@@ -441,7 +445,7 @@ body.dark-mode .nav {
 }
 
 .btn-secondary:hover {
-    background: var(--color-text);
+    background: var(--color-accent-hover);
     color: var(--color-bg);
     transform: translate(-2px, -2px);
     box-shadow: 8px 8px 0 var(--color-border);
@@ -551,11 +555,12 @@ body.dark-mode .nav {
     display: flex;
     flex-direction: column;
     height: 100%;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .work-item:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 .work-header {
@@ -606,11 +611,13 @@ body.dark-mode .nav {
     gap: 0.5rem;
     transition: all var(--transition);
     border-radius: 2px;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .description-toggle:hover {
     background: var(--color-surface);
     border-color: var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 .toggle-arrow {
@@ -1030,13 +1037,14 @@ body.scroll-lock {
     font-size: 1.2rem;
     transition: all var(--transition);
     flex-shrink: 0;
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .experience-arrow-btn:hover:not(:disabled) {
     color: var(--color-accent);
     border: 2px solid var(--color-accent);
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--color-border);
+    box-shadow: 8px 8px 0 var(--color-border);
 }
 
 .experience-arrow-btn:disabled {
@@ -1058,11 +1066,12 @@ body.scroll-lock {
     opacity: 1;
     transition: opacity 0.3s ease;
     border: 2px solid var(--color-border);
+    box-shadow: 4px 4px 0 var(--color-border);
 }
 
 .experience-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 0 var(--color-border);
 
 }
 .experience-card.transitioning {
