@@ -450,7 +450,7 @@ function populateResume() {
     
     // Build resume HTML
     let resumeHTML = `
-        <div class="resume-header">
+        <div class="resume-header" id="resume-section-header" data-section-index="0">
             <div class="resume-title-section">
                 <h1 class="resume-name">${personalInfoData.name || 'Name'}</h1>
                 <p class="resume-title">${personalInfoData.title || 'Title'}</p>
@@ -469,7 +469,7 @@ function populateResume() {
         </div>
 
         ${personalInfoData.summary ? `
-        <div class="resume-section">
+        <div class="resume-section" id="resume-section-summary" data-section-index="1">
             <h2 class="resume-section-title">PROFESSIONAL SUMMARY</h2>
             <div class="resume-summary">
                 <p>${personalInfoData.summary}</p>
@@ -477,7 +477,7 @@ function populateResume() {
         </div>
         ` : ''}
 
-        <div class="resume-section">
+        <div class="resume-section" id="resume-section-education" data-section-index="${personalInfoData.summary ? '2' : '1'}">
             <h2 class="resume-section-title">EDUCATION</h2>
             <div class="resume-entries">
                 ${educationData.map(edu => `
@@ -497,7 +497,7 @@ function populateResume() {
             </div>
         </div>
 
-        <div class="resume-section">
+        <div class="resume-section" id="resume-section-experience" data-section-index="${personalInfoData.summary ? '3' : '2'}">
             <h2 class="resume-section-title">EXPERIENCE</h2>
             <div class="resume-entries">
                 ${experiences.map(exp => `
@@ -524,7 +524,7 @@ function populateResume() {
 
         
 
-        <div class="resume-section">
+        <div class="resume-section" id="resume-section-projects" data-section-index="${personalInfoData.summary ? '4' : '3'}">
             <h2 class="resume-section-title">PROJECTS</h2>
             <div class="resume-entries">
                 ${projectsData && projectsData.length > 0 ? projectsData.slice(0, 6).map(project => `
@@ -550,7 +550,7 @@ function populateResume() {
             </div>
         </div>
 
-        <div class="resume-section">
+        <div class="resume-section" id="resume-section-skills" data-section-index="${personalInfoData.summary ? '5' : '4'}">
             <h2 class="resume-section-title">SKILLS</h2>
             <div class="resume-skills-grid">
                 ${skillsData.categories ? Object.entries(skillsData.categories).map(([category, skillList]) => `
@@ -566,6 +566,11 @@ function populateResume() {
     `;
     
     resumeContainer.innerHTML = resumeHTML;
+    
+    // Initialize resume scrollbar after content is inserted
+    setTimeout(() => {
+        initResumeScrollbar();
+    }, 100);
 }
 
 function initializeInteractions() {
@@ -602,11 +607,16 @@ function initializeInteractions() {
 
         // Handle scroll locking and work scrollbar
         const workScrollbar = document.getElementById('workScrollbar');
+        const resumeScrollbar = document.getElementById('resumeScrollbar');
         const showingHeroAbout = targets.includes('home') || targets.includes('about');
+        const showingResume = targets.includes('resume');
 
         document.body.classList.remove('scroll-lock');
         if (workScrollbar) {
             workScrollbar.classList.toggle('active', showingHeroAbout);
+        }
+        if (resumeScrollbar) {
+            resumeScrollbar.classList.toggle('active', showingResume);
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1133,6 +1143,102 @@ function initWorkScrollbar() {
     
     // Initial update
     updateStepBasedOnScroll();
+}
+
+// Resume section scrollbar functionality
+function initResumeScrollbar() {
+    const resumeScrollbar = document.getElementById('resumeScrollbar');
+    if (!resumeScrollbar) return;
+    
+    // Get all resume sections with data-section-index
+    const resumeSections = document.querySelectorAll('[data-section-index]');
+    if (resumeSections.length === 0) return;
+    
+    // Build scrollbar steps dynamically
+    resumeScrollbar.innerHTML = '';
+    
+    const sectionLabels = {
+        'resume-section-header': 'HEADER',
+        'resume-section-summary': 'SUMMARY',
+        'resume-section-education': 'EDUCATION',
+        'resume-section-experience': 'EXPERIENCE',
+        'resume-section-projects': 'PROJECTS',
+        'resume-section-skills': 'SKILLS'
+    };
+    scrollToResumeSection("0"); // Scroll to top initially
+    
+    resumeSections.forEach((section, index) => {
+        const step = document.createElement('div');
+        step.className = 'scrollbar-step resume-scrollbar-step';
+        step.dataset.step = index + 1;
+        step.dataset.target = section.id;
+        
+        const label = sectionLabels[section.id] || `SECTION ${index + 1}`;
+        
+        step.innerHTML = `
+            <div class="step-dot"></div>
+            <span class="step-label">${label}</span>
+        `;
+        
+        resumeScrollbar.appendChild(step);
+        
+        // Add click handler
+        step.addEventListener('click', () => {
+            scrollToResumeSection(section.id);
+        });
+    });
+    
+    // Update active step based on scroll position
+    let ticking = false;
+    
+    function updateResumeStepBasedOnScroll() {
+        if (!resumeScrollbar.classList.contains('active')) return;
+        
+        const scrollPos = window.scrollY;
+        const viewportCenter = scrollPos + window.innerHeight / 2;
+        
+        let activeIndex = 0;
+        
+        resumeSections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (viewportCenter >= sectionTop && viewportCenter < sectionBottom) {
+                activeIndex = index;
+            }
+        });
+        
+        // Update step indicators
+        const steps = resumeScrollbar.querySelectorAll('.scrollbar-step');
+        steps.forEach((stepEl, index) => {
+            stepEl.classList.toggle('active', index === activeIndex);
+        });
+    }
+    
+    // Throttled scroll event listener using requestAnimationFrame
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateResumeStepBasedOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // Initial update
+    updateResumeStepBasedOnScroll();
+}
+
+function scrollToResumeSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    const navHeight = 60;
+    const padding = 40; // Additional padding to ensure title is visible
+    const scrollTarget = section.offsetTop - navHeight - padding;
+    
+    window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
 }
 
 // Initialize dark mode when DOM is ready
