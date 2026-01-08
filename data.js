@@ -1,11 +1,11 @@
 const personalInfo = {
     "name": "Aditya Kulkarni",
-    "title": "Machine Learning Engineer | CS Graduate Student at UTD",
+    "title": "Software Engineer • AI Scientist • MS in Computer Science (UT Dallas ‘25)",
     "tagline": "Developing AI solutions that drive real-world impact",
-    "bio": "Results-driven Machine Learning Engineer with experience creating and implementing AI solutions in legal, healthcare, and finance. Skilled at leading projects from concept to completion, with a strong background in deep learning, NLP, and computer vision.",
+    "summary": "Software Engineer and AI Scientist with experience building production-grade ML systems, agentic RAG platforms, and medical imaging solutions across healthcare and pharma. Skilled in Python, PyTorch, TensorFlow, FastAPI, React, Kafka, and AWS, with a focus on multimodal MRI/CT/3D registration, trajectory planning, and real-time analytics.",
     "email": "adityavkulkarni0999@gmail.com",
-    "phone": "+1 945-527-5186",
-    "location": "Dallas, TX",
+    "phone": "+1 (945) 527-5186",
+    "location": "Rochester, MN",
     "linkedin": "https://www.linkedin.com/in/adityavkulkarni",
     "github": "https://www.github.com/adityavkulkarni",
     "website": "https://adityavkulkarni.github.io",
@@ -13,8 +13,8 @@ const personalInfo = {
 };
 
 const hero = {
-    "title": "Quietly supercharging neurosurgery with clever imaging tech.",
-    "currentStatus": "AI Scientist & SDE at Navinetics AI",
+    "title": "Software Engineer building AI-driven neurosurgical planning and navigation system.",
+    "currentStatus": "AI Scientist & Software Engineer at Navinetics AI",
     "previousPositions": [
         "Previously ML Engineer at University Lands",
         "Previously Data Scientist at Boehringer Ingelheim"
@@ -22,8 +22,8 @@ const hero = {
 };
 
 const about = {
-    "intro": "I'm a Machine Learning Engineer and CS Graduate Student at UTD, passionate about developing AI solutions that create tangible value.",
-    "description": "With experience spanning legal tech, healthcare, and finance, I specialize in deep learning, NLP, and computer vision. I thrive on leading projects from concept to deployment, transforming complex technical challenges into elegant solutions."
+    "intro": "I am a Software Engineer and AI Scientist building next-generation neurosurgical planning and navigation systems at Navinetics AI. ",
+    "description": "With a Master’s in Computer Science from The University of Texas at Dallas and prior experience across MLOps, agentic RAG systems, and production-grade ML applications, I specialize in designing and deploying robust, high-impact software that bridges advanced machine learning with real-world clinical and enterprise use cases. My work spans computer vision, LLM-powered systems, and cloud-native architectures, and I thrive at the intersection of research and engineering."
 };
 
 const projects = [

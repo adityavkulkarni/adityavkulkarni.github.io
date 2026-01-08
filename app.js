@@ -41,7 +41,7 @@ function populateHero() {
     
     heroCard.innerHTML = `
         <h1 class="hero-title">${heroData.title || 'Welcome'}</h1>
-        <p class="hero-status">${heroData.currentStatus || ''}</p>
+        <p class="hero-status current-status">${heroData.currentStatus || ''}</p>
         ${heroData.previousPositions ? heroData.previousPositions.map(pos => `<p class="hero-status">${pos}</p>`).join('') : ''}
         <div class="hero-cta">
             <a href="${personalInfoData.resumeUrl || '#'}" class="btn-primary" target="_blank">RESUME</a>
@@ -468,6 +468,15 @@ function populateResume() {
             </div>
         </div>
 
+        ${personalInfoData.summary ? `
+        <div class="resume-section">
+            <h2 class="resume-section-title">PROFESSIONAL SUMMARY</h2>
+            <div class="resume-summary">
+                <p>${personalInfoData.summary}</p>
+            </div>
+        </div>
+        ` : ''}
+
         <div class="resume-section">
             <h2 class="resume-section-title">EDUCATION</h2>
             <div class="resume-entries">
@@ -664,7 +673,7 @@ function initDotMatrixAnimation() {
         
         tempCtx.font = `900 ${fontSize * sampleScale}px Space Mono, monospace`;
         const isDarkMode = document.body.classList.contains('dark-mode');
-        tempCtx.fillStyle = isDarkMode ? 'black' : 'white';
+        tempCtx.fillStyle = 'white';
         tempCtx.textBaseline = 'middle';
         tempCtx.fillText(text, 20 * sampleScale, (canvasHeight / 2) * sampleScale);
         
@@ -744,7 +753,7 @@ function initDotMatrixAnimation() {
             // Draw dot - black when hovered in dark mode, otherwise white
             const isDarkMode = document.body.classList.contains('dark-mode');
             const isHovered = dist < interactionRadius;
-            ctx.fillStyle = (isDarkMode && isHovered) ? 'black' : 'white';
+            ctx.fillStyle = 'white';
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
             ctx.fill();
@@ -813,7 +822,7 @@ function initArrowMatrixAnimation() {
         tempCtx.rotate(Math.PI);
         tempCtx.translate(-(50 * sampleScale) / 2, -(50 * sampleScale) / 2);
         const isDarkMode = document.body.classList.contains('dark-mode');
-        tempCtx.fillStyle = isDarkMode ? 'black' : 'white';
+        tempCtx.fillStyle = 'white';
         tempCtx.font = `bold ${32 * sampleScale}px Arial`;
         tempCtx.textAlign = 'center';
         tempCtx.textBaseline = 'middle';
@@ -894,7 +903,7 @@ function initArrowMatrixAnimation() {
             
             // Draw dot - black in dark mode, white in light mode
             const isDarkMode = document.body.classList.contains('dark-mode');
-            ctx.fillStyle = isDarkMode ? 'black' : 'white';
+            ctx.fillStyle = 'white';
             ctx.beginPath();
             ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
             ctx.fill();

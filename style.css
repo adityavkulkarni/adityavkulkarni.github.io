@@ -2,9 +2,10 @@
  MINIMALIST PORTFOLIO STYLES
    ========================================== */
 
-/* CSS Variables */
+/* ==========================================
+   CSS Variables */
 :root {
-    /* Colors */
+    /* Define color variables */
     --color-bg: #f8f8f8;
     --color-surface: #eeeeee;
     --color-text: #1a1a1a;
@@ -111,7 +112,6 @@ body.dark-mode .nav {
 }
 
 .nav-logo:hover {
-    background: var(--color-text);
     border-color: var(--color-border);
     color: var(--color-bg);
 
@@ -391,6 +391,10 @@ body.dark-mode .nav {
     margin-bottom: var(--space-md);
     border-left: 3px solid var(--color-accent);
     padding-left: var(--space-sm);
+}
+
+.current-status {
+    color: var(--color-text);
 }
 
 .hero-cta {
