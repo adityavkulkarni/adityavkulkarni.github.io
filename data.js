@@ -87,7 +87,7 @@ const projects = [
 ];
 
 const workExperience = [
-    {
+    /*{
       "id": 1,
       "company": "Navinetics AI (An Mayo Clinic Company)",
       "position": "AI Scientist and Software Engineer",
@@ -100,7 +100,7 @@ const workExperience = [
         
       ],
       "technologies": []
-    },
+    },*/
     {
       "id": 2,
       "company": "UT System, University Lands",
@@ -342,7 +342,7 @@ const timeLine = [
     ],
     technologies: ["Python", "FastAPI", "Streamlit", "AngularJS", "PostgreSQL", "pgvector", "Neo4j", "LangChain", "LlamaIndex", "Azure OpenAI"]
     },
-    {
+    /*{
     startDate: "2026-01",
     position: "AI Scientist and Software Engineer",
     company: "Navinetics AI (An Mayo Clinic Company)",
@@ -350,5 +350,5 @@ const timeLine = [
         "Leading the development of AI-driven neuroimaging solutions for surgical applications.",
     ],
     technologies: []
-    }
+    }*/
 ];
