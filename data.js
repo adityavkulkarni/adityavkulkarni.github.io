@@ -87,20 +87,22 @@ const projects = [
 ];
 
 const workExperience = [
-    /*{
+    {
       "id": 1,
-      "company": "Navinetics AI (An Mayo Clinic Company)",
+      "company": "Navinetics Inc (An Mayo Clinic Company)",
       "position": "AI Scientist and Software Engineer",
       "duration": "Janauary 2026 - Present",
       "startDate": "2026-01",
       "endDate": "Present",
       "location": "Rochster, MN",
-      "icon": "assets/utsi.png",
+      "icon": "assets/nn.png",
       "responsibilities": [
-        
+        "Builiding an in-house AI-driven neuroimaging suite to process CT/MRI data and generate surgical plans via a novel 3D surface-scanning workflow.",
+        "Developing a 3D registration engine to co-register intraoperative surface scans with preoperative MRI/CT volumes for Deep Brain Stimulation (DBS) planning.",
+        "Developing deep learning models for automated volumetric segmentation and trajectory planning, optimizing surgical accuracy and planning efficiency.",
       ],
-      "technologies": []
-    },*/
+      "technologies": ["Python", "VTK", "Medical Imaging Processing", "3D Visualization", "Software Development","PyQT"]
+    },
     {
       "id": 2,
       "company": "UT System, University Lands",
@@ -342,13 +344,15 @@ const timeLine = [
     ],
     technologies: ["Python", "FastAPI", "Streamlit", "AngularJS", "PostgreSQL", "pgvector", "Neo4j", "LangChain", "LlamaIndex", "Azure OpenAI"]
     },
-    /*{
+    {
     startDate: "2026-01",
     position: "AI Scientist and Software Engineer",
-    company: "Navinetics AI (An Mayo Clinic Company)",
+    company: "Navinetics Inc (An Mayo Clinic Company)",
     description: [
-        "Leading the development of AI-driven neuroimaging solutions for surgical applications.",
+        "Builiding an in-house AI-driven neuroimaging suite to process CT/MRI data and generate surgical plans via a novel 3D surface-scanning workflow.",
+        "Developing a 3D registration engine to co-register intraoperative surface scans with preoperative MRI/CT volumes for Deep Brain Stimulation (DBS) planning.",
+        "Developing deep learning models for automated volumetric segmentation and trajectory planning, optimizing surgical accuracy and planning efficiency.",
     ],
-    technologies: []
-    }*/
+    technologies: ["Python", "VTK", "Medical Imaging Processing", "3D Visualization", "Software Development","PyQT"]
+    }
 ];
