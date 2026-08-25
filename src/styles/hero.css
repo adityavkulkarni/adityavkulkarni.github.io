@@ -1,0 +1,284 @@
+/* ============================================================
+   HERO — the tract field, and the thesis sitting in it.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: calc(var(--nav-h) + 4rem) 6rem;
+  padding-inline: var(--gutter);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-tracts {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.hero-bloom {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 52% at 78% 22%, color-mix(in srgb, var(--si) 24%, transparent), transparent 70%),
+    radial-gradient(46% 42% at 22% 82%, color-mix(in srgb, var(--lr) 14%, transparent), transparent 68%),
+    radial-gradient(40% 36% at 60% 100%, color-mix(in srgb, var(--ap) 12%, transparent), transparent 70%);
+}
+
+/* The hero grain sits directly above a canvas that repaints continuously.
+   mix-blend-mode there forces the whole viewport-sized layer to re-composite
+   every frame, so this one instance opts out and leans on opacity instead. */
+.hero .grain {
+  z-index: -1;
+  mix-blend-mode: normal;
+  opacity: calc(var(--grain-opacity) * 0.16);
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+}
+
+/* ---------- status ---------- */
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  padding: 0.5em 1em 0.5em 0.85em;
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  background: var(--surface-2);
+  margin-bottom: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.hero-status-note {
+  color: var(--fg-4);
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+.pulse {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ap);
+  flex: none;
+}
+
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--ap);
+  animation: pulse 2.8s var(--ease-in-out) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+/* ---------- name ---------- */
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-bottom: clamp(1.6rem, 3.5vw, 2.6rem);
+}
+
+.hero-name-line {
+  display: block;
+  font-weight: 200;
+  color: var(--fg);
+}
+
+.hero-name-strong {
+  font-weight: 600;
+  background: linear-gradient(
+    100deg,
+    var(--fg) 0%,
+    color-mix(in srgb, var(--si) 55%, var(--fg)) 42%,
+    color-mix(in srgb, var(--lr) 35%, var(--fg)) 78%,
+    var(--fg) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- copy ---------- */
+
+.hero-thesis {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--step-2);
+  line-height: 1.32;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  max-width: 22ch;
+  text-wrap: balance;
+  margin-bottom: 1.4rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--si);
+}
+
+.hero-lede {
+  font-size: var(--step-0);
+  color: var(--fg-2);
+  max-width: 58ch;
+  margin-bottom: clamp(2rem, 4vw, 2.8rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+/* ---------- stats ---------- */
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--edge);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 720px;
+}
+
+.stat {
+  background: var(--surface-2);
+  padding: 1.1rem 1.25rem 1.2rem;
+  position: relative;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--axis);
+  opacity: 0.85;
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 1.9rem;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value em {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--fg-3);
+  margin-left: 0.2em;
+  letter-spacing: 0;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  line-height: 1.4;
+}
+
+/* ---------- scroll cue ---------- */
+
+.hero-scroll {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  transition: color 0.25s var(--ease);
+}
+
+.hero-scroll:hover {
+  color: var(--fg-2);
+}
+
+.hero-scroll i {
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--fg-4), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scroll i::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 14px;
+  background: var(--si);
+  animation: trace 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes trace {
+  0% {
+    transform: translateX(-14px);
+  }
+  100% {
+    transform: translateX(42px);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-scroll {
+    display: none;
+  }
+  .hero {
+    padding-block: calc(var(--nav-h) + 3rem) 4rem;
+    min-height: auto;
+  }
+  .hero-thesis {
+    max-width: none;
+  }
+}

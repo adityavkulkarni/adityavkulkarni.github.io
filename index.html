@@ -1,149 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Kulkarni - Portfolio</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="#home" class="nav-logo" data-section="home" style="padding: 0.4rem 1.2rem;">
-                <canvas id="dotMatrixCanvas"></canvas>
-            </a>
-            <div class="nav-links">
-                <a href="#home" class="nav-link" data-section="home">Home</a>
-                <a href="#experience" class="nav-link" data-section="experience">EXPERIENCE</a>
-                <a href="#education" class="nav-link" data-section="education">EDUCATION</a>
-                <a href="#work" class="nav-link" data-section="work">PROJECTS</a>
-                <a href="#resume" class="nav-link" data-section="resume">RESUME</a>
-            </div>
-        </div>
-    </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <!-- Floating Dark Mode Toggle -->
-    <button id="darkModeBtn" class="floating-toggle" aria-label="Toggle dark/light mode">
-        <i id="modeIcon" class="fas fa-moon"></i>
-    </button>
+    <title>Aditya Kulkarni — Founding Software Engineer &amp; AI Scientist</title>
+    <meta
+      name="description"
+      content="Founding software engineer and AI scientist at NaviNetics AI, a Mayo Clinic company. Stereotactic neurosurgical planning and navigation software: multimodal CT/MR fusion, markerless surface registration, and Class B/C SaMD under IEC 62304."
+    />
+    <meta name="author" content="Aditya Kulkarni" />
+    <meta name="theme-color" content="#06060C" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#EDEFF4" media="(prefers-color-scheme: light)" />
 
-    <!-- Download Resume Button -->
-    <a id="downloadResumeBtn" href="#" target="_blank" class="floating-button" aria-label="View resume">
-        <i class="fas fa-download"></i>
-    </a>
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="canonical" href="https://adityavkulkarni.github.io/" />
 
-    <!-- Work Section Scrollbar -->
-    <div id="workScrollbar" class="work-scrollbar active">
-        <div class="scrollbar-step" data-step="1">
-            <div class="step-dot"></div>
-            <span class="step-label">HERO</span>
-        </div>
-        <div class="scrollbar-step" data-step="2">
-            <div class="step-dot"></div>
-            <span class="step-label">ABOUT</span>
-        </div>
-    </div>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aditya Kulkarni — Founding Software Engineer &amp; AI Scientist" />
+    <meta
+      property="og:description"
+      content="I build the planning software a neurosurgeon trusts with a patient's brain."
+    />
+    <meta property="og:url" content="https://adityavkulkarni.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Resume Section Scrollbar -->
-    <div id="resumeScrollbar" class="work-scrollbar">
-        <!-- Scrollbar steps will be dynamically inserted -->
-    </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
 
-    <!-- Hero Section -->
-    <section class="hero content-section active" id="home">
-        <!-- Background Illustration -->
+    <script>
+      /* Applied before first paint so the page never flashes the wrong ground. */
+      try {
+        var t = localStorage.getItem('ak-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    </script>
+  </head>
 
-        <!-- Hero Card -->
-        <div class="hero-card" id="hero-card">
-            <!-- Hero content will be dynamically inserted -->
-        </div>
-    </section>
-
-
-    <!-- About Section -->
-    <section class="section section-alt content-section" id="about">
-    <div class="section-container">
-        <div class="about-content">
-            <div class="about-text" id="about-text">
-                <!-- About content will be dynamically inserted -->
-            </div>
-            <div class="skills-list">
-                <h3>CORE EXPERTISE</h3>
-                <div class="skill-tags" id="skills-tags">
-                    <!-- Skills will be dynamically inserted -->
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education section content-section" id="education">
-        <div class="section-container">
-            <h2 class="section-title">EDUCATION</h2>
-            <div class="education-grid">
-                <div class="education-timeline" id="education-timeline">
-                    <!-- Education items will be dynamically inserted -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience section content-section active" id="experience">
-        <div class="section-container">
-            <h2 class="section-title">EXPERIENCE</h2>
-            <div class="timeline" id="experience-timeline">
-                <!-- Experience items will be dynamically inserted -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Section -->
-    <section class="work section content-section active" id="work">
-        <div class="section-container">
-            <h2 class="section-title">PROJECTS</h2>
-            <div class="work-grid" id="work-grid">
-                <!-- Projects will be dynamically inserted here from app.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Play Section -->
-    <section class="section section-alt content-section" id="play">
-        <div class="section-container">
-
-            <!-- Blogs and Articles -->
-            <div class="play-subsection">
-                <h3 class="subsection-title">Blogs & Articles</h3>
-                <div class="blogs-grid" id="blogs-grid">
-                    <!-- Blog posts will be dynamically inserted -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section class="section content-section" id="resume">
-        <div class="section-container">
-            <div id="resume-content">
-                <!-- Resume content will be dynamically inserted -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer
-    <footer class="footer">
-        <p>Vibe coded with a lot of coffee</p>
-    </footer> -->
-    <script src="data.js"></script>
-    <script src="blogs.js"></script>
-    <script src="app.js"></script>
-</body>
+  <body>
+    <div id="app"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        This site renders its content with JavaScript. The resume PDF is available directly at
+        <a href="/assets/Aditya_Kulkarni_resume.pdf">/assets/Aditya_Kulkarni_resume.pdf</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>

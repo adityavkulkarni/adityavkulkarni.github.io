@@ -1,0 +1,303 @@
+/* ============================================================
+   RESUME — a document, rendered in the site's own type.
+   Screen styles here; print.css takes over for paper.
+   ============================================================ */
+
+.cv-view {
+  padding-block: calc(var(--nav-h) + clamp(2rem, 5vw, 4rem)) clamp(4rem, 8vw, 6rem);
+}
+
+.wrap-cv {
+  max-width: 960px;
+}
+
+/* ---------- toolbar ---------- */
+
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.cv-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ---------- the sheet ---------- */
+
+.cv {
+  background: var(--bg-2);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+}
+
+.cv-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 2px solid var(--edge-2);
+}
+
+.cv-name {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: var(--step-4);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--fg);
+}
+
+.cv-headline {
+  margin-top: 0.7rem;
+  font-size: 0.94rem;
+  color: var(--fg-2);
+  max-width: 46ch;
+}
+
+.cv-contact {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-3);
+  text-align: right;
+}
+
+.cv-contact a {
+  transition: color 0.2s var(--ease);
+}
+.cv-contact a:hover {
+  color: var(--si);
+}
+
+/* ---------- sections ---------- */
+
+.cv-section {
+  padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.cv-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid var(--edge);
+}
+
+.cv-summary {
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: var(--fg-2);
+  max-width: 76ch;
+}
+
+/* ---------- entries ---------- */
+
+.cv-entry {
+  padding-left: 1.05rem;
+  border-left: 2px solid var(--axis);
+}
+
+.cv-entry + .cv-entry {
+  margin-top: 1.85rem;
+}
+
+.cv-entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1.5rem;
+}
+
+.cv-role {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.06rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.cv-org {
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  color: var(--fg-2);
+}
+
+.cv-org em {
+  font-style: normal;
+  color: var(--fg-3);
+}
+
+.cv-when {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--fg-3);
+  text-align: right;
+  flex: none;
+}
+
+.cv-points {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.cv-points li {
+  font-size: 0.9rem;
+  line-height: 1.62;
+  color: var(--fg-2);
+  max-width: 82ch;
+}
+
+.cv-points li::marker {
+  color: var(--axis);
+}
+
+.cv-points strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.cv-stack {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.6;
+  color: var(--fg-3);
+}
+
+.cv-stack span {
+  display: inline-block;
+  margin-right: 0.55rem;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  border: 1px solid var(--edge);
+  color: var(--fg-4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.58rem;
+}
+
+/* ---------- projects, skills, lists ---------- */
+
+.cv-projects {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cv-projects li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--fg-2);
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--axis);
+}
+
+.cv-projects strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.cv-project-stack {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--fg-4);
+  margin-top: 0.15rem;
+}
+
+.cv-skills {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.cv-skills dt {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: var(--fg);
+  margin-bottom: 0.2rem;
+}
+
+.cv-skills dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.75;
+  color: var(--fg-3);
+}
+
+.cv-skills > div {
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--axis);
+}
+
+.cv-section-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.cv-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.cv-list li {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+.cv-list li span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--fg-4);
+  margin-top: 0.1rem;
+}
+
+.cv-list a {
+  border-bottom: 1px solid var(--edge-2);
+  transition: border-color 0.2s var(--ease);
+}
+.cv-list a:hover {
+  border-bottom-color: var(--si);
+}
+
+@media (max-width: 620px) {
+  .cv-contact {
+    text-align: left;
+  }
+  .cv-when {
+    text-align: left;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}

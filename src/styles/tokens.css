@@ -1,0 +1,169 @@
+/* ============================================================
+   TOKENS — the whole design system in one place.
+
+   This site is dark-native: the canonical experience is a
+   reading-room monitor. The light theme is not an inversion,
+   it is a different instrument — a radiology lightbox, where
+   the same tracts read as saturated ink on cool film.
+
+   Structure:
+     :root                                  → dark (default)
+     @media (prefers-color-scheme: light)   → light, guarded
+     :root[data-theme="light"|"dark"]       → explicit choice wins
+   ============================================================ */
+
+:root {
+  /* ---- ground ---- */
+  --bg: #06060C;
+  --bg-2: #0A0B14;
+  --bg-3: #0E0F1C;
+
+  /* ---- glass ---- */
+  --surface: rgba(14, 16, 30, 0.55);
+  --surface-2: rgba(19, 21, 38, 0.72);
+  --surface-solid: #0E1020;
+  --blur: 22px;
+
+  /* ---- edges ---- */
+  --edge: rgba(255, 255, 255, 0.085);
+  --edge-2: rgba(255, 255, 255, 0.16);
+  --edge-3: rgba(255, 255, 255, 0.28);
+
+  /* ---- type ---- */
+  --fg: #F2F3FB;
+  --fg-2: #A8AECB;
+  --fg-3: #6E7597;
+  --fg-4: #4C5372;
+
+  /* ---- DTI directional colormap ---- */
+  --lr: #FF3B6B;   /* left ↔ right         · research  */
+  --ap: #3DDC97;   /* anterior ↔ posterior · product   */
+  --si: #4C7DFF;   /* superior ↔ inferior  · clinical  */
+  --edu: #C9CFEA;  /* the substrate                    */
+
+  --lr-soft: rgba(255, 59, 107, 0.14);
+  --ap-soft: rgba(61, 220, 151, 0.14);
+  --si-soft: rgba(76, 125, 255, 0.14);
+  --edu-soft: rgba(201, 207, 234, 0.12);
+
+  /* ---- canvas tract rendering ---- */
+  --tract-composite: lighter;
+  --tract-alpha: 0.72;
+  --tract-width: 1.05;
+  --grain-opacity: 0.42;
+  --grain-blend: overlay;
+
+  /* ---- type system ---- */
+  --font-display: 'Sora', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.16vw, 1.05rem);
+  --step-1: clamp(1.12rem, 1.05rem + 0.34vw, 1.32rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.72vw, 1.85rem);
+  --step-3: clamp(1.7rem, 1.4rem + 1.5vw, 2.75rem);
+  --step-4: clamp(2.2rem, 1.5rem + 3.2vw, 4.4rem);
+  --step-5: clamp(2.9rem, 1.4rem + 6.6vw, 7.5rem);
+
+  /* ---- layout ---- */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 62ch;
+  --max: 1240px;
+  --nav-h: 64px;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-sm: 8px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur: 0.5s;
+
+  color-scheme: dark;
+}
+
+/* ---------- LIGHTBOX (light) ---------- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #EDEFF4;
+    --bg-2: #F5F6F9;
+    --bg-3: #FFFFFF;
+
+    --surface: rgba(255, 255, 255, 0.74);
+    --surface-2: rgba(255, 255, 255, 0.9);
+    --surface-solid: #FFFFFF;
+    --blur: 18px;
+
+    --edge: rgba(11, 14, 30, 0.1);
+    --edge-2: rgba(11, 14, 30, 0.18);
+    --edge-3: rgba(11, 14, 30, 0.32);
+
+    --fg: #0A0D1A;
+    --fg-2: #3D4560;
+    --fg-3: #6A7290;
+    --fg-4: #979DB5;
+
+    --lr: #D01B4E;
+    --ap: #0A8F5F;
+    --si: #2450CE;
+    --edu: #545C7E;
+
+    --lr-soft: rgba(208, 27, 78, 0.1);
+    --ap-soft: rgba(10, 143, 95, 0.1);
+    --si-soft: rgba(36, 80, 206, 0.1);
+    --edu-soft: rgba(84, 92, 126, 0.09);
+
+    --tract-composite: multiply;
+    --tract-alpha: 0.4;
+    --tract-width: 0.85;
+    --grain-opacity: 0.18;
+    --grain-blend: multiply;
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme='light'] {
+  --bg: #EDEFF4;
+  --bg-2: #F5F6F9;
+  --bg-3: #FFFFFF;
+
+  --surface: rgba(255, 255, 255, 0.74);
+  --surface-2: rgba(255, 255, 255, 0.9);
+  --surface-solid: #FFFFFF;
+  --blur: 18px;
+
+  --edge: rgba(11, 14, 30, 0.1);
+  --edge-2: rgba(11, 14, 30, 0.18);
+  --edge-3: rgba(11, 14, 30, 0.32);
+
+  --fg: #0A0D1A;
+  --fg-2: #3D4560;
+  --fg-3: #6A7290;
+  --fg-4: #979DB5;
+
+  --lr: #D01B4E;
+  --ap: #0A8F5F;
+  --si: #2450CE;
+  --edu: #545C7E;
+
+  --lr-soft: rgba(208, 27, 78, 0.1);
+  --ap-soft: rgba(10, 143, 95, 0.1);
+  --si-soft: rgba(36, 80, 206, 0.1);
+  --edu-soft: rgba(84, 92, 126, 0.09);
+
+  --tract-composite: multiply;
+  --tract-alpha: 0.4;
+  --tract-width: 0.85;
+  --grain-opacity: 0.18;
+  --grain-blend: multiply;
+
+  color-scheme: light;
+}
+
+/* ---------- axis helpers ---------- */
+[data-axis='lr'] { --axis: var(--lr); --axis-soft: var(--lr-soft); }
+[data-axis='ap'] { --axis: var(--ap); --axis-soft: var(--ap-soft); }
+[data-axis='si'] { --axis: var(--si); --axis-soft: var(--si-soft); }
+[data-axis='edu'] { --axis: var(--edu); --axis-soft: var(--edu-soft); }

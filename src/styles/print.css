@@ -1,0 +1,195 @@
+/* ============================================================
+   PRINT — Cmd/Ctrl-P on the resume view produces a clean document.
+   Ink-economical: no glass, no glow, black on white, axis colours
+   kept only as the thin rules that carry the structure.
+   ============================================================ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+
+  :root {
+    --bg: #ffffff;
+    --bg-2: #ffffff;
+    --bg-3: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --surface-solid: #ffffff;
+    --edge: #d8dae2;
+    --edge-2: #b6bac6;
+    --edge-3: #8b90a0;
+    --fg: #0a0d1a;
+    --fg-2: #23283a;
+    --fg-3: #4d5468;
+    --fg-4: #6d7488;
+    --lr: #b21744;
+    --ap: #0a7d53;
+    --si: #1f45b5;
+    --edu: #4a5270;
+    --blur: 0px;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #0a0d1a !important;
+    font-size: 10.2pt;
+    line-height: 1.45;
+  }
+
+  /* Everything that is not the document itself. */
+  .nav,
+  .footer,
+  .cv-toolbar,
+  [data-noprint],
+  .hero-tracts,
+  .hero-bloom,
+  .grain,
+  .rail-line,
+  .node-toggle,
+  .hero-scroll {
+    display: none !important;
+  }
+
+  .cv-view {
+    padding: 0 !important;
+  }
+
+  .wrap,
+  .wrap-cv {
+    max-width: none;
+    padding: 0 !important;
+  }
+
+  .cv {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .cv-head {
+    padding-bottom: 8pt;
+    border-bottom: 1.2pt solid #0a0d1a;
+  }
+
+  .cv-name {
+    font-size: 24pt;
+    letter-spacing: -0.03em;
+  }
+
+  .cv-headline {
+    font-size: 9.5pt;
+    margin-top: 3pt;
+  }
+
+  .cv-contact {
+    font-size: 8pt;
+    gap: 1pt;
+  }
+
+  .cv-contact a {
+    color: #1f45b5 !important;
+  }
+
+  .cv-section {
+    padding-top: 12pt;
+  }
+
+  .cv-section-title {
+    font-size: 7.6pt;
+    margin-bottom: 7pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.6pt solid #b6bac6;
+  }
+
+  .cv-summary,
+  .cv-points li,
+  .cv-projects li {
+    font-size: 9.4pt;
+    line-height: 1.42;
+    max-width: none;
+  }
+
+  .cv-entry {
+    border-left-width: 1.6pt;
+    padding-left: 8pt;
+    /* Keep a role and its first bullets together. */
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .cv-entry + .cv-entry {
+    margin-top: 11pt;
+  }
+
+  /* The founding role is long — let it flow, but never orphan the heading. */
+  .cv-entry:first-child {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .cv-entry-head,
+  .cv-section-title {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  .cv-role {
+    font-size: 11pt;
+  }
+
+  .cv-org {
+    font-size: 9.4pt;
+  }
+
+  .cv-when {
+    font-size: 8pt;
+  }
+
+  .cv-points {
+    margin-top: 5pt;
+    gap: 3pt;
+  }
+
+  .cv-stack,
+  .cv-skills dd,
+  .cv-project-stack {
+    font-size: 8pt;
+    line-height: 1.4;
+  }
+
+  .cv-section-split {
+    gap: 18pt;
+  }
+
+  .cv-list li {
+    font-size: 9pt;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* If someone prints the home page, give them something legible. */
+  .hero {
+    min-height: auto;
+    padding: 0;
+  }
+}
